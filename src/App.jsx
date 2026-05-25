@@ -326,6 +326,56 @@ export default function App() {
           </div>
         </section>
 
+        <section className="bg-white py-20">
+          <div className="mx-auto max-w-7xl px-5 md:px-8">
+            <div className="mb-12 text-center">
+              <p className="mb-3 text-sm font-semibold tracking-[0.26em] text-[#B28A36]">CONSULTATION SALON</p>
+              <h3 className="text-3xl font-semibold text-[#0B1F3A] md:text-5xl">相談に来るというより、<br className="hidden sm:block" />お話をしに来る気持ちで。</h3>
+              <p className="mx-auto mt-5 max-w-3xl leading-8 text-slate-600">
+                大切なお金やご家族のことは、すぐに結論を出すよりも、まず落ち着いて状況やお気持ちを整理することが大切です。森下駅から徒歩1分、ゆったりとした空間でお話を伺います。
+              </p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+              <figure className="overflow-hidden rounded-[2rem] shadow-sm">
+                <img
+                  src="/salon/archive-lounge-photo-web.jpg"
+                  alt="東京トータルコンサルティングの相談サロンの様子"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </figure>
+
+              <div className="flex flex-col gap-6">
+                <div className="rounded-[2rem] bg-[#F7F3EA] p-8 shadow-sm">
+                  <p className="mb-4 text-sm font-semibold tracking-[0.2em] text-[#B28A36]">CUSTOMER'S VOICE</p>
+                  <blockquote className="leading-8 text-slate-700">
+                    「小西さんの話は初めて聞くことばかりで面白いです。お金のことでわからないことが出てきたら、すぐ小西さんに聞くようにしています。」
+                  </blockquote>
+                  <div className="mt-5 flex items-center gap-3">
+                    <img
+                      src="/salon/customer-maeda.jpg"
+                      alt="前田珠里さん"
+                      className="h-12 w-12 rounded-full object-cover"
+                      loading="lazy"
+                    />
+                    <div>
+                      <p className="text-sm font-semibold text-[#0B1F3A]">前田 珠里さん</p>
+                      <p className="text-xs text-slate-500">不動産業 / 20代</p>
+                    </div>
+                  </div>
+                </div>
+                <a
+                  href="/salon/"
+                  className="inline-flex items-center justify-center gap-2 self-start rounded-full bg-[#0B1F3A] px-7 py-4 font-semibold text-white transition hover:bg-[#183B68]"
+                >
+                  サロンの様子をもっと見る <span>→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="mx-auto max-w-7xl px-5 py-20 md:px-8">
           <div className="mb-12 text-center">
             <p className="mb-3 text-sm font-semibold tracking-[0.26em] text-[#B28A36]">OUR VALUES</p>
