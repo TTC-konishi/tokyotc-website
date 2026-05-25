@@ -2,7 +2,7 @@ import React from "react";
 
 const companyLogo = "https://cdn.peraichi.com/userData/59e83827-c838-41cb-a19f-61410a0000c5/img/616e9317d3f5a/original.png";
 const officialLineQr = "https://qr-official.line.me/gs/M_sog7070i_BW.png?oat_content=qr";
-const googleMapUrl = "https://www.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%A2%A8%E7%94%B0%E5%8C%BA%E7%AB%8B%E5%B7%9D1-2-8%20%E8%B5%A4%E6%B4%A5%E3%83%93%E3%83%AB1F";
+const googleMapUrl = "https://maps.app.goo.gl/WudMb6uoqz1r4xkBA";
 
 const services = [
   {
