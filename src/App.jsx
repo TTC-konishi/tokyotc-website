@@ -165,49 +165,6 @@ function Logo({ size = "header" }) {
   );
 }
 
-function AccessMap() {
-  return (
-    <div className="mt-5 overflow-hidden rounded-2xl border border-white/10 bg-white p-4 text-[#0B1F3A] shadow-sm">
-      <div className="mb-3 flex items-center justify-between gap-3">
-        <p className="text-xs font-semibold tracking-[0.22em] text-[#B28A36]">ACCESS MAP</p>
-        <p className="rounded-full bg-[#F7F3EA] px-3 py-1 text-xs font-semibold text-slate-600">森下駅 A5出口 徒歩1分</p>
-      </div>
-      <svg viewBox="0 0 640 260" className="h-auto w-full" aria-label="東京トータルコンサルティング周辺地図">
-        <rect width="640" height="260" rx="18" fill="#F7F3EA" />
-        <path d="M60 190H580" stroke="#9CA3AF" strokeWidth="22" strokeLinecap="round" />
-        <path d="M110 132L350 94L520 150" stroke="#B6BAB8" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M210 30V222" stroke="#AEB4B1" strokeWidth="28" strokeLinecap="round" />
-        <path d="M222 34V226" stroke="#6B7280" strokeWidth="3" strokeDasharray="10 10" opacity="0.7" />
-        <path d="M220 150L380 128" stroke="#AEB4B1" strokeWidth="18" strokeLinecap="round" />
-        <circle cx="360" cy="96" r="10" fill="#0B1F3A" />
-        <path d="M360 121L348 154H372L360 121Z" fill="#B28A36" />
-        <path d="M360 87L371 111L397 114L378 131L383 157L360 144L337 157L342 131L323 114L349 111L360 87Z" fill="#B28A36" opacity="0.88" />
-        <rect x="245" y="145" width="78" height="30" rx="6" fill="#111827" />
-        <text x="284" y="166" textAnchor="middle" fontSize="18" fill="white" fontWeight="700">A5出口</text>
-        <rect x="430" y="52" width="122" height="58" rx="8" fill="white" stroke="#B28A36" strokeWidth="2" />
-        <text x="491" y="78" textAnchor="middle" fontSize="15" fill="#8F7441" fontWeight="700">Tokyo Total</text>
-        <text x="491" y="98" textAnchor="middle" fontSize="11" fill="#8F7441" letterSpacing="3">consulting</text>
-        <text x="75" y="203" fontSize="18" fill="white" fontWeight="700">森下駅</text>
-        <text x="480" y="203" fontSize="16" fill="white" fontWeight="700">都営新宿線</text>
-        <text x="235" y="64" fontSize="16" fill="#374151" fontWeight="700" writingMode="tb">清澄通り</text>
-        <text x="115" y="118" fontSize="16" fill="#374151" fontWeight="700" transform="rotate(-10 115 118)">五間堀公園</text>
-        <text x="395" y="143" fontSize="17" fill="#374151" fontWeight="700">徒歩1分</text>
-      </svg>
-      <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs leading-6 text-slate-500">都営大江戸線・都営新宿線「森下駅」A5出口より徒歩1分。清澄通り沿い、赤津ビル1階です。</p>
-        <a
-          href={googleMapUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#0B1F3A] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#183B68]"
-        >
-          Google Mapで開く
-        </a>
-      </div>
-    </div>
-  );
-}
-
 export default function App() {
   return (
     <div className="min-h-screen bg-[#F7F3EA] text-slate-900">
@@ -415,20 +372,22 @@ export default function App() {
                 <p className="mt-5 leading-8 text-white/75">
                   公式LINEでは、相談予約・オンライン面談の調整・資料のやり取りまで、スムーズに進められます。お電話でのご連絡も可能です。
                 </p>
-                <div className="mt-8 grid grid-cols-3 gap-3">
+                <div className="mt-8 grid grid-cols-2 gap-3">
                   <a href="https://lin.ee/tT6CaJn" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1 whitespace-nowrap rounded-full bg-[#D8B46A] px-3 py-3 text-sm font-semibold text-[#0B1F3A] transition hover:bg-[#e5c77d]">
                     公式LINE <span>→</span>
                   </a>
                   <a href="tel:0120900984" className="flex items-center justify-center whitespace-nowrap rounded-full border border-white/25 px-3 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
                     0120-900-984
                   </a>
-                  <a href={googleMapUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center whitespace-nowrap rounded-full border border-white/25 px-3 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
-                    Google Map
-                  </a>
                 </div>
                 <div className="mt-8 rounded-2xl bg-white/10 p-4 text-sm leading-7 text-white/70">
-                  東京都墨田区立川1-2-8 赤津ビル1F / 森下駅 A5出口 徒歩1分
-                  <AccessMap />
+                  <p className="mb-2 text-xs font-semibold tracking-[0.22em] text-[#D8B46A]">会社所在地</p>
+                  <p>東京都墨田区立川1-2-8 赤津ビル1F / 森下駅 A5出口 徒歩1分</p>
+                  <div className="mt-4 flex justify-center">
+                    <a href={googleMapUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-full border border-white/25 px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/10">
+                      Google Mapで開く
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
