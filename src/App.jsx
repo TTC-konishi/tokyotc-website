@@ -455,15 +455,17 @@ export default function App() {
       </main>
 
       <footer className="bg-[#071529] px-5 py-10 text-white md:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-end">
+        <div className="mx-auto max-w-7xl">
           <div>
             <Logo size="footer" />
             <p className="mt-3 text-sm text-white/60">生命保険代理業 / 損害保険代理業 / ファイナンシャルプランニング / 遺言書作成サポート</p>
           </div>
-          <div className="flex flex-wrap gap-4 text-sm text-white/60">
-            <a href="#" className="hover:text-white">勧誘方針</a>
-            <a href="#" className="hover:text-white">プライバシーポリシー</a>
-            <a href="#" className="hover:text-white">FD宣言</a>
+          <div className="mt-10 flex flex-wrap justify-center gap-4 text-sm text-white/60">
+            <a href="/privacy/#sec01" className="hover:text-white">勧誘方針</a>
+            <a href="/privacy/#sec02" className="hover:text-white">個人情報の安全管理にかかる基本方針</a>
+            <a href="/privacy/#sec03" className="hover:text-white">プライバシーポリシー</a>
+            <a href="/privacy/#sec04" className="hover:text-white">個人情報の安全管理に関する規定</a>
+            <a href="/privacy/#sec05" className="hover:text-white">顧客本位の業務運営に関する方針（FD宣言）</a>
           </div>
         </div>
       </footer>
