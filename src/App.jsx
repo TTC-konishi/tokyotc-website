@@ -27,6 +27,7 @@ const services = [
     icon: "realestate",
     title: "不動産・資産承継",
     text: "不動産を含む資産全体を把握し、売却・活用・承継の方向性を一緒に考えます。",
+    href: "/property/",
   },
 ];
 
