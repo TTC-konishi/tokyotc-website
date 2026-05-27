@@ -310,7 +310,7 @@ export default function App() {
                 {service.href ? (
                   <a
                     href={service.href}
-                    className="mt-6 inline-flex items-center gap-2 self-start font-semibold text-[#B28A36] transition hover:gap-3"
+                    className="mt-6 inline-flex items-center gap-2 self-start rounded-full border border-[#B28A36] px-5 py-2 text-sm font-semibold text-[#B28A36] transition hover:bg-[#B28A36] hover:text-[#0B1F3A]"
                   >
                     詳しく見る <span>→</span>
                   </a>
