@@ -524,10 +524,25 @@
 
       .timeline article {
         display: grid;
-        grid-template-columns: minmax(120px, 0.24fr) minmax(0, 1fr);
+        grid-template-columns: minmax(80px, 0.16fr) minmax(180px, 0.32fr) minmax(0, 1fr);
         gap: 24px;
         padding: clamp(22px, 3.4vw, 36px);
         background: rgba(255, 255, 255, 0.035);
+        align-items: start;
+      }
+
+      .timeline-photo {
+        margin: 0;
+        overflow: hidden;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .timeline-photo img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
       }
 
       .timeline time {
@@ -1054,6 +1069,7 @@
         <div class="timeline">
           <article>
             <time>2015</time>
+            <figure class="timeline-photo"><img src="assets/timeline-2015.jpg" alt="アマン東京のロビーの吹き抜け。クリスマスツリーが余白に佇む。" loading="lazy"></figure>
             <div>
               <h3>アマン東京で、余白の思想に触れる。</h3>
               <p>部屋数に変えられるはずの吹き抜けを、あえて大きな空間として残す判断に驚く。</p>
@@ -1061,6 +1077,7 @@
           </article>
           <article>
             <time>2018</time>
+            <figure class="timeline-photo"><img src="assets/timeline-2018.jpg" alt="白地図の地球儀。バーカウンターの前で。" loading="lazy"></figure>
             <div>
               <h3>白地図の地球儀を買う。</h3>
               <p>息子にたくさんの体験価値を渡したい、という10年目標を書いた。</p>
@@ -1068,6 +1085,7 @@
           </article>
           <article>
             <time>2021</time>
+            <figure class="timeline-photo"><img src="assets/timeline-2021.jpg" alt="アマネム到着時に受け取る、施設の案内マップ。" loading="lazy"></figure>
             <div>
               <h3>アマネム初訪。</h3>
               <p>街灯のない暗さ、子ども用スリッパ、名前で迎える接客に、サービス観が更新される。</p>
@@ -1075,6 +1093,7 @@
           </article>
           <article>
             <time>2026</time>
+            <figure class="timeline-photo"><img src="assets/timeline-2026.jpg" alt="アマネムからの帰り道、オレンジの革製ラゲージタグを膝の上で。" loading="lazy"></figure>
             <div>
               <h3>3年振りの再訪。</h3>
               <p>門をくぐった瞬間、「ああ、帰って来れたぞ」と感じるほど、自分の基準になっていた。</p>
