@@ -185,6 +185,7 @@ export default function App() {
             <a href="#concept" className="hover:text-[#D8B46A]">私たちについて</a>
             <a href="#service" className="hover:text-[#D8B46A]">相談できること</a>
             <a href="#flow" className="hover:text-[#D8B46A]">相談の流れ</a>
+            <a href="/experience/" className="hover:text-[#D8B46A]">体験メニュー</a>
             <a href="#contact" className="rounded-full bg-[#D8B46A] px-5 py-2 font-semibold text-[#0B1F3A] hover:bg-[#e5c77d]">公式LINEで相談</a>
           </nav>
         </div>
