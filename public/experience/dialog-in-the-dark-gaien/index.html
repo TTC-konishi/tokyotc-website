@@ -247,7 +247,7 @@
 
       .threshold-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(240px, 0.42fr);
+        grid-template-columns: minmax(0, 1fr);
         gap: 1px;
         border: 1px solid rgba(173, 146, 86, 0.22);
         background: rgba(173, 146, 86, 0.22);
@@ -269,10 +269,6 @@
         filter: saturate(0.78) contrast(1.08) brightness(0.72);
       }
 
-      .threshold-photo.is-detail img {
-        min-height: clamp(240px, 34vw, 420px);
-        filter: saturate(0.42) contrast(1.15) brightness(0.58);
-      }
 
       .threshold-photo figcaption {
         position: absolute;
@@ -285,6 +281,40 @@
         letter-spacing: 0.06em;
         line-height: 1.6;
         text-shadow: 0 2px 16px rgba(0, 0, 0, 0.82);
+      }
+
+      .afterglow {
+        width: min(860px, calc(100% - 44px));
+      }
+
+      .afterglow-photo {
+        position: relative;
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid rgba(173, 146, 86, 0.22);
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      .afterglow-photo img {
+        display: block;
+        width: 100%;
+        max-height: min(72svh, 760px);
+        object-fit: cover;
+        object-position: center;
+        filter: saturate(0.42) contrast(1.14) brightness(0.6);
+      }
+
+      .afterglow-photo figcaption {
+        position: absolute;
+        right: 18px;
+        bottom: 16px;
+        left: 18px;
+        color: rgba(255, 247, 229, 0.82);
+        font-family: var(--sans);
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        line-height: 1.7;
+        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.86);
       }
 
       .prose {
@@ -636,6 +666,7 @@
 
         .section,
         .threshold,
+        .afterglow,
         .chapters,
         .cta {
           width: calc(100% - 36px);
@@ -678,11 +709,6 @@
         .key-phrase {
           padding-right: 22px;
           padding-left: 22px;
-        }
-
-        .threshold-photo img,
-        .threshold-photo.is-detail img {
-          min-height: 280px;
         }
       }
     </style>
@@ -738,10 +764,6 @@
           <figure class="threshold-photo">
             <img src="assets/dialog-dark-gaien-entrance.jpg" alt="竹と黒い看板が置かれたDialog in the Dark外苑前会場の入口">
             <figcaption>外苑前会場の入口。ここから先で、見える世界を一度手放した。</figcaption>
-          </figure>
-          <figure class="threshold-photo is-detail">
-            <img src="assets/dialog-dark-gaien-sign.jpg" alt="Dialog in the Darkと白い文字で書かれた黒い看板">
-            <figcaption>暗闇へ入る前、まだ文字を読むことができた最後の場所。</figcaption>
           </figure>
         </div>
       </section>
@@ -910,6 +932,14 @@
           </div>
         </article>
       </div>
+
+      <section class="section afterglow" aria-labelledby="afterglow-title">
+        <p class="section-label" id="afterglow-title">Afterglow</p>
+        <figure class="afterglow-photo">
+          <img src="assets/dialog-dark-gaien-sign.jpg" alt="Dialog in the Darkと白い文字で書かれた黒い看板">
+          <figcaption>暗闇から戻ってきたあと、もう一度見えた文字。見えているのに、入る前とは違って感じられた。</figcaption>
+        </figure>
+      </section>
 
       <section class="section intro" aria-labelledby="reflection-title">
         <p class="section-label">Final Reflection</p>
