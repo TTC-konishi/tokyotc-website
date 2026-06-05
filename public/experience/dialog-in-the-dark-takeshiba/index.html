@@ -1,0 +1,1483 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dialog in the Dark（竹芝編）｜暗闇の中で見えた、仲間の才能とチームの本質</title>
+    <meta name="description" content="社員全員でDialog in the Darkを体験。肩書きを外し、助けを求め、普段は見えなかった才能に気づく。暗闇の中で奏でた「きよしこの夜」から考える、仲間を置いていかないチームのあり方。">
+    <meta name="keywords" content="Dialog in the Dark,ダイアログ・イン・ザ・ダーク,対話の森,竹芝,チームビルディング,リーダーシップ,心理的安全性,組織づくり,暗闇体験,体験メニュー">
+    <meta property="og:title" content="Dialog in the Dark（竹芝編）｜仲間を置いていかない集団">
+    <meta property="og:description" content="自分にしか出せない音がある。仲間にも、自分にはない音がある。その違いを組み合わせると、一人では作れない曲になる。">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP">
+    <style>
+      :root {
+        --black: #010203;
+        --void: #050708;
+        --deep: #0a0d12;
+        --night: #0d1319;
+        --rail: #192028;
+        --ink: #f3efe3;
+        --soft: #d7d0c0;
+        --muted: #9a9384;
+        --gold: #ad9256;
+        --warm: #c29a68;
+        --blue: #8eb7c2;
+        --wood: #8d6e4e;
+        --green: #8a9668;
+        --line: rgba(173, 146, 86, 0.28);
+        --veil: rgba(255, 255, 255, 0.055);
+        --serif: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Noto Serif JP", serif;
+        --sans: "Avenir Next", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 82% 18%, rgba(142, 183, 194, 0.08), transparent 32rem),
+          radial-gradient(circle at 22% 72%, rgba(173, 146, 86, 0.09), transparent 30rem),
+          linear-gradient(180deg, #000 0%, var(--void) 24%, #070b0f 54%, #10130f 76%, #040506 100%);
+        color: var(--ink);
+        font-family: var(--serif);
+        line-height: 2.04;
+      }
+
+      body::before,
+      body::after {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        content: "";
+      }
+
+      body::before {
+        background-image:
+          radial-gradient(circle, rgba(255, 246, 218, 0.18) 0 1px, transparent 1.7px),
+          radial-gradient(circle, rgba(142, 183, 194, 0.16) 0 1px, transparent 1.7px);
+        background-position: 18% 24%, 74% 68%;
+        background-size: 210px 210px, 300px 300px;
+        opacity: 0.12;
+      }
+
+      body::after {
+        background: radial-gradient(ellipse at center, transparent 0 42%, rgba(0, 0, 0, 0.82) 100%);
+      }
+
+      body.motion-off *,
+      body.motion-off *::before,
+      body.motion-off *::after {
+        animation: none !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--blue);
+        outline-offset: 4px;
+      }
+
+      .skip-link {
+        position: fixed;
+        top: 12px;
+        left: 12px;
+        z-index: 30;
+        padding: 10px 14px;
+        background: #fff7df;
+        color: #111;
+        font-family: var(--sans);
+        font-size: 13px;
+        transform: translateY(-160%);
+        transition: transform 0.2s ease;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      .site-header {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 18px clamp(20px, 4vw, 58px);
+        border-bottom: 1px solid rgba(173, 146, 86, 0.18);
+        background: rgba(2, 3, 4, 0.78);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        display: block;
+        width: clamp(148px, 18vw, 260px);
+      }
+
+      .brand img {
+        width: 100%;
+        height: auto;
+        mix-blend-mode: screen;
+        filter: sepia(1) saturate(0.82) brightness(1.06) contrast(1.08);
+      }
+
+      .site-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: clamp(12px, 2.4vw, 30px);
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: clamp(12px, 2.2vw, 26px);
+        color: var(--soft);
+        font-family: var(--sans);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
+
+      .site-nav a {
+        opacity: 0.78;
+        transition: color 0.2s ease, opacity 0.2s ease;
+      }
+
+      .site-nav a:hover {
+        color: var(--gold);
+        opacity: 1;
+      }
+
+      .motion-toggle {
+        min-width: 82px;
+        padding: 8px 0;
+        border: 0;
+        border-bottom: 1px solid rgba(173, 146, 86, 0.74);
+        background: transparent;
+        color: var(--soft);
+        font-family: var(--sans);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+      }
+
+      .motion-toggle:hover {
+        color: #fff7df;
+      }
+
+      main {
+        padding-top: 78px;
+      }
+
+      .hero {
+        position: relative;
+        min-height: calc(100svh - 78px);
+        overflow: hidden;
+        padding: clamp(60px, 8vw, 112px) clamp(22px, 6vw, 96px) clamp(78px, 9vw, 118px);
+        isolation: isolate;
+      }
+
+      .hero::before {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        content: "";
+        background:
+          linear-gradient(90deg, rgba(0, 0, 0, 0.98) 0%, rgba(3, 5, 7, 0.86) 48%, rgba(13, 19, 25, 0.62) 100%),
+          radial-gradient(circle at 68% 44%, rgba(255, 246, 216, 0.08), transparent 20rem),
+          linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.94) 40%, rgba(5, 7, 8, 0.9) 100%);
+      }
+
+      .hero::after {
+        position: absolute;
+        top: 22%;
+        right: clamp(20px, 9vw, 130px);
+        z-index: -1;
+        width: min(42vw, 560px);
+        aspect-ratio: 1;
+        border: 1px solid rgba(173, 146, 86, 0.18);
+        border-radius: 999px;
+        box-shadow:
+          inset 0 0 80px rgba(255, 255, 255, 0.03),
+          0 0 90px rgba(142, 183, 194, 0.08);
+        content: "";
+        opacity: 0.72;
+        animation: breathe 9s ease-in-out infinite;
+      }
+
+      .hero-inner {
+        display: grid;
+        align-content: space-between;
+        width: min(1180px, 100%);
+        min-height: calc(100svh - 78px - clamp(138px, 17vw, 230px));
+        margin: 0 auto;
+      }
+
+      .dark-opening {
+        max-width: 540px;
+        color: rgba(255, 248, 230, 0.98);
+        font-size: clamp(24px, 4vw, 50px);
+        font-weight: 500;
+        line-height: 1.66;
+        text-shadow: 0 0 28px rgba(255, 247, 222, 0.24);
+      }
+
+      .dark-opening p {
+        margin: 0;
+      }
+
+      .dark-opening p + p {
+        margin-top: clamp(26px, 5vw, 54px);
+      }
+
+      .hero-title {
+        width: min(920px, 100%);
+        margin-top: clamp(78px, 12vw, 160px);
+      }
+
+      .eyebrow,
+      .section-label {
+        margin: 0;
+        color: var(--gold);
+        font-family: var(--sans);
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        margin: 16px 0 0;
+        color: #fff8e6;
+        font-size: clamp(42px, 6.4vw, 88px);
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 1.13;
+      }
+
+      .hero-copy {
+        margin: 22px 0 0;
+        color: var(--soft);
+        font-size: clamp(18px, 2vw, 25px);
+        line-height: 1.78;
+      }
+
+      .meta-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 34px 0 0;
+        padding: 0;
+        color: var(--muted);
+        font-family: var(--sans);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        list-style: none;
+      }
+
+      .meta-strip li {
+        padding: 8px 12px;
+        border: 1px solid rgba(173, 146, 86, 0.24);
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      .section {
+        position: relative;
+        width: min(1040px, calc(100% - 44px));
+        margin: 0 auto;
+        padding: clamp(76px, 12vw, 154px) 0;
+        border-top: 1px solid rgba(173, 146, 86, 0.18);
+        scroll-margin-top: 104px;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: minmax(130px, 0.24fr) minmax(0, 1fr);
+        gap: clamp(28px, 6vw, 80px);
+      }
+
+      .prose {
+        max-width: 770px;
+        color: var(--soft);
+        font-size: clamp(17px, 1.42vw, 21px);
+      }
+
+      .prose h2 {
+        margin: 0 0 28px;
+        color: #fff8e6;
+        font-size: clamp(31px, 4.5vw, 58px);
+        font-weight: 500;
+        line-height: 1.32;
+      }
+
+      .prose p,
+      .prose ul,
+      .prose ol {
+        margin: 0;
+      }
+
+      .prose p + p,
+      .prose p + ul,
+      .prose ul + p {
+        margin-top: 1.35em;
+      }
+
+      .link-inline {
+        border-bottom: 1px solid rgba(173, 146, 86, 0.74);
+        color: #fff7df;
+      }
+
+      .contrast-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: clamp(34px, 5vw, 54px);
+        color: var(--soft);
+        font-family: var(--sans);
+        font-size: clamp(13px, 1.25vw, 15px);
+        line-height: 1.72;
+      }
+
+      .contrast-table caption {
+        margin-bottom: 18px;
+        color: #fff7df;
+        font-family: var(--serif);
+        font-size: clamp(22px, 2.7vw, 34px);
+        text-align: left;
+      }
+
+      .contrast-table th,
+      .contrast-table td {
+        padding: 16px 18px;
+        border: 1px solid rgba(173, 146, 86, 0.22);
+        vertical-align: top;
+      }
+
+      .contrast-table th {
+        color: var(--gold);
+        font-weight: 600;
+        text-align: left;
+      }
+
+      .chapters {
+        width: min(980px, calc(100% - 44px));
+        margin: 0 auto;
+      }
+
+      .chapter {
+        position: relative;
+        min-height: 70svh;
+        padding: clamp(70px, 11vw, 132px) 0;
+        border-top: 1px solid rgba(173, 146, 86, 0.16);
+        scroll-margin-top: 104px;
+      }
+
+      .chapter::before {
+        position: absolute;
+        top: 16%;
+        right: min(-12vw, -40px);
+        z-index: -1;
+        width: clamp(180px, 34vw, 430px);
+        height: clamp(180px, 34vw, 430px);
+        border-radius: 999px;
+        content: "";
+        opacity: 0.28;
+        filter: blur(18px);
+      }
+
+      .chapter.is-flat::before {
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
+      }
+
+      .chapter.is-voice::before {
+        background: radial-gradient(circle, rgba(142, 183, 194, 0.18), transparent 70%);
+      }
+
+      .chapter.is-train::before {
+        border: 1px solid rgba(173, 146, 86, 0.18);
+        background:
+          linear-gradient(90deg, transparent 42%, rgba(173, 146, 86, 0.3) 43% 44%, transparent 45% 55%, rgba(173, 146, 86, 0.3) 56% 57%, transparent 58%),
+          radial-gradient(circle, rgba(173, 146, 86, 0.18), transparent 68%);
+      }
+
+      .chapter.is-bell::before {
+        background:
+          radial-gradient(circle at 30% 34%, rgba(255, 236, 160, 0.22) 0 8px, transparent 10px),
+          radial-gradient(circle at 54% 58%, rgba(142, 183, 194, 0.18) 0 7px, transparent 9px),
+          radial-gradient(circle at 72% 42%, rgba(194, 154, 104, 0.22) 0 6px, transparent 8px);
+      }
+
+      .chapter.is-wood::before {
+        background: radial-gradient(circle, rgba(141, 110, 78, 0.26), transparent 70%);
+      }
+
+      .chapter.is-terrace::before {
+        background: radial-gradient(circle, rgba(142, 183, 194, 0.22), transparent 72%);
+      }
+
+      .chapter-head {
+        display: grid;
+        grid-template-columns: minmax(92px, 0.18fr) minmax(0, 1fr);
+        gap: clamp(20px, 5vw, 64px);
+        margin-bottom: clamp(30px, 5vw, 58px);
+      }
+
+      .chapter-number {
+        color: var(--gold);
+        font-family: var(--sans);
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .chapter h2 {
+        margin: 0;
+        color: #fff8e6;
+        font-size: clamp(31px, 4.8vw, 64px);
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 1.28;
+      }
+
+      .chapter-body {
+        max-width: 760px;
+        margin-left: clamp(112px, 18vw, 196px);
+      }
+
+      .chapter-body p {
+        margin: 0;
+        color: var(--soft);
+        font-size: clamp(17px, 1.32vw, 20px);
+      }
+
+      .chapter-body p + p {
+        margin-top: 1.36em;
+      }
+
+      .quote {
+        margin: clamp(34px, 5vw, 58px) 0;
+        padding: clamp(26px, 4vw, 44px);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(90deg, rgba(173, 146, 86, 0.13), transparent 70%);
+        color: #fff7df;
+        font-size: clamp(24px, 3.2vw, 42px);
+        line-height: 1.5;
+      }
+
+      .quote.is-small {
+        font-size: clamp(20px, 2.4vw, 31px);
+      }
+
+      .ambient {
+        display: grid;
+        gap: 1px;
+        margin-top: clamp(38px, 5vw, 64px);
+        border: 1px solid rgba(173, 146, 86, 0.22);
+        background: rgba(173, 146, 86, 0.22);
+      }
+
+      .ambient.is-voice {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .ambient.is-train {
+        grid-template-columns: 1.1fr 0.9fr 1fr;
+      }
+
+      .ambient-item {
+        min-height: 148px;
+        padding: 22px;
+        background:
+          linear-gradient(145deg, rgba(255, 244, 213, 0.07), transparent 40%),
+          rgba(255, 255, 255, 0.035);
+      }
+
+      .ambient-item span {
+        display: block;
+        color: var(--gold);
+        font-family: var(--sans);
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .ambient-item strong {
+        display: block;
+        margin-top: 16px;
+        color: #fff7e6;
+        font-size: clamp(20px, 2.2vw, 28px);
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .ripple-field {
+        position: relative;
+        min-height: 240px;
+        margin-top: clamp(38px, 6vw, 72px);
+        overflow: hidden;
+        border: 1px solid rgba(173, 146, 86, 0.2);
+        background:
+          radial-gradient(circle at 26% 44%, rgba(142, 183, 194, 0.09), transparent 14rem),
+          radial-gradient(circle at 72% 58%, rgba(173, 146, 86, 0.08), transparent 15rem),
+          rgba(255, 255, 255, 0.025);
+      }
+
+      .ripple-field span {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border: 1px solid rgba(142, 183, 194, 0.42);
+        border-radius: 999px;
+        animation: ripple 8s ease-out infinite;
+      }
+
+      .ripple-field span:nth-child(1) {
+        top: 28%;
+        left: 18%;
+      }
+
+      .ripple-field span:nth-child(2) {
+        top: 48%;
+        left: 58%;
+        animation-delay: 1.8s;
+      }
+
+      .ripple-field span:nth-child(3) {
+        top: 66%;
+        left: 34%;
+        animation-delay: 3.2s;
+      }
+
+      .ripple-field span:nth-child(4) {
+        top: 34%;
+        left: 78%;
+        animation-delay: 4.6s;
+      }
+
+      .train-lines {
+        display: grid;
+        grid-template-columns: 1fr 0.78fr 1fr;
+        gap: 12px;
+        min-height: 250px;
+        margin-top: clamp(38px, 6vw, 72px);
+        padding: 22px;
+        border: 1px solid rgba(173, 146, 86, 0.2);
+        background:
+          linear-gradient(90deg, transparent 18%, rgba(173, 146, 86, 0.18) 19% 20%, transparent 21% 48%, rgba(173, 146, 86, 0.18) 49% 51%, transparent 52% 79%, rgba(173, 146, 86, 0.18) 80% 81%, transparent 82%),
+          rgba(255, 255, 255, 0.025);
+      }
+
+      .train-lines div {
+        border: 1px solid rgba(255, 247, 223, 0.12);
+        background:
+          linear-gradient(180deg, rgba(255, 247, 223, 0.04), transparent),
+          rgba(0, 0, 0, 0.15);
+      }
+
+      .train-lines div:nth-child(2) {
+        border-right-color: rgba(142, 183, 194, 0.2);
+        border-left-color: rgba(142, 183, 194, 0.2);
+      }
+
+      .bell-field {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(22px, 1fr));
+        gap: clamp(12px, 2vw, 22px);
+        align-items: end;
+        margin-top: clamp(38px, 6vw, 72px);
+        padding: clamp(26px, 5vw, 54px);
+        border: 1px solid rgba(173, 146, 86, 0.2);
+        background:
+          linear-gradient(180deg, transparent 0 58%, rgba(173, 146, 86, 0.08)),
+          rgba(255, 255, 255, 0.025);
+      }
+
+      .bell-note {
+        display: grid;
+        place-items: center;
+        aspect-ratio: 1;
+        border: 1px solid rgba(255, 238, 189, 0.34);
+        border-radius: 999px;
+        color: #fff7df;
+        font-family: var(--sans);
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        animation: noteGlow 7s ease-in-out infinite;
+      }
+
+      .bell-note:nth-child(2n) {
+        transform: translateY(-22%);
+        animation-delay: 1s;
+      }
+
+      .bell-note:nth-child(3n) {
+        transform: translateY(18%);
+        animation-delay: 2.1s;
+      }
+
+      .note-panel {
+        margin-top: clamp(34px, 5vw, 58px);
+        padding: clamp(26px, 4vw, 42px);
+        border-left: 1px solid var(--gold);
+        background: rgba(255, 255, 255, 0.035);
+        color: var(--soft);
+        font-family: var(--sans);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .ratings {
+        display: grid;
+        gap: clamp(34px, 5vw, 56px);
+      }
+
+      .rating-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        border: 1px solid var(--line);
+        background: var(--line);
+      }
+
+      .rating-card {
+        padding: clamp(24px, 3vw, 36px);
+        background:
+          linear-gradient(145deg, rgba(255, 244, 213, 0.07), transparent 32%),
+          rgba(255, 255, 255, 0.04);
+      }
+
+      .rating-card span {
+        display: block;
+        color: var(--gold);
+        font-family: var(--sans);
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .rating-card strong {
+        display: block;
+        margin-top: 16px;
+        color: #fff6df;
+        font-size: clamp(24px, 3.2vw, 42px);
+        font-weight: 500;
+        line-height: 1.08;
+      }
+
+      .rating-card h3 {
+        margin: 18px 0 0;
+        color: #fff6df;
+        font-size: clamp(19px, 1.9vw, 25px);
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      .rating-card p {
+        margin: 14px 0 0;
+        color: var(--soft);
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .score-total {
+        margin: 0;
+        padding: clamp(30px, 4vw, 48px);
+        border-left: 1px solid var(--gold);
+        background:
+          radial-gradient(circle at 12% 30%, rgba(142, 183, 194, 0.12), transparent 20rem),
+          rgba(255, 255, 255, 0.035);
+        color: #fff7e2;
+        font-size: clamp(27px, 4vw, 56px);
+        line-height: 1.42;
+      }
+
+      .related-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 1px;
+        margin-top: clamp(34px, 5vw, 56px);
+        border: 1px solid var(--line);
+        background: var(--line);
+      }
+
+      .related-card {
+        min-height: 100%;
+        padding: clamp(28px, 4vw, 44px);
+        background:
+          linear-gradient(145deg, rgba(255, 244, 213, 0.07), transparent 38%),
+          rgba(255, 255, 255, 0.04);
+      }
+
+      .related-card small {
+        display: block;
+        color: var(--gold);
+        font-family: var(--sans);
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .related-card h3 {
+        margin: 16px 0 0;
+        color: #fff6df;
+        font-size: clamp(22px, 2.8vw, 34px);
+        font-weight: 500;
+        line-height: 1.38;
+      }
+
+      .related-card p {
+        margin: 16px 0 0;
+        color: var(--soft);
+        font-size: clamp(15px, 1.35vw, 18px);
+        line-height: 1.85;
+      }
+
+      .cta {
+        width: min(920px, calc(100% - 44px));
+        margin: 0 auto clamp(58px, 8vw, 100px);
+        padding: clamp(42px, 6vw, 72px) 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid rgba(173, 146, 86, 0.18);
+      }
+
+      .cta h2 {
+        margin: 0;
+        color: #fff8e6;
+        font-size: clamp(30px, 4vw, 58px);
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .cta p {
+        max-width: 700px;
+        margin: 22px 0 0;
+        color: var(--soft);
+        font-size: clamp(16px, 1.45vw, 20px);
+      }
+
+      .cta-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px clamp(22px, 4vw, 38px);
+        margin-top: 34px;
+      }
+
+      .cta-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--gold);
+        color: #fff7e5;
+        font-family: var(--sans);
+        font-size: 15px;
+        letter-spacing: 0.08em;
+      }
+
+      .cta-link::after {
+        color: var(--gold);
+        content: ">";
+        font-size: 15px;
+        transition: transform 0.2s ease;
+      }
+
+      .cta-link:hover::after {
+        transform: translateX(6px);
+      }
+
+      .cta-link[target="_blank"]::after {
+        content: "↗";
+      }
+
+      .site-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 30px clamp(22px, 6vw, 70px);
+        border-top: 1px solid rgba(173, 146, 86, 0.22);
+        color: var(--muted);
+        font-family: var(--sans);
+        font-size: 12px;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      @keyframes reveal {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes breathe {
+        0%,
+        100% {
+          transform: scale(0.98);
+          opacity: 0.48;
+        }
+        50% {
+          transform: scale(1.04);
+          opacity: 0.76;
+        }
+      }
+
+      @keyframes ripple {
+        0% {
+          opacity: 0;
+          transform: scale(0.4);
+        }
+        18% {
+          opacity: 0.62;
+        }
+        100% {
+          opacity: 0;
+          transform: scale(18);
+        }
+      }
+
+      @keyframes noteGlow {
+        0%,
+        100% {
+          background: rgba(255, 255, 255, 0.02);
+          box-shadow: none;
+        }
+        46% {
+          background: rgba(255, 236, 160, 0.1);
+          box-shadow: 0 0 24px rgba(255, 236, 160, 0.18);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .site-header {
+          position: absolute;
+          align-items: flex-start;
+          padding: 16px 18px;
+        }
+
+        .site-actions {
+          align-items: flex-end;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .site-nav {
+          justify-content: flex-end;
+          flex-wrap: wrap;
+          gap: 8px 14px;
+          max-width: 300px;
+          font-size: 10px;
+        }
+
+        main {
+          padding-top: 68px;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 74px;
+        }
+
+        .hero-inner {
+          min-height: auto;
+        }
+
+        .intro,
+        .chapter-head,
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .chapter-body {
+          margin-left: 0;
+        }
+
+        .ambient.is-voice,
+        .ambient.is-train,
+        .rating-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contrast-table {
+          display: table;
+          table-layout: fixed;
+          white-space: normal;
+        }
+
+        .contrast-table th,
+        .contrast-table td {
+          padding: 12px 10px;
+          overflow-wrap: anywhere;
+        }
+
+        .section,
+        .chapters,
+        .cta {
+          width: calc(100% - 36px);
+        }
+
+        .site-footer {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .brand {
+          width: 144px;
+        }
+
+        .site-nav a:nth-child(2),
+        .site-nav a:nth-child(4) {
+          display: none;
+        }
+
+        .motion-toggle {
+          min-width: auto;
+          font-size: 10px;
+        }
+
+        .dark-opening {
+          font-size: clamp(23px, 8vw, 34px);
+        }
+
+        .hero h1 {
+          font-size: clamp(38px, 12.5vw, 58px);
+        }
+
+        .meta-strip {
+          font-size: 11px;
+        }
+
+        .prose,
+        .chapter-body p {
+          font-size: 16px;
+        }
+
+        .quote,
+        .score-total {
+          padding-right: 22px;
+          padding-left: 22px;
+        }
+
+        .bell-field {
+          grid-template-columns: repeat(4, minmax(22px, 1fr));
+        }
+      }
+
+      figure.hero-photo,
+      figure.closing-photo {
+        margin-inline: auto;
+      }
+
+      figure.hero-photo {
+        width: min(1100px, calc(100% - 44px));
+        margin-top: clamp(20px, 4vw, 48px);
+      }
+
+      figure.closing-photo {
+        width: min(1040px, calc(100% - 44px));
+        margin-top: clamp(48px, 8vw, 104px);
+      }
+
+      .hero-photo img,
+      .closing-photo img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        border: 1px solid var(--line);
+        filter: saturate(0.9) contrast(1.04) brightness(0.88);
+      }
+
+      .hero-photo figcaption,
+      .closing-photo figcaption {
+        margin-top: 14px;
+        padding-left: 18px;
+        border-left: 1px solid var(--gold);
+        color: var(--muted);
+        font-family: var(--serif);
+        font-size: clamp(13px, 1.15vw, 16px);
+        line-height: 1.85;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">本文へ移動</a>
+    <header class="site-header">
+      <a class="brand" href="/experience/" aria-label="東京トータルコンサルティング 体験メニュートップへ">
+        <img src="../assets/logo-2026.png" alt="Tokyo Total Consulting">
+      </a>
+      <div class="site-actions">
+        <nav class="site-nav" aria-label="ページ内ナビゲーション">
+          <a href="#contrast">外苑前との違い</a>
+          <a href="#team">チーム</a>
+          <a href="#music">音</a>
+          <a href="#ratings">評価</a>
+          <a href="#links">リンク</a>
+        </nav>
+        <button class="motion-toggle" type="button" aria-pressed="false">演出停止</button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="page-title">
+        <div class="hero-inner">
+          <div class="dark-opening reveal" aria-label="暗闇の入口">
+            <p>二度目の暗闇では、<br>自分ではなく、<br>仲間が見えた。</p>
+            <p>肩書きが消えた時、<br>チームの音が<br>立ち上がった。</p>
+          </div>
+          <div class="hero-title reveal">
+            <p class="eyebrow">Experience Menu / Team Building</p>
+            <h1 id="page-title">Dialog in the Dark<br>竹芝編</h1>
+            <p class="hero-copy">肩書きを外した時、仲間の何が見えるのか。<br>社員全員で入った暗闇で、チームの本質を身体で知った記録。</p>
+            <ul class="meta-strip" aria-label="体験概要">
+              <li>2021年12月23日｜東京・竹芝</li>
+              <li>ダイアログ・ダイバーシティミュージアム「対話の森」</li>
+              <li>望年会</li>
+              <li>チームビルディング</li>
+              <li>リーダーシップ・対話</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <figure class="hero-photo">
+        <img src="assets/takeshiba-sign.jpg" alt="東京・竹芝のダイアログミュージアム「対話の森」入口に掲げられた Dialog in the Dark の文字">
+        <figcaption>東京・竹芝、ダイアログ・ダイバーシティミュージアム「対話の森」。この「Dialog in the Dark」の文字の先へ、社員全員で二度目の暗闇に入った。</figcaption>
+      </figure>
+
+      <section class="section intro" aria-labelledby="opening-title">
+        <p class="section-label">Opening</p>
+        <div class="prose">
+          <h2 id="opening-title">肩書きを外した時、仲間の何が見えるのか</h2>
+          <p>初めてDialog in the Darkを体験したのは、外苑前だった。</p>
+          <p>完全な暗闇に入った瞬間、私はあまりの怖さにへたり込んだ。何も見えない。前後左右も分からない。一歩も動けない私のもとへ、全盲のガイドの方が走って戻ってきた。</p>
+          <p>見える人が強く、見えない人が弱い。そんな思い込みが、暗闇の中で崩れた。人間の強さとは何か。信頼とは何か。人を見るとはどういうことか。あの体験は、自分の認知を根底から書き換えた。</p>
+          <p>だから、いつか社員にも体験してほしいと思っていた。そして2021年の望年会で、社員全員と竹芝の「対話の森」を訪れた。</p>
+          <p>楽しんでもらいたいという気持ちは、もちろんあった。しかし、経営者として別の期待もあった。暗闇の中では、見た目も肩書きも消える。社長も部下もない。先輩も後輩もない。</p>
+          <p>一度フラットな状態になれば、普段とは違うコミュニケーションが生まれるのではないか。会社に戻ってからも役に立つ、大切な何かが見つかるのではないか。そんな直感があった。</p>
+        </div>
+      </section>
+
+      <section class="section" id="contrast" aria-labelledby="contrast-title">
+        <p class="section-label">Gaienmae / Takeshiba</p>
+        <div class="prose">
+          <h2 id="contrast-title">外苑前では、自分自身の認知が変わった。竹芝では、仲間の見え方が変わった。</h2>
+          <p>外苑前編は、初めて完全な暗闇に入った個人の体験だった。竹芝編は、同じプログラムを社員全員で再び体験した、組織の体験だった。</p>
+          <p>暗闇は同じでも、受け取った価値は違う。外苑前では人間そのものを見る感覚が開き、竹芝では仲間の異なる音を持ち寄る感覚が開いた。</p>
+          <p><a class="link-inline" href="../dialog-in-the-dark-gaien/">Dialog in the Dark（外苑前編）を読む</a></p>
+        </div>
+        <table class="contrast-table">
+          <caption>外苑前編と竹芝編の違い</caption>
+          <thead>
+            <tr>
+              <th scope="col">外苑前編</th>
+              <th scope="col">竹芝編</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>初めて完全な暗闇に入る</td>
+              <td>二度目の暗闇に社員全員で入る</td>
+            </tr>
+            <tr>
+              <td>恐怖に圧倒され、へたり込む</td>
+              <td>恐怖は抑えられ、周囲へ意識を向けられる</td>
+            </tr>
+            <tr>
+              <td>全盲のガイドに助けられる</td>
+              <td>社員にも助けを求める</td>
+            </tr>
+            <tr>
+              <td>自分の嗅覚・聴覚・触覚が開く</td>
+              <td>社員の才能と組織の可能性が開く</td>
+            </tr>
+            <tr>
+              <td>強者と弱者の定義が変わる</td>
+              <td>リーダーとフォロワーの役割が入れ替わる</td>
+            </tr>
+            <tr>
+              <td>個人の認知OSが書き換わる</td>
+              <td>組織の関係性が組み替わる</td>
+            </tr>
+            <tr>
+              <td>人間そのものを見る</td>
+              <td>仲間の異なる音を持ち寄る</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <div class="chapters">
+        <article class="chapter is-flat" aria-labelledby="chapter-01">
+          <div class="chapter-head">
+            <span class="chapter-number">01</span>
+            <h2 id="chapter-01">「ケモ」と呼んでください</h2>
+          </div>
+          <div class="chapter-body">
+            <p>参加者は、互いをあだ名で呼び合うことになった。</p>
+            <p>すると社員の一人が言った。</p>
+            <div class="quote is-small">「じゃあ、ケモって呼んでください」</div>
+            <p>一瞬、耳を疑った。ケモ。どういう意味だろう。</p>
+            <p>詳しい語源は忘れてしまったが、中学生の頃から家族にそう呼ばれてきた名前だという。普段、会社で接している姿からは想像しにくい呼び名だった。</p>
+            <p>しかし、そのあだ名を聞いた瞬間、その社員の別の顔が少しだけ見えた気がした。会社で働いている姿だけが、その人のすべてではない。家族と過ごしてきた時間がある。昔からの友人の前で見せる顔がある。</p>
+            <p>肩書きを外すと、人は少しだけ素顔に近づく。</p>
+          </div>
+        </article>
+
+        <article class="chapter is-voice" aria-labelledby="chapter-02">
+          <div class="chapter-head">
+            <span class="chapter-number">02</span>
+            <h2 id="chapter-02">声で空間を見る</h2>
+          </div>
+          <div class="chapter-body">
+            <p>最初のワークは、暗闇の中で行うキャッチボールだった。ボールを投げるのではなく、床を転がす。互いに声を掛け合いながら、相手の位置を探す。</p>
+            <p>声が聞こえる。ボールが床を転がる。また別の方向から声が返ってくる。</p>
+            <p>一度、本当の暗闇を体験していたからだろうか。外苑前の時ほど、恐怖に圧倒されることはなかった。その分、周囲の情報を感じ取る余裕があった。</p>
+            <p>ここは思った以上に広いホールだ。声の響き方で、空間の大きさが分かる。あの人の声は少し高い位置から聞こえる。こちらの人は、もう少し離れたところにいる。</p>
+            <p>声の方向。距離。高さ。響き方。視覚を使わなくても、空間は少しずつ立ち上がってくる。</p>
+            <p>そして、自分一人で空間を理解していたわけではない。仲間が声を掛ける。それに別の仲間が応える。そのやり取りの中で、目には見えない地図が少しずつ共有されていく。</p>
+            <p>チームとは、全員が同じものを見ることではない。一人ひとりが感じ取った情報を声に出し、それを持ち寄ることで、初めて全体像が見えてくる。</p>
+            <div class="ripple-field" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="chapter is-train" aria-labelledby="chapter-03">
+          <div class="chapter-head">
+            <span class="chapter-number">03</span>
+            <h2 id="chapter-03">身体が覚えていた電車</h2>
+          </div>
+          <div class="chapter-body">
+            <p>キャッチボールの後、ナビゲーターの方から言われた。</p>
+            <div class="quote is-small">「これから電車で移動します」</div>
+            <p>暗闇の中に、実際に走っていたJR東日本の車両が用意されていた。2021年当時の公式ニュースでも、JR東日本の特別協力により、廃車となった電車車両を暗闇内で活用したことが確認できる。</p>
+            <p>ただし、ここでは車両形式までは断定しない。大切なのは、暗闇の中で触れた座席、通路、手すり、ボックスシートの感触だった。</p>
+            <p>私は子どもの頃から、東海道線などのボックスシートのある電車に何度も乗ってきた。混雑している時には、ボックスシートから少し飛び出した手すりにつかまりながら立っていた。</p>
+            <p>暗闇の中で、その手すりを指先で確かめた。</p>
+            <div class="quote">ああ、知っている。<br>この感触を、自分の身体は覚えている。</div>
+            <p>目で見なくても分かる。人間は、目だけで世界を覚えているわけではない。</p>
+            <div class="train-lines" aria-hidden="true">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <p class="note-panel">公開資料で確認した範囲に合わせ、このページでは特定路線の車両形式との一致は記載していません。本人の身体記憶として、幼い頃から親しんだボックスシートや手すりの感触との接続を描いています。</p>
+          </div>
+        </article>
+
+        <article class="chapter is-train" id="team" aria-labelledby="chapter-04">
+          <div class="chapter-head">
+            <span class="chapter-number">04</span>
+            <h2 id="chapter-04">置いていかないで</h2>
+          </div>
+          <div class="chapter-body">
+            <p>その一方で、別の恐怖も立ち上がった。</p>
+            <p>もし、ここが本当の駅だったら。もし、ホームの端が分からなかったら。もし、足を踏み外したら。</p>
+            <p>普段は何気なく利用している電車が、視覚を失った瞬間、慎重さを要求される場所へ変わる。</p>
+            <p>私は普段、かなりせっかちな方だと思う。エスカレーターに乗っても、ただ立ち止まって運ばれるのを待つことができない。仕事でも、自分が先に進む。方向を決める。社員に声を掛ける。指示を出す。</p>
+            <p>ところが暗闇では、まったく逆だった。手すりを探す。段差がないか確かめる。一歩ずつ足を出す。周囲の社員たちは、少しずつ先へ進んでいく。しかし私は、なかなか前へ進めない。</p>
+            <p>普段なら最も速く歩くはずの自分が、暗闇の中では最ももたもたしていた。そして思わず、社員たちに声を掛けた。</p>
+            <div class="quote is-small">「誰でもいいから、先に行かないで」<br>「置いていかないで」<br>「ちょっと待って。俺のことも待ってあげて」</div>
+            <p>普段の会社では、私が社員へ指示を出す。しかしこの時は、私が仲間にお願いしていた。</p>
+            <p>社長だからといって、暗闇の中を速く歩けるわけではない。肩書きは、何の役にも立たない。むしろ、社員の方が先へ進める。社員の声が頼りになる。仲間が待っていてくれることが、安心につながる。</p>
+            <p>Dialog in the Darkでは、単に上下関係がなくなるのではない。助ける側と、助けられる側が自然に入れ替わる。</p>
+            <div class="quote">助けを求めることが、弱さではなくなる。</div>
+            <div class="quote">チームとは、最も速い人の速度で進む集団ではない。<br>仲間を置いていかない集団なのだ。</div>
+          </div>
+        </article>
+
+        <article class="chapter is-bell" aria-labelledby="chapter-05">
+          <div class="chapter-head">
+            <span class="chapter-number">05</span>
+            <h2 id="chapter-05">暗闇で見えた、社員の才能</h2>
+          </div>
+          <div class="chapter-body">
+            <p>ボックスシートに社員たちと一緒に座った。窓際には、小さなハンドベルが置かれていた。</p>
+            <p>最初は、それが何のためにあるのか分からなかった。少し邪魔だな。そんなことさえ思った。私たちが訪れたのは、クリスマスの時期だった。どうやら、このベルを使って演奏をするらしい。</p>
+            <p>私は何気なく、自分の近くにあったベルを手に取った。すると、社員の一人の女性が言った。</p>
+            <div class="quote is-small">「コニタンが持っているベルは、ミです」</div>
+            <p>一瞬、何を言っているのか分からなかった。ミ。音階のミだという。</p>
+            <p>別の社員が持っているベルについても、「それはソです」と答える。ベルを鳴らしただけで、どの音なのかが分かる。絶対音感を持っているのではないかと思うほどだった。</p>
+            <p>驚いた。普段の仕事では、まったく気づかなかった。私たちの会社は、金融に関わる仕事をしている。保険や資産運用について考え、お客様と話し、書類を作り、課題を解決する。</p>
+            <p>そこでは、音階を瞬時に聞き分ける能力を発揮する場面はほとんどない。だから私は、彼女がそのような才能を持っていることを知らなかった。</p>
+            <p>しかし、才能がなかったわけではない。見えていなかっただけだ。</p>
+          </div>
+        </article>
+
+        <article class="chapter is-bell" aria-labelledby="chapter-06">
+          <div class="chapter-head">
+            <span class="chapter-number">06</span>
+            <h2 id="chapter-06">リーダーが入れ替わった瞬間</h2>
+          </div>
+          <div class="chapter-body">
+            <p>その女性社員は、一人ずつ声を掛け始めた。</p>
+            <div class="quote is-small">「一度、鳴らしてみてください」<br>「それはミです」<br>「そちらはソですね」</div>
+            <p>暗闇の中で、一つひとつの音が整理されていく。誰がどの音を持っているのか。どの順番で鳴らせばよいのか。</p>
+            <p>社員全員が持っているベルを確認すると、彼女が気づいた。</p>
+            <div class="quote is-small">「この音階なら、『きよしこの夜』が演奏できます」</div>
+            <p>そこから、彼女は自然に全員を導き始めた。まず、自分が持っている音を覚える。彼女が音階を読み上げる。自分の音が呼ばれたら、ベルを鳴らす。練習する。</p>
+            <p>それまでの会社では、ほとんど見ることのなかった姿だった。しかし、その時の彼女には迷いがなかった。自分の持っている能力を使い、状況を理解し、全員に役割を伝え、一つの演奏へ向けて仲間を導いていく。</p>
+            <p>強いリーダーシップだった。</p>
+            <p>普段、会社の中では、社長である私が指示を出すことが多い。しかし暗闇の中では、私の肩書きは何の役にも立たない。ハンドベルを前にした時、最も必要とされていたのは、音を聞き分ける力だった。</p>
+            <p>だから、その能力を持っている人が自然に前へ出た。誰かが任命したわけではない。役職があるからでもない。状況が変われば、リーダーも変わる。</p>
+            <div class="quote">リーダーシップは、肩書きによって与えられるものではない。<br>必要とされる場面に出会った時、その人の中から立ち上がるものなのだ。</div>
+          </div>
+        </article>
+
+        <article class="chapter is-bell" id="music" aria-labelledby="chapter-07">
+          <div class="chapter-head">
+            <span class="chapter-number">07</span>
+            <h2 id="chapter-07">今まででいちばん美しい「きよしこの夜」</h2>
+          </div>
+          <div class="chapter-body">
+            <p>暗闇の中で、社員の一人が音階を読み上げる。「ミ」。自分のベルがミだと分かった人が鳴らす。「ソ」。次の社員が、自分のベルを鳴らす。「ラ」。また別の社員が応える。</p>
+            <p>最初は少しぎこちなかった。自分の音を忘れてしまう人もいる。タイミングがずれることもある。しかし、何度か練習するうちに、少しずつ音がつながっていく。</p>
+            <p>誰か一人が全部を演奏しているわけではない。一人ひとりが持っているのは、たった一つの音だけだ。けれども、その一つの音を、それぞれが必要な瞬間に鳴らす。すると、暗闇の中に少しずつメロディーが立ち上がってくる。</p>
+            <p>「きよしこの夜」。クリスマスの時期に、何度も耳にしてきた曲だ。特別に珍しい曲ではない。音楽として難しい曲でもない。</p>
+            <p>しかし、最後までちゃんと演奏できた時、私は心の底から感動した。今までに聴いた「きよしこの夜」の中で、いちばん素敵な演奏だった。</p>
+            <p>音程が完璧だったからではない。演奏技術が高かったからでもない。暗闇の中で、一人ひとりが自分の音を知り、仲間の声を聞き、自分の出番を待ち、必要な時に自分の役割を果たした。その積み重ねが、一つの曲になったからだ。</p>
+            <div class="bell-field" aria-hidden="true">
+              <span class="bell-note">ミ</span>
+              <span class="bell-note">ソ</span>
+              <span class="bell-note">ラ</span>
+              <span class="bell-note">声</span>
+              <span class="bell-note">待</span>
+              <span class="bell-note">役</span>
+              <span class="bell-note">曲</span>
+            </div>
+            <div class="quote">自分にしか出せない音があること。<br>仲間にも、自分にはない音があること。<br>その違いを組み合わせると、一人では作れない曲になること。</div>
+            <div class="quote">チームとは、全員が同じ音を鳴らす集団ではない。<br>それぞれが異なる音を持ちながら、一つの曲を作れる集団なのだ。</div>
+            <p class="note-panel">当日のハンドベル演奏がどの調で、何本のベルを使い、どのように編曲されていたかは確認できていません。この章では、本人が覚えている「ミ」「ソ」「ラ」などの音を場面描写として扱っています。</p>
+          </div>
+        </article>
+
+        <article class="chapter is-wood" aria-labelledby="chapter-08">
+          <div class="chapter-head">
+            <span class="chapter-number">08</span>
+            <h2 id="chapter-08">暗闇の中の古民家</h2>
+          </div>
+          <div class="chapter-body">
+            <p>電車を降りると、次は古民家のような空間へ移動した。</p>
+            <p>どのような建物なのか。どれほどの広さなのか。入口がどこにあるのか。視覚から得られる情報は一つもない。</p>
+            <p>それでも、中へ入ると不思議な感覚があった。どこか懐かしい。乾いた草のような匂い。古い木材のような匂い。茅葺き屋根を思わせる、少し枯れたような匂い。</p>
+            <p>その匂いを感じた瞬間、子どもの頃に訪れたおばあちゃんの家の記憶が立ち上がってきた。</p>
+            <p>部屋の中には、棚や家具のようなものがあった。促されて、手探りで確かめていく。棚に触れる。引き出しを探す。中に何が入っているのか、指先で確かめる。</p>
+            <p>たしか、人形のような物があった。本のような物もあった記憶がある。</p>
+            <p>見えている時には、部屋全体を一瞬で分かったつもりになる。しかし、本当は見過ごしているものがたくさんある。暗闇の古民家では、目で見る代わりに、匂いで空間を感じ、指先で物を確かめ、記憶の中にある風景と重ね合わせていった。</p>
+            <p>そこにあったのは、単なる展示物ではなかった。自分の中に眠っていた、懐かしい記憶だった。</p>
+            <div class="ambient is-train" aria-label="暗闇の古民家で感じた要素">
+              <div class="ambient-item"><span>Smell</span><strong>乾いた草のような匂い</strong></div>
+              <div class="ambient-item"><span>Touch</span><strong>棚や引き出しを手探りで確かめる</strong></div>
+              <div class="ambient-item"><span>Memory</span><strong>おばあちゃんの家の懐かしさ</strong></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chapter is-wood" aria-labelledby="chapter-09">
+          <div class="chapter-head">
+            <span class="chapter-number">09</span>
+            <h2 id="chapter-09">見えない相手に、気持ちを渡す</h2>
+          </div>
+          <div class="chapter-body">
+            <p>その古民家で、クリスマスカードを書くことになった。もちろん、暗闇の中である。</p>
+            <p>紙は手元にある。ペンもある。しかし、どの色のペンを持っているのかは分からない。自分が書いた文字が、紙のどの位置に収まっているのかも分からない。</p>
+            <p>きちんと書けているのか。文字が重なっていないか。見えないまま、相手を思い浮かべながらペンを動かす。</p>
+            <p>普段なら、カードを書く時にも見た目を気にする。文字が曲がっていないか。色の組み合わせはおかしくないか。余白のバランスは整っているか。しかし暗闇では、それを確かめることができない。</p>
+            <p>だから最後に残るのは、誰かに気持ちを渡したいという思いだけだった。</p>
+            <p>社員同士でカードを交換した。どのような文字になっているのか。何色で書かれているのか。暗闇の中では分からない。それでも、誰かが自分のために書いてくれたことは分かる。</p>
+            <div class="quote">ハンドベルでは、一人ひとりが自分にしか出せない音を持ち寄った。<br>クリスマスカードでは、一人ひとりが自分にしか書けない言葉を相手に渡した。</div>
+            <p>見た目の完成度ではない。上手いか、下手かでもない。大切なのは、仲間のことを思いながら手を動かした時間と、その気持ちを受け取ることだった。</p>
+            <div class="quote">見えないからこそ、目に見えないものが伝わった。</div>
+            <p class="note-panel">ペンの色をどのように確認したかは記憶が曖昧なため、このページでは確認方法を補っていません。</p>
+          </div>
+        </article>
+
+        <article class="chapter is-terrace" aria-labelledby="chapter-10">
+          <div class="chapter-head">
+            <span class="chapter-number">10</span>
+            <h2 id="chapter-10">暗闇に、少し色がついた</h2>
+          </div>
+          <div class="chapter-body">
+            <p>最後に、みんなでカフェに立ち寄った。テラス席のあるカフェだった。私はホットコーヒーを注文した。</p>
+            <p>真っ暗闇の中で飲むコーヒー。カップの位置を手で確かめ、熱さに気をつけながら、少しずつ口に運ぶ。</p>
+            <p>不思議だった。目では何も見えない。店内の席に座っていても、テラス席に座っていても、視覚から入ってくる情報は同じはずだ。どちらも、完全な暗闇である。</p>
+            <p>それなのに、テラスにいると分かった。少しだけ開放感があった。空気の流れなのか。音の響き方なのか。温度の違いなのか。理由はうまく説明できない。</p>
+            <p>しかし身体は、ここが閉じた空間ではなく、外へ向かって開かれている場所だと感じ取っていた。</p>
+            <p>真っ暗闇なのに、暗闇がすべて同じではない。場所によって、質感が違う。色さえ違うように感じる。</p>
+            <p>目を使わなくても、世界はなくならない。むしろ、普段は見過ごしていた世界の層が、静かに立ち上がってくる。</p>
+            <p>ホットコーヒーを飲みながら、私は暗闇の中に、少し色がついたように感じていた。</p>
+          </div>
+        </article>
+      </div>
+
+      <section class="section intro" aria-labelledby="reflection-title">
+        <p class="section-label">Final Reflection</p>
+        <div class="prose">
+          <h2 id="reflection-title">暗闇の中で、仲間の見え方が変わった</h2>
+          <p>外苑前で初めてDialog in the Darkを体験した時、暗闇の中で自分自身の認知が変わった。竹芝で社員と再び体験した時、暗闇の中で仲間の見え方が変わった。</p>
+          <p>普段は見えているはずの社員に、まだ見えていない才能があった。普段は指示を出す側にいる自分が、社員に助けを求めた。普段は決まった人が先頭に立つ組織で、別の社員が自然にリーダーになった。</p>
+          <p>誰もが、自分にしか出せない音を持っていた。そして、その違いを持ち寄ると、一人では作れない曲になった。</p>
+          <p>チームとは、最も速い人の速度で進む集団ではない。仲間を置いていかない集団なのだ。</p>
+          <p>チームとは、全員が同じ音を鳴らす集団ではない。それぞれが異なる音を持ちながら、一つの曲を作れる集団なのだ。</p>
+          <div class="quote">目に見えないものは、存在しないわけではない。<br>暗闇の中にも、色はある。</div>
+        </div>
+      </section>
+
+      <figure class="closing-photo">
+        <img src="assets/takeshiba-dialogue-forest.jpg" alt="明かりの戻った「対話の森」。色とりどりの吊り照明と観葉植物が並ぶ館内">
+        <figcaption>暗闇を抜けて戻ってきた「対話の森」。さっきまでの闇が嘘のように、空間には色があふれていた。</figcaption>
+      </figure>
+
+      <section class="section ratings" id="ratings" aria-labelledby="ratings-title">
+        <p class="section-label">Experience Score</p>
+        <h2 id="ratings-title" style="margin: 0; color: #fff8e6; font-size: clamp(32px, 4.8vw, 62px); font-weight: 500; line-height: 1.3;">体験メニュー 評価</h2>
+        <div class="rating-grid" aria-label="三軸評価">
+          <article class="rating-card">
+            <span>見抜く</span>
+            <strong>★★★★★</strong>
+            <h3>肩書きの奥を見る</h3>
+            <p>肩書きや日常の役割を外すことで、普段は見えない社員の才能、助けを求める自分、状況に応じて立ち上がるリーダーシップが見える。</p>
+          </article>
+          <article class="rating-card">
+            <span>組み替える</span>
+            <strong>★★★★★</strong>
+            <h3>組織観が変わる</h3>
+            <p>「社長が導き、社員が従う」という固定的な組織観が崩れ、助ける側と助けられる側、リーダーとフォロワーが入れ替わる。</p>
+          </article>
+          <article class="rating-card">
+            <span>渡す</span>
+            <strong>★★★★★</strong>
+            <h3>仲間と共有できる</h3>
+            <p>社員、後輩、友人、仲間と一緒に体験し、「仲間を置いていかない」「自分にしか出せない音がある」という価値観を共有できる。</p>
+          </article>
+        </div>
+        <p class="score-total">総合評価：15 / 15</p>
+        <div class="rating-grid" aria-label="AAA評価">
+          <article class="rating-card">
+            <span>Analog</span>
+            <strong>★★★★★</strong>
+            <h3>身体でしか受け取れない</h3>
+            <p>暗闇、声、手触り、匂い、空気、ベルの音。身体でしか受け取れない。</p>
+          </article>
+          <article class="rating-card">
+            <span>Alive</span>
+            <strong>★★★★★</strong>
+            <h3>その場で立ち上がる</h3>
+            <p>参加者の関係性、誰が前へ出るか、どの才能が現れるかは、その場でしか生まれない。</p>
+          </article>
+          <article class="rating-card">
+            <span>Authentic</span>
+            <strong>★★★★★</strong>
+            <h3>仲間の本質に触れる</h3>
+            <p>肩書きや見た目が消えた時に、仲間の本質とチームの本当の関係性が現れる。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="links" aria-labelledby="related-title">
+        <p class="section-label">Related</p>
+        <div class="prose">
+          <h2 id="related-title">外苑前編とあわせて読む</h2>
+          <p>初めて暗闇に入った外苑前では、自分自身の認知が変わった。八年後に社員と訪れた竹芝では、仲間の見え方が変わった。</p>
+        </div>
+        <div class="related-grid">
+          <article class="related-card">
+            <small>Gaienmae 2013</small>
+            <h3>見えていなかったのは、世界ではない。</h3>
+            <p>恐怖、信頼、五感、人の価値。個人の認知を根底から書き換えた、初めてのDialog in the Dark。</p>
+            <a class="cta-link" href="../dialog-in-the-dark-gaien/">外苑前編を読む</a>
+          </article>
+          <article class="related-card">
+            <small>Experience Menu</small>
+            <h3>体験メニューへ戻る</h3>
+            <p>お金を、体験資産に変える。見抜く、組み替える、渡すという三つの軸で、人生に残る体験を整理する入口へ。</p>
+            <a class="cta-link" href="/experience/">一覧へ戻る</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta" aria-labelledby="cta-title">
+        <h2 id="cta-title">開催内容は、必ず公式サイトで確認する。</h2>
+        <p>このページは、2021年12月23日に社員全員で参加した個人的な体験記です。会場、プログラム内容、料金、所要時間、申込方法は現在と異なる可能性があります。</p>
+        <div class="cta-actions">
+          <a class="cta-link" href="https://taiwanomori.dialogue.or.jp/" target="_blank" rel="noopener noreferrer">対話の森 公式サイトを見る</a>
+          <a class="cta-link" href="https://did.dialogue.or.jp/ticket/" target="_blank" rel="noopener noreferrer">Dialog in the Dark チケット情報を見る</a>
+          <a class="cta-link" href="https://taiwanomori.dialogue.or.jp/news/20210322news/" target="_blank" rel="noopener noreferrer">2021年の公式ニュースを見る</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <small>Tokyo Total Consulting</small>
+      <a href="/experience/">体験メニュー入口へ戻る</a>
+      <small>Dialog in the Dark / Takeshiba 2021</small>
+    </footer>
+
+    <script>
+      const motionToggle = document.querySelector(".motion-toggle");
+      const toggleMotion = () => {
+        const isOff = document.body.classList.toggle("motion-off");
+        motionToggle.setAttribute("aria-pressed", String(isOff));
+        motionToggle.textContent = isOff ? "演出再開" : "演出停止";
+      };
+      motionToggle.addEventListener("click", toggleMotion);
+      motionToggle.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          toggleMotion();
+        }
+      });
+    </script>
+  </body>
+</html>
