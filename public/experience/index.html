@@ -726,6 +726,80 @@
         transform: translateX(6px);
       }
 
+      .catalog-grid {
+        display: grid;
+        gap: 18px;
+        margin-top: clamp(30px, 5vw, 52px);
+      }
+
+      .experience-card {
+        display: grid;
+        grid-template-columns: minmax(0, 0.58fr) minmax(0, 1fr);
+        gap: clamp(22px, 4vw, 42px);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(135deg, rgba(255, 244, 213, 0.08), transparent 40%),
+          rgba(255, 255, 255, 0.035);
+      }
+
+      .experience-card figure {
+        min-height: 100%;
+        margin: 0;
+      }
+
+      .experience-card img {
+        width: 100%;
+        height: 100%;
+        min-height: 320px;
+        object-fit: cover;
+        filter: sepia(0.08) saturate(0.84) contrast(1.04) brightness(0.86);
+      }
+
+      .experience-card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: clamp(24px, 4vw, 42px) clamp(22px, 4vw, 40px) clamp(26px, 4vw, 44px) 0;
+      }
+
+      .experience-card h3 {
+        margin: 0;
+        color: #fff6df;
+        font-size: clamp(23px, 3vw, 36px);
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      .experience-card p {
+        margin: 18px 0 0;
+        color: var(--soft);
+        font-size: clamp(15px, 1.4vw, 18px);
+        line-height: 1.9;
+      }
+
+      .card-scores {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 16px;
+        margin: 24px 0 0;
+        padding: 0;
+        color: var(--soft);
+        font-family: var(--sans);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        list-style: none;
+      }
+
+      .card-scores b {
+        color: var(--gold);
+        font-weight: 600;
+      }
+
+      .experience-card-body .cta-link {
+        margin-top: 28px;
+      }
+
       .site-footer {
         display: flex;
         align-items: center;
@@ -897,6 +971,19 @@
         .closing,
         .cta-band {
           width: calc(100% - 36px);
+        }
+
+        .experience-card {
+          grid-template-columns: 1fr;
+        }
+
+        .experience-card img {
+          min-height: 240px;
+          aspect-ratio: 16 / 10;
+        }
+
+        .experience-card-body {
+          padding: 0 clamp(20px, 5vw, 28px) clamp(26px, 6vw, 34px);
         }
 
         .site-footer {
@@ -1135,7 +1222,7 @@
             ["20年以上、お客様と向き合いながら、", "\n", "自分自身も時間とお金と労力を注ぎ込んで、", "\n", "実際にくぐってきた扉です。"],
             ["失敗したものもあります。", "\n", "背伸びしすぎたものもあります。", "\n", "でも、それも含めて、", "\n", "自分の中に基準と言葉を残してくれました。"],
             ["その中から、", "\n", "今でもできるもの。", "\n", "再現性があるもの。", "\n", "誰かの0→1を助けられるもの。", "\n", "本当に自分の人生を変えてくれたもの。"],
-            ["それだけを、100に絞りました。"],
+            ["それだけを、選び抜きました。"],
             ["0→1には、少し勇気がいります。"],
             ["初めての店。", "\n", "初めての場所。", "\n", "初めての作法。", "\n", "初めての人。"],
             ["知ってしまえば何でもないことでも、", "\n", "最初の一歩だけは、少し重い。"],
@@ -1145,9 +1232,52 @@
         },
         cta: {
           title: "体験の目録へ。",
-          body: "100の扉は、正解の一覧ではありません。最初の一歩を少し軽くするための、体験資産の目録です。",
-          label: "目録を見る",
-          href: "/experience/amanemu/"
+          body: "ここにあるのは、正解の一覧ではありません。最初の一歩を少し軽くするための、体験資産のダイジェストです。",
+          label: "詳しく見る",
+          cards: [
+            {
+              title: "アマネムで、サービスの概念が変わる",
+              body: "伊勢志摩国立公園の暗さ、広い余白、子ども用の小さなスリッパ、葉巻に添えられたエスプレッソ。豪華な宿泊ではなく、相手を一人のゲストとして迎える姿勢そのものに触れた、体験資産レポート001です。",
+              href: "/experience/amanemu/",
+              image: {
+                src: "assets/amanemu-hero-pool.jpg",
+                alt: "自然と水辺が続くアマネムの景色"
+              },
+              scores: [
+                ["見抜く", "★★★★★"],
+                ["組み替える", "★★★★★"],
+                ["渡す", "★★★★★"]
+              ]
+            },
+            {
+              title: "Dialog in the Darkで、人の価値を暗闇の中で学ぶ",
+              body: "携帯電話も時計も預け、一本の白杖だけで完全な暗闇へ入る。怖くてへたり込んだ先で、全盲のガイドの手に安心し、枯葉の匂い、水音、梅酒の香り、人の声の魅力に気づいていく。見えることへの依存と、見た目で評価する癖を組み替えた、殿堂入りの体験です。",
+              href: "/experience/dialog-in-the-dark-gaien/",
+              image: {
+                src: "assets/dialog-dark-gaien-entrance.jpg",
+                alt: "竹と黒い看板が置かれたDialog in the Dark外苑前会場の入口"
+              },
+              scores: [
+                ["見抜く", "★★★★★＋"],
+                ["組み替える", "★★★★★"],
+                ["渡す", "★★★★★"]
+              ]
+            },
+            {
+              title: "ロードバイクに乗ると、玄関の外がゲレンデになる",
+              body: "ビンディングシューズを履き、ペダルに足を固定する。バチン、バチン。その瞬間、いつもの道路が少し違って見える。5キロ先、10キロ先が、自分の生活圏に入ってくる。移動、運動、気分転換を一度に楽しめる、日常の中の小さな冒険です。",
+              href: "/experience/road-bike/",
+              image: {
+                src: "assets/road-bike-hero.jpeg",
+                alt: "桜の木の下に置かれたロードバイク"
+              },
+              scores: [
+                ["見抜く", "★★★★☆"],
+                ["組み替える", "★★★★★"],
+                ["渡す", "★★★★☆"]
+              ]
+            }
+          ]
         }
       };
 
@@ -1314,9 +1444,24 @@
         return e("section", { className: "cta-band", id: "cta", "aria-labelledby": "cta-title" },
           e("h2", { id: "cta-title" }, CONTENT.cta.title),
           e("p", null, CONTENT.cta.body),
-          e("div", { className: "cta-actions" },
-            e("a", { className: "cta-link", href: "/experience/dialog-in-the-dark-gaien/" }, "Dialog in the Dark を読む"),
-            e("a", { className: "cta-link", href: CONTENT.cta.href }, "アマネムを読む")
+          e("div", { className: "catalog-grid", "aria-label": "体験メニュー一覧" },
+            CONTENT.cta.cards.map((card) => e("article", { className: "experience-card", key: card.title },
+              e("figure", null,
+                e("img", { src: card.image.src, alt: card.image.alt })
+              ),
+              e("div", { className: "experience-card-body" },
+                e("h3", null, card.title),
+                e("p", null, card.body),
+                e("ul", { className: "card-scores", "aria-label": "三軸評価" },
+                  card.scores.map(([label, score]) => e("li", { key: label },
+                    e("b", null, label),
+                    " ",
+                    score
+                  ))
+                ),
+                e("a", { className: "cta-link", href: card.href }, CONTENT.cta.label)
+              )
+            ))
           )
         );
       }
