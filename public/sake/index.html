@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TTC 日本酒の会 | 清澄庭園 涼亭で推しを持ち寄る</title>
+    <meta name="description" content="清澄庭園の涼亭で、今いちばんの推しの日本酒を一本持ち寄る会。全員で飲み比べてその日のチャンピオンを選び、飲んだ酒を日本酒図鑑に記録します。TTC 日本酒の会。">
+    <meta name="keywords" content="日本酒の会,推し,持ち寄り,清澄庭園,涼亭,日本酒図鑑,東京,東京トータルコンサルティング">
+    <meta property="og:title" content="TTC 日本酒の会 | 清澄庭園 涼亭で推しを持ち寄る">
+    <meta property="og:description" content="清澄庭園の涼亭で、今いちばんの推しの一本を持ち寄り、その日のチャンピオンを選び、日本酒図鑑に記録していく会です。">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:url" content="https://tokyotc.com/sake/">
+    <link rel="canonical" href="https://tokyotc.com/sake/">
+    <style>
+      :root {
+        --ink: #303030;
+        --muted: #6b6b6b;
+        --bg: #ffffff;
+        --soft: #f6f5f2;
+        --line: #e5e7eb;
+        --accent: #3a4a3a;
+        --sans: "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+        --header-h: 64px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--sans);
+        line-height: 1.9;
+        -webkit-font-smoothing: antialiased;
+      }
+      img { display: block; max-width: 100%; }
+      a { color: inherit; text-decoration: none; }
+
+      .skip-link {
+        position: absolute; left: -999px; top: 0;
+        background: #fff; color: var(--ink); padding: 8px 14px; z-index: 100;
+      }
+      .skip-link:focus { left: 8px; top: 8px; }
+
+      /* Header — dark translucent, fixed over hero */
+      .site-header {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+        display: flex; align-items: center; justify-content: space-between;
+        height: var(--header-h);
+        padding: 0 clamp(16px, 4vw, 48px);
+        background: rgba(24, 26, 24, 0.42);
+        backdrop-filter: blur(8px);
+        color: #fff;
+      }
+      .brand { font-size: clamp(15px, 2vw, 18px); font-weight: 600; letter-spacing: 0.04em; color: #fff; }
+      .site-nav { display: flex; align-items: center; gap: clamp(14px, 2.6vw, 30px); font-size: 14px; }
+      .site-nav a { color: #fff; opacity: 0.92; padding: 6px 0; border-bottom: 2px solid transparent; transition: border-color .2s ease, opacity .2s ease; }
+      .site-nav a:hover { opacity: 1; }
+      .site-nav a[aria-current="page"] { font-weight: 700; border-bottom-color: #fff; }
+
+      /* Hero — full-width photo with centered title */
+      .hero {
+        position: relative;
+        min-height: clamp(360px, 56vh, 560px);
+        display: grid; place-items: center;
+        padding-top: var(--header-h);
+        background: #1a1a1a;
+        overflow: hidden;
+      }
+      .hero img.hero-bg {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%; object-fit: cover;
+        opacity: 0.96;
+      }
+      .hero::after {
+        content: ""; position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.16) 45%, rgba(0,0,0,0.34));
+      }
+      .hero h1 {
+        position: relative; z-index: 1; margin: 0;
+        color: #fff; font-size: clamp(38px, 7vw, 78px); font-weight: 700;
+        letter-spacing: 0.08em; text-shadow: 0 2px 18px rgba(0,0,0,0.4);
+      }
+
+      /* Layout */
+      .wrap { width: min(1100px, 100%); margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); }
+      .section { padding: clamp(48px, 7vw, 88px) 0; }
+      .section.alt { background: var(--soft); }
+      .eyebrow { margin: 0 0 10px; color: var(--accent); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
+      .section h2 { margin: 0 0 22px; font-size: clamp(24px, 3.4vw, 36px); font-weight: 700; letter-spacing: 0.03em; }
+      .section p { margin: 0 0 16px; color: #404040; }
+      .lead-narrow { max-width: 720px; }
+
+      /* Gallery grid (asymmetric) */
+      .gallery {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        grid-auto-rows: 1fr;
+        gap: clamp(10px, 1.6vw, 18px);
+      }
+      .gallery figure { margin: 0; overflow: hidden; border-radius: 2px; background: #eee; }
+      .gallery img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
+      .gallery .tall { grid-row: span 2; }
+      .gallery .tall img { aspect-ratio: 4 / 5; height: 100%; }
+      @media (max-width: 680px) {
+        .gallery { grid-template-columns: 1fr 1fr; }
+        .gallery .tall { grid-row: span 1; }
+        .gallery .tall img { aspect-ratio: 4 / 3; }
+      }
+
+      /* News list */
+      .news-list { list-style: none; margin: 0; padding: 0; }
+      .news-list li { display: flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+      .news-list time { flex: 0 0 auto; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+      .news-list .news-body h3 { margin: 0 0 4px; font-size: 16px; }
+      .news-list .news-body p { margin: 0; color: var(--muted); font-size: 14px; }
+
+      /* CTA buttons */
+      .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+      .btn {
+        display: inline-block; padding: 13px 26px; border: 1px solid var(--accent);
+        color: var(--accent); font-weight: 600; font-size: 15px; border-radius: 2px;
+        transition: background .2s ease, color .2s ease;
+      }
+      .btn:hover { background: var(--accent); color: #fff; }
+
+      .notice { margin-top: 26px; color: var(--muted); font-size: 12.5px; }
+
+      .site-footer {
+        padding: 32px clamp(16px, 4vw, 48px);
+        border-top: 1px solid var(--line);
+        display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: space-between;
+        color: var(--muted); font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">本文へ移動</a>
+
+    <header class="site-header">
+      <a class="brand" href="/sake/">TTC 日本酒の会</a>
+      <nav class="site-nav" aria-label="サイト内ナビゲーション">
+        <a href="/sake/" aria-current="page">ホーム</a>
+        <a href="/sake/sake-list/">日本酒図鑑</a>
+        <a href="/sake/reports/">開催レポート</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="page-title">
+        <img class="hero-bg" src="assets/sake-bottles-blue.jpg" alt="清澄庭園 涼亭の木の空間に、持ち寄られた日本酒の瓶がずらりと並んでいる">
+        <h1 id="page-title">日本酒の会</h1>
+      </section>
+
+      <section class="section" aria-labelledby="gallery-title">
+        <div class="wrap">
+          <p class="eyebrow">Kiyosumi Garden / Ryotei</p>
+          <h2 id="gallery-title">清澄庭園 涼亭</h2>
+          <div class="gallery" aria-label="清澄庭園 涼亭の写真">
+            <figure>
+              <img src="assets/sake-garden-day.jpg" alt="清澄庭園の池越しに涼亭を望む夕景" loading="lazy" decoding="async">
+            </figure>
+            <figure class="tall">
+              <img src="assets/sake-venue-sign.jpg" alt="夕暮れの空の下、庭園に建つ涼亭と「涼亭」の案内看板" loading="lazy" decoding="async">
+            </figure>
+            <figure>
+              <img src="assets/sake-venue-entrance.jpg" alt="灯りのともる涼亭へと続く庭園の小径" loading="lazy" decoding="async">
+            </figure>
+            <figure>
+              <img src="assets/sake-venue-room.jpg" alt="涼亭の室内、木組みの天井" loading="lazy" decoding="async">
+            </figure>
+            <figure>
+              <img src="assets/sake-venue-night.jpg" alt="夜の清澄庭園に明かりのともる涼亭" loading="lazy" decoding="async">
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" aria-labelledby="venue-title">
+        <div class="wrap lead-narrow">
+          <p class="eyebrow">Place</p>
+          <h2 id="venue-title">晴れの場を、借りる</h2>
+          <p>会場は、清澄庭園の中に建つ「涼亭」です。1909年（明治42年）、岩崎家が、国賓として来日した英国のキッチナー元帥を迎えるために建てました。2005年には「東京都選定歴史的建造物」に指定されています。</p>
+          <p>隅田川にほど近い庭園の、池のほとり。月明かりと水音のなかで酒を酌み交わす時間は、同じ一本でも、味わいまで少し変えてしまいます。</p>
+          <p>遠くへ行かなくても、高級な店でなくても、晴れの場は借りられます。歴史ある空間は、調べてみると個人でも十分に使える、意外と身近な存在です。</p>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="about-title">
+        <div class="wrap lead-narrow">
+          <p class="eyebrow">About</p>
+          <h2 id="about-title">推しを持ち寄ると、文化が育つ</h2>
+          <p>参加条件は一つだけ。今、自分が好きな日本酒を一本持ってくること。高価な酒である必要も、有名な酒である必要もありません。誰かに飲んでほしい一本を持ち寄ります。</p>
+          <p>全員でテイスティングして、その日のチャンピオンを選びます。そして飲んだ酒は、日本酒図鑑に記録していきます。酒は消えても、味の記憶と、人とのつながりは残ります。</p>
+        </div>
+      </section>
+
+      <section class="section alt" aria-labelledby="news-title">
+        <div class="wrap lead-narrow">
+          <p class="eyebrow">News</p>
+          <h2 id="news-title">開催のお知らせ</h2>
+          <p>次回開催のお知らせは、準備が整いしだい掲載します。これまでの開催の様子は、開催レポートからご覧いただけます。</p>
+          <ul class="news-list">
+            <li>
+              <time datetime="2025-10-29">2025.10.29</time>
+              <div class="news-body"><h3>第1回</h3><p>清澄庭園 涼亭にて初開催。推しを持ち寄る会が、ここから始まりました。</p></div>
+            </li>
+            <li>
+              <time datetime="2025-12-17">2025.12.17</time>
+              <div class="news-body"><h3>第2回</h3><p>チャンピオンは川鶴 讃岐くらうでぃ。白ワインのような飲み口が話題に。</p></div>
+            </li>
+            <li>
+              <time datetime="2026-01-09">2026.01.09</time>
+              <div class="news-body"><h3>第3回</h3><p>最も人気を集めたのは上川大雪 しぼり生。六本を五つの軸で採点しました。</p></div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="cta-title">
+        <div class="wrap lead-narrow">
+          <p class="eyebrow">Archive</p>
+          <h2 id="cta-title">飲んだ一本を、記録に残す</h2>
+          <p>これまでに出会った日本酒は日本酒図鑑へ。各回の様子は開催レポートへ。酒は消えても、知識と記憶とつながりは、こうして残していけます。</p>
+          <div class="cta-row">
+            <a class="btn" href="/sake/sake-list/">日本酒図鑑へ</a>
+            <a class="btn" href="/sake/reports/">開催レポートへ</a>
+          </div>
+          <p class="notice">お酒は20歳になってから。飲酒運転は法律で禁止されています。</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>TTC 日本酒の会 / 清澄庭園 涼亭</span>
+      <span>東京トータルコンサルティング</span>
+    </footer>
+  </body>
+</html>
