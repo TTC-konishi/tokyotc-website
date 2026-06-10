@@ -137,6 +137,7 @@
       #present .close-present { position: absolute; top: 18px; right: 18px; z-index: 2; background: transparent; border: 1px solid var(--line); color: var(--washi-dim); border-radius: 999px; padding: 8px 14px; font-size: 13px; }
       .stamp { position: relative; display: inline-grid; place-items: center; width: 128px; height: 128px; margin: 26px auto 0; border-radius: 50%; border: 3px solid var(--shu); color: var(--shu); font-weight: 800; font-size: 32px; letter-spacing: 0.05em; box-shadow: 0 0 0 6px rgba(192,57,43,0.12); animation: stamp 0.6s cubic-bezier(.2,1.2,.3,1) both; }
       @keyframes stamp { 0% { transform: scale(2.6) rotate(-20deg); opacity: 0; } 60% { transform: scale(0.92) rotate(5deg); opacity: 1; } 100% { transform: scale(1) rotate(0); opacity: 1; } }
+      .toast { position: fixed; left: 50%; bottom: calc(40px + env(safe-area-inset-bottom)); transform: translateX(-50%); background: var(--shu); color: #fff; padding: 10px 20px; border-radius: 999px; font-size: 14px; z-index: 90; box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
       @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
     </style>
   </head>
@@ -178,6 +179,11 @@
       <!-- 集計 -->
       <section class="view hidden" id="view-result">
         <button class="btn-kin" id="present-btn" style="width:100%;margin-bottom:18px">▶ その日の主役を発表する</button>
+        <div id="admin-panel" class="hidden" style="margin:0 0 18px;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--indigo-3)">
+          <h2 style="margin:0 0 12px">会の管理（管理者）</h2>
+          <button class="btn-ghost" id="export-btn" style="width:100%;margin-bottom:10px">レポート用に書き出す（Markdown）</button>
+          <button class="btn-ghost" id="newevent-btn" style="width:100%">新しい会を始める</button>
+        </div>
         <h2>推し度ランキング</h2>
         <div id="result-list"></div>
       </section>
@@ -305,7 +311,7 @@
             '<div class="row"><span class="oshi">'+(ag.count?Math.round(ag.oshi):'—')+'<small> 推し</small></span>'+
             '<span class="raters">'+ag.count+'人が採点</span></div>'+
             '<div class="actions"><button class="btn-primary" style="width:auto;margin:0;padding:8px 16px" data-rate="'+s.id+'">'+(mine?'採点を編集':'採点する')+'</button>'+
-            ((s.regby===user)?('<button class="btn-ghost" data-edit="'+s.id+'">編集</button><button class="btn-ghost" data-del="'+s.id+'">削除</button>'):'')+
+            ((s.regby===user||admin)?('<button class="btn-ghost" data-edit="'+s.id+'">編集</button><button class="btn-ghost" data-del="'+s.id+'">削除</button>'):'')+
             '</div></div></article>';
         }).join("");
         el.querySelectorAll("[data-rate]").forEach(function(b){ b.onclick=function(){ openRate(b.getAttribute("data-rate")); }; });
@@ -422,6 +428,63 @@
         $("#close-present").onclick = end;
         show();
       }
+
+      // ===== Admin (tap title 5x) =====
+      var admin = false, tapN = 0, tapT;
+      var titleEl = document.querySelector(".topbar .title");
+      titleEl.style.cursor = "pointer";
+      titleEl.addEventListener("click", function () {
+        tapN++; clearTimeout(tapT); tapT = setTimeout(function () { tapN = 0; }, 1500);
+        if (tapN >= 5) { tapN = 0; admin = !admin; toast(admin ? "管理者モード ON" : "管理者モード OFF"); $("#admin-panel").classList.toggle("hidden", !admin); renderList(); }
+      });
+      $("#export-btn").addEventListener("click", openExport);
+      $("#newevent-btn").addEventListener("click", newEvent);
+
+      function newEvent() {
+        var title = prompt("新しい会の名前（例：第4回）", "");
+        if (!title || !title.trim()) return;
+        var date = prompt("日付（例：2026-03-01 ／ 空欄可）", "") || "";
+        db.archives = db.archives || [];
+        db.archives.push({ event: db.event, sakes: db.sakes, ratings: db.ratings });
+        db.event = { title: title.trim(), date: date.trim() };
+        db.sakes = []; db.ratings = {}; persist();
+        $("#event-label").textContent = db.event.title;
+        renderList(); renderResult(); toast("新しい会を始めました（前回はアーカイブ保存）");
+      }
+
+      function openExport() {
+        function f(v) { return (v || 0).toFixed(1); }
+        var rated = db.sakes.map(function (s) { return { s: s, ag: avgAxes(s.id) }; });
+        rated.sort(function (a, b) { return b.ag.oshi - a.ag.oshi; });
+        var md = "# " + db.event.title + " TTC 日本酒の会" + (db.event.date ? "（" + db.event.date + "）" : "") + "\n\n";
+        md += "> 五軸は5点満点の平均。甘辛は数値が高いほど辛口。\n\n";
+        rated.forEach(function (x, i) {
+          var ag = x.ag;
+          md += "## " + (i + 1) + "位　" + x.s.name + (i === 0 && ag.count ? " 👑" : "") + "\n";
+          if (x.s.by) md += "- 持参：" + x.s.by + "\n";
+          md += "- 推し度：" + (ag.count ? ag.oshi.toFixed(1) : "—") + "（" + ag.count + "人）\n";
+          md += "- 甘辛 " + f(ag.sweet) + " ／ 香り " + f(ag.aroma) + " ／ 濃淡 " + f(ag.body) + " ／ 酸味 " + f(ag.acidity) + " ／ 余韻 " + f(ag.finish) + "\n";
+          var rs = db.ratings[x.s.id] || {};
+          var memos = Object.keys(rs).map(function (u) { return rs[u].memo ? "「" + rs[u].memo + "」（" + u + "）" : ""; }).filter(Boolean);
+          if (memos.length) md += "- メモ：" + memos.join(" ／ ") + "\n";
+          md += "\n";
+        });
+        modalRoot.innerHTML = '<div class="modal"><div class="sheet"><button class="close">×</button>' +
+          '<h3>レポート用 Markdown</h3>' +
+          '<textarea class="text-input" style="height:46vh;font-family:var(--num);font-size:13px" id="md-out"></textarea>' +
+          '<button class="btn-primary" id="copy-md">コピーする</button></div></div>';
+        var modal = $(".modal", modalRoot);
+        $("#md-out", modal).value = md;
+        modal.querySelector(".close").onclick = closeModal;
+        modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+        $("#copy-md", modal).onclick = function () {
+          var ta = $("#md-out", modal); ta.select();
+          try { if (navigator.clipboard) { navigator.clipboard.writeText(ta.value); } else { document.execCommand("copy"); } toast("コピーしました"); }
+          catch (e) { document.execCommand("copy"); toast("コピーしました"); }
+        };
+      }
+
+      function toast(msg) { var t = document.createElement("div"); t.className = "toast"; t.textContent = msg; document.body.appendChild(t); setTimeout(function () { t.remove(); }, 1800); }
 
       // ===== Image compression (long edge 1200, JPEG 0.75) =====
       function compress(file, cb) {
