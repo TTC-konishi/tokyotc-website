@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>近所の公園が、最高のレストランになる | 体験資産レポート</title>
-    <meta name="description" content="近所の公園、スーパーの手巻き寿司、100円ショップの寿司桶とグラス、IKEAのテーブルクロス。低コストな素材で日常を少し編集する、Experience Menuの体験資産レポートです。">
-    <meta name="keywords" content="Experience Menu,体験資産,猿江恩賜公園,ピクニック,手巻き寿司,日常を編集する,家族,低コスト">
+    <meta name="description" content="近所の公園、スーパーの手巻き寿司セット、手頃な寿司桶、本物のグラス、布のテーブルクロス。身近な素材で日常を少し整える、Experience Menuの体験資産レポートです。">
+    <meta name="keywords" content="Experience Menu,体験資産,猿江恩賜公園,ピクニック,手巻き寿司,日常を編集する,家族,身近な体験">
     <meta property="og:title" content="近所の公園が、最高のレストランになる | 体験資産レポート">
     <meta property="og:description" content="遠くへ行かなくてもいい。高価な体験を買わなくてもいい。少しだけ日常を編集すると、近所の公園は最高のレストランになる。">
     <meta property="og:type" content="article">
@@ -329,7 +329,8 @@
 
       .story-grid,
       .edit-layout,
-      .archive-layout {
+      .archive-layout,
+      .lightness-layout {
         display: grid;
         grid-template-columns: minmax(0, 0.82fr) minmax(300px, 0.62fr);
         align-items: start;
@@ -362,6 +363,15 @@
         aspect-ratio: 3 / 4;
       }
 
+      .lightness-layout .impact-line {
+        grid-column: 1 / -1;
+        margin-top: 0;
+      }
+
+      .lightness-layout .photo-stack {
+        position: static;
+      }
+
       .photo-card figcaption {
         padding: 10px 12px 12px;
         color: rgba(255, 247, 229, 0.78);
@@ -372,16 +382,17 @@
 
       .seed-list {
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(138px, 1fr));
         gap: 1px;
         margin-top: clamp(30px, 5vw, 52px);
+        overflow-x: auto;
         border: 1px solid var(--line);
         background: var(--line);
       }
 
       .seed-item {
         min-height: 150px;
-        padding: clamp(20px, 2.6vw, 30px);
+        padding: clamp(18px, 2.1vw, 24px);
         background:
           linear-gradient(145deg, rgba(159, 200, 191, 0.1), transparent 34%),
           rgba(255, 255, 255, 0.035);
@@ -400,8 +411,9 @@
       .seed-item p {
         margin: 0;
         color: #fff6df;
-        font-size: clamp(18px, 1.8vw, 24px);
+        font-size: clamp(17px, 1.45vw, 20px);
         line-height: 1.48;
+        white-space: nowrap;
       }
 
       .tip-grid,
@@ -414,7 +426,8 @@
       }
 
       .tip-grid {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(190px, 1fr));
+        overflow-x: auto;
       }
 
       .score-grid {
@@ -425,10 +438,45 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
+      .memory-layout {
+        display: block;
+      }
+
+      .memory-layout .section-head {
+        margin-bottom: clamp(26px, 4vw, 42px);
+      }
+
+      .memory-pair-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .memory-pair {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(270px, 0.38fr);
+        gap: clamp(24px, 4vw, 54px);
+        align-items: stretch;
+      }
+
+      .memory-pair .memory-card {
+        min-height: 0;
+      }
+
+      .memory-pair img {
+        width: 100%;
+        height: 100%;
+        min-height: 190px;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border: 1px solid rgba(173, 146, 86, 0.24);
+        box-shadow: 0 18px 54px rgba(0, 0, 0, 0.26);
+        filter: saturate(0.92) contrast(1.04) brightness(0.93);
+      }
+
       .tip-card,
       .score-card,
       .memory-card {
-        padding: clamp(24px, 3vw, 36px);
+        padding: clamp(22px, 2.4vw, 32px);
         background:
           linear-gradient(145deg, rgba(255, 244, 213, 0.07), transparent 32%),
           rgba(255, 255, 255, 0.035);
@@ -449,7 +497,7 @@
       .tip-card h3,
       .score-card h3,
       .memory-card h3 {
-        font-size: clamp(19px, 1.8vw, 25px);
+        font-size: clamp(19px, 1.55vw, 24px);
       }
 
       .tip-card p,
@@ -560,7 +608,11 @@
       }
 
       .cta {
-        width: min(920px, calc(100% - 44px));
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.74fr);
+        align-items: center;
+        gap: clamp(28px, 5vw, 72px);
+        width: min(1120px, calc(100% - 44px));
         margin: 0 auto clamp(58px, 8vw, 100px);
         padding: clamp(34px, 5.4vw, 64px) 0;
         border-top: 1px solid var(--line);
@@ -583,6 +635,21 @@
         font-size: clamp(16px, 1.45vw, 20px);
       }
 
+      .cta-photo {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid rgba(173, 146, 86, 0.24);
+        background: rgba(255, 255, 255, 0.03);
+        box-shadow: 0 20px 66px rgba(0, 0, 0, 0.28);
+      }
+
+      .cta-photo img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        filter: saturate(0.92) contrast(1.05) brightness(0.92);
+      }
+
       .external-link {
         display: inline-flex;
         gap: 10px;
@@ -593,11 +660,6 @@
         font-family: var(--sans);
         font-size: 14px;
         letter-spacing: 0.06em;
-      }
-
-      .external-link span {
-        color: var(--gold);
-        font-size: 12px;
       }
 
       .site-footer {
@@ -613,11 +675,6 @@
       }
 
       @media (max-width: 980px) {
-        .tip-grid,
-        .seed-list {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
         .memory-grid {
           grid-template-columns: 1fr;
         }
@@ -663,6 +720,7 @@
         .story-grid,
         .edit-layout,
         .archive-layout,
+        .lightness-layout,
         .scenes-section {
           display: block;
         }
@@ -712,8 +770,6 @@
         }
 
         .score-grid,
-        .tip-grid,
-        .seed-list,
         .gallery {
           grid-template-columns: 1fr;
         }
@@ -738,6 +794,20 @@
 
         .site-footer {
           display: block;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .memory-pair {
+          grid-template-columns: 1fr;
+        }
+
+        .cta {
+          display: block;
+        }
+
+        .cta-photo {
+          margin-top: 28px;
         }
       }
 
@@ -813,10 +883,10 @@
               <dd>日常を編集する技術</dd>
               <dt>Place</dt>
               <dd>猿江恩賜公園</dd>
-              <dt>Cost</dt>
-              <dd>1000円から2000円程度</dd>
+              <dt>Reach</dt>
+              <dd>無理なく整えられる</dd>
               <dt>Seed</dt>
-              <dd>誰でも拾える、低コストな体験資産</dd>
+              <dd>誰でも始められる、身近な体験資産</dd>
             </dl>
           </aside>
         </div>
@@ -829,22 +899,22 @@
         </div>
         <div class="prose">
           <p><strong>本質は、日常を少しだけ編集することにある。</strong></p>
-          <p>近所の公園。スーパーの寿司。100円ショップの寿司桶。100円ショップのグラス。IKEAのテーブルクロス。</p>
-          <p>どれも特別なものではありません。けれど、いつもの素材を少しだけ並べ替えると、見慣れた休日の見え方が変わります。</p>
+          <p>近所の公園。スーパーの手巻き寿司セット。手頃な寿司桶。本物のグラス。気に入った布のテーブルクロス。</p>
+          <p>どれも手が届くものです。けれど、使い捨てで済ませず、ちゃんと場に迎えるものとして並べると、見慣れた休日の見え方が変わります。</p>
           <p>体験は、高価な場所でだけ生まれるわけではありません。視点と演出が少し変わるだけで、生活の中にある場所が、思っていた以上に豊かな場所になります。</p>
         </div>
-        <div class="seed-list" aria-label="この体験を作る低コストな素材">
+        <div class="seed-list" aria-label="この体験を作る身近な素材">
           <article class="seed-item">
             <span>Place</span>
             <p>近所の公園</p>
           </article>
           <article class="seed-item">
             <span>Food</span>
-            <p>スーパーの手巻き寿司</p>
+            <p>手巻き寿司セット</p>
           </article>
           <article class="seed-item">
             <span>Tool</span>
-            <p>100円ショップの寿司桶</p>
+            <p>手頃な寿司桶</p>
           </article>
           <article class="seed-item">
             <span>Glass</span>
@@ -852,7 +922,7 @@
           </article>
           <article class="seed-item">
             <span>Cloth</span>
-            <p>安いテーブルクロス</p>
+            <p>布のテーブルクロス</p>
           </article>
         </div>
         <p class="impact-line">日常は、少しだけ編集できる。</p>
@@ -874,7 +944,7 @@
 
         <div class="photo-stack" aria-label="猿江恩賜公園の写真">
           <figure class="photo-card">
-            <img src="assets/sarue-sakura-table.jpg" alt="桜が咲く猿江恩賜公園の広場と木製テーブル" loading="lazy" decoding="async">
+            <img src="assets/sarue-autumn-picnic-tables.jpg" alt="秋の猿江恩賜公園の広場に並ぶベンチと木製テーブル" loading="lazy" decoding="async">
             <figcaption>テーブルのある公園は、それだけで休日の編集余地が広がる。</figcaption>
           </figure>
           <figure class="photo-card">
@@ -942,12 +1012,12 @@
           <article class="tip-card">
             <span>02 Glass</span>
             <h3>グラスは本物を使う</h3>
-            <p>紙コップではなく、ガラスのグラスを持っていく。重さ、口当たり、光の反射で体験が変わる。</p>
+            <p>紙コップではなく、ガラスのグラスを持っていく。落とせば割れるものだからこそ、重さ、口当たり、光の反射まで体験になる。</p>
           </article>
           <article class="tip-card">
             <span>03 Cloth</span>
             <h3>テーブルクロスを敷く</h3>
-            <p>安い一枚で十分。公園のテーブルが、少しだけ晴れやかな場所になる。</p>
+            <p>手が届く一枚で十分。布を敷くだけで、公園のテーブルが少しだけ晴れやかな場所になる。</p>
           </article>
           <article class="tip-card">
             <span>04 Menu</span>
@@ -957,7 +1027,7 @@
           <article class="tip-card">
             <span>05 Lightness</span>
             <h3>頑張らない</h3>
-            <p>凝った料理も、高価な道具もいらない。ご飯を炊くだけ。時には全部買っていく。</p>
+            <p>凝った料理も、特別な道具もいらない。ご飯を炊くだけ。時には全部買っていく。</p>
           </article>
         </div>
       </section>
@@ -967,11 +1037,12 @@
           <p class="section-label">Edit 02</p>
           <h2 id="glass-title">紙コップを、ガラスのグラスに変える。</h2>
           <div class="prose">
-            <p>紙コップは使いません。ガラスのグラスを持っていきます。</p>
-            <p>もちろん高価なものではありません。100円ショップでも十分です。落としても大きな損失にはなりません。</p>
-            <p>でも、紙コップとガラスのグラスでは、体験がまるで違います。</p>
-            <p>重さ。口当たり。光の反射。</p>
-            <p>ほんの少しの違いですが、その差は想像以上に大きいのです。</p>
+            <p>紙コップでも、プラカップでも、飲み物は飲めます。</p>
+            <p>割れないものには、割れないものの良さがあります。</p>
+            <p>けれど、あえて割れるものを使うことにも意味があります。グラスも、陶器の器も、落とせば割れる。だから、子どもは自然に両手で持つ。置き方を少し考える。</p>
+            <p>大事なものは、大切に扱わないと壊れるのだと、身体で知っていく。</p>
+            <p>たとえそれが、手頃なグラスであってもいい。割れてしまったことすら、ひとつの体験になります。</p>
+            <p>本物を使うというのは、高価なものを使うことではありません。壊れる可能性のあるものを、ちゃんと大切に扱う時間を持つことでもあります。</p>
           </div>
         </div>
         <div class="photo-stack">
@@ -989,7 +1060,7 @@
           <div class="prose">
             <p>これが一番大事です。家ではやらないメニューを選ぶ。</p>
             <p>例えば手巻き寿司。</p>
-            <p>ご飯は家で炊く。寿司桶は100円ショップ。具材はスーパーの手巻き寿司セット。1000円程度。</p>
+            <p>ご飯は家で炊く。寿司桶は手頃なものでいい。具材はスーパーの手巻き寿司セット。</p>
             <p>それを木陰へ持ち出して、外で海苔を巻く。ただそれだけです。</p>
             <p>不思議なことに、家で食べる手巻き寿司とはまったく違う体験になります。</p>
             <p>子どもは喜ぶ。大人も楽しい。ワインを一本持っていけば、それだけでちょっとした宴になります。</p>
@@ -1024,27 +1095,39 @@
             <figcaption>子どもの手元に、体験が残る。</figcaption>
           </figure>
           <figure>
-            <img src="assets/sarue-skytree-clock.jpg" alt="青空の下の時計塔と東京スカイツリー" loading="lazy" decoding="async">
+            <img src="assets/sarue-park-road-skytree.jpg" alt="猿江恩賜公園の緑道と奥に見える東京スカイツリー" loading="lazy" decoding="async">
             <figcaption>見慣れた景色が、休日の記憶になる。</figcaption>
           </figure>
           <figure>
-            <img src="assets/sarue-sakura-table.jpg" alt="桜が咲く猿江恩賜公園の広場" loading="lazy" decoding="async">
+            <img src="assets/sarue-sakura-blue-table.jpg" alt="桜の下に水色のテーブルクロスを敷いた猿江恩賜公園のテーブル" loading="lazy" decoding="async">
             <figcaption>季節が変わると、同じ場所も変わる。</figcaption>
           </figure>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="light-title">
-        <div class="section-head">
-          <p class="section-label">Lightness</p>
-          <h2 id="light-title">頑張り始めると、人はやらなくなる。</h2>
+      <section class="section lightness-layout" aria-labelledby="light-title">
+        <div>
+          <div class="section-head">
+            <p class="section-label">Lightness</p>
+            <h2 id="light-title">頑張り始めると、人はやらなくなる。</h2>
+          </div>
+          <div class="prose">
+            <p>この体験の最重要ポイントは、頑張らないことです。</p>
+            <p>テントを張ろう。凝った料理を作ろう。特別な道具をそろえよう。そう思った瞬間に、次回のハードルが上がります。</p>
+            <p>だから我が家は、ご飯を炊くだけ。時にはコンビニで全部買うこともあります。</p>
+            <p><strong>助走ゼロ。</strong></p>
+            <p>今日は天気がいい。少し時間ができた。じゃあ行こうか。それくらいの軽さがちょうどいい。</p>
+          </div>
         </div>
-        <div class="prose">
-          <p>この体験の最重要ポイントは、頑張らないことです。</p>
-          <p>テントを張ろう。凝った料理を作ろう。高価な道具を買おう。そう思った瞬間に、次回のハードルが上がります。</p>
-          <p>だから我が家は、ご飯を炊くだけ。時にはコンビニで全部買うこともあります。</p>
-          <p><strong>助走ゼロ。</strong></p>
-          <p>今日は天気がいい。少し時間ができた。じゃあ行こうか。それくらいの軽さがちょうどいい。</p>
+        <div class="photo-stack">
+          <figure class="photo-card">
+            <img src="assets/sarue-zero-prep-table.jpg" alt="公園のテーブルにサンドイッチやサラダ、ワインとグラスが並んでいる" loading="lazy" decoding="async">
+            <figcaption>買ってきたものをそのまま並べるだけでも、場所の見え方は変わる。</figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="assets/sarue-convenience-sparkling.jpg" alt="クリアバッグで冷やしたスパークリングワインとサンドイッチが公園のテーブルに並んでいる" loading="lazy" decoding="async">
+            <figcaption>コンビニで揃えたものでも、グラスを添えると時間が少し整う。</figcaption>
+          </figure>
         </div>
         <p class="impact-line">やり方が軽いほど、思い出は積み重なる。</p>
       </section>
@@ -1076,35 +1159,53 @@
         </div>
       </section>
 
-      <section class="section" aria-labelledby="memory-title">
-        <div class="section-head">
-          <p class="section-label">What Remains</p>
-          <h2 id="memory-title">実際にかかるお金は、1000円から2000円程度。</h2>
-        </div>
-        <div class="memory-grid">
-          <article class="memory-card">
-            <span>Cost</span>
-            <h3>お金はほとんどかからない</h3>
-            <p>家にある飲みかけのワインを持っていくこともある。高い支出より、少しの編集が効く。</p>
-          </article>
-          <article class="memory-card">
-            <span>Satisfaction</span>
-            <h3>満足度は驚くほど高い</h3>
-            <p>少しだけ手間をかけて日常を編集すると、いつもの休日が少し特別になる。</p>
-          </article>
-          <article class="memory-card">
-            <span>Repeat</span>
-            <h3>続くから、残る</h3>
-            <p>遠くへ行かないから、また行ける。頑張らないから、季節ごとの記録になる。</p>
-          </article>
+      <section class="section memory-section" aria-labelledby="memory-title">
+        <div class="memory-layout">
+          <div>
+            <div class="section-head">
+              <p class="section-label">What Remains</p>
+              <h2 id="memory-title">手が届くから、何度もできる。</h2>
+            </div>
+            <div class="memory-pair-list">
+              <div class="memory-pair">
+                <article class="memory-card">
+                  <span>Reach</span>
+                  <h3>無理なく整えられる</h3>
+                  <p>家にある飲みかけのワインを持っていくこともある。高い支出より、少しのしつらえが効く。</p>
+                </article>
+                <img src="assets/sarue-wine-sakura-table.jpg" alt="桜の見える公園のテーブルに赤ワインのボトルとグラスが置かれている" loading="lazy" decoding="async">
+              </div>
+              <div class="memory-pair">
+                <article class="memory-card">
+                  <span>Satisfaction</span>
+                  <h3>満足度は驚くほど高い</h3>
+                  <p>少しだけ手間をかけて日常を編集すると、いつもの休日が少し特別になる。</p>
+                </article>
+                <img src="assets/sarue-lemon-soda-sushi.jpg" alt="手巻き寿司セットとレモン入りのグラスが公園のテーブルに並んでいる" loading="lazy" decoding="async">
+              </div>
+              <div class="memory-pair">
+                <article class="memory-card">
+                  <span>Repeat</span>
+                  <h3>続くから、残る</h3>
+                  <p>遠くへ行かないから、また行ける。頑張らないから、季節ごとの記録になる。</p>
+                </article>
+                <img src="assets/sarue-convenience-sparkling.jpg" alt="コンビニで揃えたサンドイッチとワイン、スパークリングワインが公園のテーブルに並んでいる" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section class="cta" aria-labelledby="closing-title">
-        <h2 id="closing-title"><span>近所の公園は、案外、</span><span>最高のレストランになります。</span></h2>
-        <p>近所の公園。ガラスのグラス。テーブルクロス。手巻き寿司。それだけで、いつもの休日が少し特別になります。そして気がつけば、その思い出が家族の中に積み重なっていきます。</p>
-        <p>遠くへ行かなくてもいい。高価な体験を買わなくてもいい。</p>
-        <a class="external-link" href="/experience/">体験メニュー一覧へ戻る <span>内部リンク</span></a>
+        <div>
+          <h2 id="closing-title"><span>近所の公園は、案外、</span><span>最高のレストランになります。</span></h2>
+          <p>近所の公園。ガラスのグラス。布のテーブルクロス。手巻き寿司セット。それだけで、いつもの休日が少し特別になります。そして気がつけば、その思い出が家族の中に積み重なっていきます。</p>
+          <p>遠くへ行かなくてもいい。高価な体験を買わなくてもいい。</p>
+          <a class="external-link" href="/experience/">体験メニュー一覧へ戻る</a>
+        </div>
+        <figure class="cta-photo">
+          <img src="assets/sarue-closing-table.jpg" alt="猿江恩賜公園のテーブルにグラスや皿、冷やしたボトルが並んでいる" loading="lazy" decoding="async">
+        </figure>
       </section>
     </main>
 
