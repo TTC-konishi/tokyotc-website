@@ -828,6 +828,21 @@
         .impact-line {
           font-size: clamp(26px, 8vw, 36px);
         }
+
+        .seed-list,
+        .tip-grid {
+          grid-template-columns: 1fr;
+          overflow-x: visible;
+        }
+
+        .seed-item,
+        .tip-card {
+          min-height: 0;
+        }
+
+        .seed-item p {
+          white-space: normal;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
