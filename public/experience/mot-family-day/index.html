@@ -65,6 +65,10 @@
         max-width: 100%;
       }
 
+      br.mobile-break {
+        display: none;
+      }
+
       a:focus-visible,
       button:focus-visible {
         outline: 3px solid var(--gold);
@@ -293,6 +297,11 @@
         color: #fff6df;
         font-size: clamp(30px, 5vw, 64px);
         line-height: 1.2;
+      }
+
+      .impact-line .line {
+        display: block;
+        white-space: nowrap;
       }
 
       .story-grid,
@@ -681,6 +690,44 @@
         }
       }
 
+      @media (max-width: 640px) {
+        .site-nav {
+          display: none;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .section,
+        .cta {
+          width: min(100% - 36px, 560px);
+          max-width: none;
+          margin-right: auto;
+          margin-left: auto;
+        }
+
+        .hero h1 {
+          font-size: clamp(30px, 8vw, 36px);
+          word-break: normal;
+        }
+
+        .section h2,
+        .scenes-section h2,
+        .cta h2 {
+          font-size: clamp(26px, 7.1vw, 31px);
+          line-break: anywhere;
+          word-break: normal;
+        }
+
+        .impact-line {
+          font-size: clamp(25px, 6.9vw, 32px);
+          line-height: 1.38;
+        }
+
+        br.mobile-break {
+          display: initial;
+        }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
@@ -870,7 +917,7 @@
       <section class="section" aria-labelledby="opening-title">
         <div class="section-head">
           <p class="section-label">Premise</p>
-          <h2 id="opening-title">お金をかけなくても、世界を広げられる場所。</h2>
+          <h2 id="opening-title">お金をかけなくても、<br class="mobile-break"><wbr>世界を広げられる場所。</h2>
         </div>
         <div class="prose">
           <p><strong>美術館と博物館は、最もコストパフォーマンスの高い遊び場である。</strong></p>
@@ -878,13 +925,16 @@
           <p>東京都現代美術館は、その条件を満たしやすい。展示を見て、館内で食べて、疲れたら木場公園へ逃げる。予定通りでなくても、失敗にはならない。</p>
           <p>しかも、子連れの現実にやさしい。美術館には駐車場があり、天気や荷物に左右されにくい。館内ではベビーカーを無料で借りられる。家族で遊園地や企画展へ行くと、人数分の入場券だけで想像以上に高く感じることがある。けれど、MOTコレクションは中学生以下無料なので、その負担を避けながら、まず一度連れていってみることができる。ここに、この場所を休日の選択肢として見抜く価値がある。</p>
         </div>
-        <p class="impact-line">高価な体験でなくても、世界は十分に広がる。</p>
+        <p class="impact-line">
+          <span class="line">高価な体験でなくても、</span>
+          <span class="line">世界は十分に広がる。</span>
+        </p>
       </section>
 
       <section class="section story-grid" id="story" aria-labelledby="story-title">
         <div>
           <p class="section-label">Origin</p>
-          <h2 id="story-title">大学生の頃、一番の遊び場は上野だった。</h2>
+          <h2 id="story-title">大学生の頃、<br class="mobile-break"><wbr>一番の遊び場は<br class="mobile-break"><wbr>上野だった。</h2>
           <div class="prose">
             <p>大学生の頃、一番の遊び場は上野だった。国立科学博物館や上野動物園へ行けば、入館料や入園料は高くないのに、朝から夕方までいられる。恐竜、動物、剥製、標本、よくわからない展示。長く過ごすほど、自分の知見が少しずつ広がり、知らなかったものに出会う感覚があった。</p>
             <p>だから、美術館や博物館を「高い場所」「特別な日に行く場所」とだけ見たくなかった。安く、長く、何度でも行けて、行くたびに発見がある。そういう場所を見抜けるかどうかで、休日の豊かさはかなり変わる。</p>
@@ -966,7 +1016,7 @@
 
       <section class="section scenes-section" aria-labelledby="photos-title">
         <p class="section-label">Museum Walk</p>
-        <h2 id="photos-title">中庭、地下、外周をぐるっと回るだけで、小さな探検になる。</h2>
+        <h2 id="photos-title">中庭、地下、外周を<br class="mobile-break"><wbr>ぐるっと回るだけで、<br class="mobile-break"><wbr>小さな探検になる。</h2>
         <div class="gallery">
           <figure class="gallery-feature">
             <img src="assets/mot-family-courtyard.jpeg" alt="東京都現代美術館の中庭を子どもが歩いている" loading="lazy" decoding="async">
@@ -990,7 +1040,7 @@
       <section class="section choice-layout" aria-labelledby="food-title">
         <div>
           <p class="section-label">Food Choices</p>
-          <h2 id="food-title">昼食は、その日の気分で組み替える。</h2>
+          <h2 id="food-title">昼食は、<br class="mobile-break"><wbr>その日の気分で<br class="mobile-break"><wbr>組み替える。</h2>
           <div class="prose">
             <p>東京都現代美術館が家族向けに良い理由は、展示だけではない。館内に100本のスプーンがある。ここは、単に子ども用メニューがある店ではなく、大人もちゃんと行きたくなるレストランでありながら、子どもを歓迎する設計になっている。</p>
             <p>公式のコンセプトは「コドモがオトナに憧れて、オトナがコドモゴコロを思い出す。」というもの。子どもは、大人と同じ料理をハーフサイズで食べることで、少しだけ大人の世界へ踏み出せる。親は、子どものために自分の食事を諦めなくていい。</p>
@@ -1015,7 +1065,7 @@
       <section class="section" id="scores" aria-labelledby="scores-title">
         <div class="section-head">
           <p class="section-label">Evaluation</p>
-          <h2 id="scores-title">この体験を、三つの視点で見てみる。</h2>
+          <h2 id="scores-title">この体験を、<br class="mobile-break"><wbr>三つの視点で見てみる。</h2>
         </div>
         <div class="score-grid">
           <article class="score-card">
@@ -1069,7 +1119,7 @@
       <section class="section info-layout" id="info" aria-labelledby="info-title">
         <div>
           <p class="section-label">Before You Go</p>
-          <h2 id="info-title">行く前に、知っておきたいこと。</h2>
+          <h2 id="info-title">行く前に、<br class="mobile-break"><wbr>知っておきたいこと。</h2>
           <div class="prose">
             <p>このページの料金や営業時間、ベビーカーの貸出数などは、2026年6月時点の情報。変わることがあるので、お出かけ前に各施設の公式サイトで最新を確かめておくと安心。</p>
           </div>
@@ -1187,13 +1237,13 @@
       </section>
 
       <section class="cta" aria-labelledby="closing-title">
-        <h2 id="closing-title">少ない支出で、持ち帰れるものは多い。</h2>
+        <h2 id="closing-title">少ない支出で、<br class="mobile-break"><wbr>持ち帰れるものは多い。</h2>
         <p>美術館、食事、公園。どれか一つだけでも成立するし、全部できなくても失敗ではない。親が楽しむ姿も、子どもに渡せる体験の一部になる。</p>
       </section>
     
       <section class="section" id="faq" aria-labelledby="faq-title">
         <p class="section-label">Questions</p>
-        <h2 id="faq-title" style="margin: 0; color: #fff8e6; font-size: clamp(31px, 4.5vw, 58px); font-weight: 500; line-height: 1.32;">この体験について、よくある質問</h2>
+        <h2 id="faq-title" style="margin: 0; color: #fff8e6; font-size: clamp(31px, 4.5vw, 58px); font-weight: 500; line-height: 1.32;">この体験について、<br class="mobile-break"><wbr>よくある質問</h2>
         <div class="faq">
           <div class="faq-item"><h3>東京都現代美術館は子連れでも楽しめますか？</h3><p>楽しめます。広い館内に隣接して木場公園があり、ベビーカーでも回りやすい環境です。展示を一つに絞り、疲れたら公園や館内で休む組み立てにすると、子どもと無理なく一日を過ごせます。</p></div>
           <div class="faq-item"><h3>「100本のスプーン」とはどんなお店ですか？</h3><p>東京都現代美術館に併設された、子ども連れを歓迎するファミリーレストランです。美術館の鑑賞の前後に立ち寄れます。</p></div>
