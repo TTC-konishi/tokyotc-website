@@ -66,6 +66,10 @@
         max-width: 100%;
       }
 
+      br.mobile-break {
+        display: none;
+      }
+
       .site-header {
         position: fixed;
         top: 0;
@@ -779,7 +783,7 @@
           width: 144px;
         }
 
-        .site-nav a:nth-child(2) {
+        .site-nav {
           display: none;
         }
 
@@ -787,9 +791,25 @@
           font-size: clamp(34px, 11.5vw, 48px);
         }
 
+        .section h2,
+        .cta h2 {
+          font-size: clamp(27px, 7.2vw, 34px);
+          line-break: anywhere;
+          word-break: normal;
+        }
+
+        .quote-band {
+          font-size: clamp(24px, 6.8vw, 30px);
+          line-height: 1.48;
+        }
+
         .lead,
         .prose {
           font-size: 16px;
+        }
+
+        br.mobile-break {
+          display: initial;
         }
 
         .gallery {
@@ -984,7 +1004,7 @@
       <section class="section" id="scores">
         <div class="section-head">
           <p class="section-label">Three Seeds</p>
-          <h2>高いか安いかより、自分の中に何が残ったか。</h2>
+          <h2>高いか安いかより、<br class="mobile-break"><wbr>自分の中に何が残ったか</h2>
         </div>
         <div class="score-grid">
           <article class="score-card">
@@ -1030,13 +1050,13 @@
       <section class="section" id="effect">
         <div class="section-head">
           <p class="section-label">Experience Echo</p>
-          <h2>アマネムで残ったのは、静けさと余白の基準。</h2>
+          <h2>アマネムで残ったのは、<br class="mobile-break"><wbr>静けさと余白の基準</h2>
         </div>
         <div class="effect-grid">
           <div class="effect-list">
             <article>
               <div class="effect-copy">
-                <h3>建物が目に入らない自然。</h3>
+                <h3>建物が目に入らない自然</h3>
                 <p>
                   伊勢志摩国立公園の中にあるから、視界に余計な建物が入らない。
                   夜は街灯も生活音も遠く、怖いくらい暗い。その暗さのぶん、星がはっきり見える。
@@ -1049,7 +1069,7 @@
             </article>
             <article>
               <div class="effect-copy">
-                <h3>移動そのものが非日常になる。</h3>
+                <h3>移動そのものが非日常になる</h3>
                 <p>
                   敷地が広いので、施設内はカートで移動する。
                   駅で迎えられ、専用車で運ばれ、高台のレセプションからまたカートに乗る。
@@ -1063,7 +1083,7 @@
             </article>
             <article>
               <div class="effect-copy">
-                <h3>ホテルではなく、一つの家に住む感覚。</h3>
+                <h3>ホテルではなく、<br class="mobile-break"><wbr>一つの家に住む感覚</h3>
                 <p>
                   部屋から廊下に出るホテルではなく、ビラで過ごす。
                   広いベランダ、源泉かけ流しの温泉、いくつものソファーベッド。
@@ -1078,7 +1098,7 @@
             </article>
             <article>
               <div class="effect-copy">
-                <h3>スパまで、ほとんど貸切の余白。</h3>
+                <h3>スパまで、ほとんど貸切の余白</h3>
                 <p>
                   スパは広く、昼は開放的で、夜は暖炉とライティングが効く。
                   わざわざ貸切にしていないのに、他のゲストに会わないほどゆったりしている。
@@ -1118,7 +1138,7 @@
       <section class="section" id="story">
         <div class="section-head">
           <p class="section-label">Story</p>
-          <h2>違いは、豪華さよりも細部にあった。</h2>
+          <h2>違いは、<br class="mobile-break"><wbr>豪華さよりも<br class="mobile-break"><wbr>細部にあった</h2>
         </div>
         <div class="story-grid">
           <div class="prose">
@@ -1171,7 +1191,7 @@
               最後まで急かされず、余韻を残して帰れる。
             </p>
             <blockquote class="quote-band">
-              小さな願いを、体験として受け止めてくれた。
+              小さな願いを、<br class="mobile-break"><wbr>体験として<br class="mobile-break"><wbr>受け止めてくれた
             </blockquote>
           </div>
           <aside class="story-photo" aria-label="ホスピタリティを象徴する写真">
@@ -1190,14 +1210,14 @@
       <section class="section">
         <div class="section-head">
           <p class="section-label">Timeline</p>
-          <h2>11年の距離が、体験を資産に変えていった。</h2>
+          <h2>11年の距離が、<br class="mobile-break"><wbr>体験を資産に変えていった</h2>
         </div>
         <div class="timeline">
           <article>
             <time>2015</time>
             <figure class="timeline-photo"><img src="assets/timeline-2015.jpg" alt="アマン東京のロビーの吹き抜け。クリスマスツリーが余白に佇む。" loading="lazy"></figure>
             <div>
-              <h3>アマン東京で、余白の思想に触れる。</h3>
+              <h3>アマン東京で、余白の思想に触れる</h3>
               <p>部屋数に変えられるはずの吹き抜けを、あえて大きな空間として残す判断に驚く。</p>
             </div>
           </article>
@@ -1205,7 +1225,7 @@
             <time>2018</time>
             <figure class="timeline-photo"><img src="assets/timeline-2018.jpg" alt="白地図の地球儀。バーカウンターの前で。" loading="lazy"></figure>
             <div>
-              <h3>白地図の地球儀を買う。</h3>
+              <h3>白地図の地球儀を買う</h3>
               <p>息子にたくさんの体験価値を渡したい、という10年目標を書いた。</p>
             </div>
           </article>
@@ -1213,7 +1233,7 @@
             <time>2021</time>
             <figure class="timeline-photo"><img src="assets/timeline-2021.jpg" alt="アマネム到着時に受け取る、施設の案内マップ。" loading="lazy"></figure>
             <div>
-              <h3>アマネム初訪。</h3>
+              <h3>アマネム初訪</h3>
               <p>街灯のない暗さ、子ども用スリッパ、名前で迎える接客に、サービス観が更新される。</p>
             </div>
           </article>
@@ -1221,7 +1241,7 @@
             <time>2026</time>
             <figure class="timeline-photo"><img src="assets/timeline-2026.jpg" alt="アマネムからの帰り道、オレンジの革製ラゲージタグを膝の上で。" loading="lazy"></figure>
             <div>
-              <h3>3年振りの再訪。</h3>
+              <h3>3年振りの再訪</h3>
               <p>門をくぐった瞬間、「ああ、帰って来れたぞ」と感じるほど、自分の基準になっていた。</p>
             </div>
           </article>
@@ -1231,7 +1251,7 @@
       <section class="section" id="gallery">
         <div class="section-head">
           <p class="section-label">Scenes</p>
-          <h2>五感で受け取ったものは、あとから言葉になる。</h2>
+          <h2>五感で受け取ったものは、<br class="mobile-break"><wbr>あとから言葉になる</h2>
         </div>
         <div class="gallery">
           <figure>
@@ -1260,7 +1280,7 @@
       <section class="section">
         <div class="section-head">
           <p class="section-label">Value Note</p>
-          <h2>サービスとは、相手の本音を肯定することかもしれない。</h2>
+          <h2>サービスとは、<br class="mobile-break"><wbr>相手の本音を<br class="mobile-break"><wbr>肯定することかもしれない</h2>
         </div>
         <div class="note">
           <div class="prose">
@@ -1283,14 +1303,14 @@
             </p>
           </div>
           <aside class="note-box">
-            帰ってから、誰かを迎える時の目線が少し変わる。
+            帰ってから、誰かを迎える時の目線が少し変わる
           </aside>
         </div>
       </section>
 
       <section class="cta" id="attend">
         <p class="eyebrow">With Konishi</p>
-        <h2>ご一緒したい方へ。</h2>
+        <h2>ご一緒したい方へ</h2>
         <p>
           アマネムは、お伊勢参り、観光列車しまかぜ、MOKU伊勢志摩など、
           他の体験と組み合わせることで、もう一段深くなります。
@@ -1303,7 +1323,7 @@
     
       <section class="section" id="faq" aria-labelledby="faq-title">
         <p class="section-label">Questions</p>
-        <h2 id="faq-title" style="margin: 0; color: #fff8e6; font-size: clamp(31px, 4.5vw, 58px); font-weight: 500; line-height: 1.32;">この体験について、よくある質問</h2>
+        <h2 id="faq-title" style="margin: 0; color: #fff8e6; font-size: clamp(31px, 4.5vw, 58px); font-weight: 500; line-height: 1.32;">この体験について、<br class="mobile-break"><wbr>よくある質問</h2>
         <div class="faq">
           <div class="faq-item"><h3>アマネムとはどんな施設ですか？</h3><p>三重県・伊勢志摩の英虞湾を望む森に建つ、アマンの温泉リゾートです。全室に専用の温泉を備え、約2,000平方メートルのアマンスパを中心に、静かな滞在と湯治の文化を現代的に体験できます。</p></div>
           <div class="faq-item"><h3>アマネムはどこにありますか？</h3><p>三重県志摩市、伊勢志摩国立公園の中にあります。名古屋方面から鉄道または車でアクセスします。</p></div>
