@@ -64,6 +64,10 @@
         max-width: 100%;
       }
 
+      br.mobile-break {
+        display: none;
+      }
+
       .site-header {
         position: fixed;
         top: 0;
@@ -642,13 +646,25 @@
           width: 144px;
         }
 
-        .site-nav a:nth-child(2),
-        .site-nav a:nth-child(3) {
+        .site-nav {
           display: none;
         }
 
         .hero h1 {
-          font-size: clamp(28px, 8.8vw, 42px);
+          width: 100%;
+          max-width: 100%;
+          font-size: clamp(31px, 8.4vw, 36px);
+        }
+
+        .hero h1 span {
+          white-space: normal;
+        }
+
+        .section h2,
+        .scenes-section h2,
+        .cta h2 {
+          line-break: anywhere;
+          word-break: normal;
         }
 
         .lead,
@@ -667,6 +683,10 @@
         .gallery figure,
         .gallery figure:first-child {
           aspect-ratio: 4 / 3;
+        }
+
+        br.mobile-break {
+          display: initial;
         }
       }
 
@@ -719,10 +739,14 @@
         max-width: 760px;
         margin: 0 0 clamp(34px, 5vw, 66px);
         color: var(--paper);
-        font-size: clamp(36px, 5vw, 62px);
+        font-size: clamp(36px, 4.6vw, 56px);
         font-weight: 500;
         line-height: 1.32;
         letter-spacing: 0;
+      }
+
+      .screen-title .title-line {
+        display: block;
       }
 
       .visual-intro {
@@ -988,6 +1012,7 @@
         .visual-intro,
         .split-screen,
         .split-screen.is-wide,
+        .scenes-section,
         .commute-layout {
           grid-template-columns: 1fr;
           grid-template-areas: none;
@@ -996,7 +1021,10 @@
         .commute-layout .screen-label,
         .commute-layout .screen-title,
         .commute-layout .screen-prose,
-        .commute-layout .photo-card {
+        .commute-layout .photo-card,
+        .scenes-section .section-label,
+        .scenes-section h2,
+        .scenes-section .gallery {
           grid-area: auto;
         }
 
@@ -1025,7 +1053,18 @@
         }
 
         .screen-title {
-          font-size: clamp(30px, 8vw, 42px);
+          font-size: clamp(28px, 7.2vw, 34px);
+          line-break: anywhere;
+          word-break: normal;
+        }
+
+        .commute-layout .screen-title {
+          font-size: clamp(28px, 7.2vw, 34px);
+        }
+
+        .screen-title .title-line {
+          display: block;
+          width: 100%;
         }
       }
     
@@ -1171,7 +1210,7 @@
             <p class="eyebrow">Experience Report / Road Bike</p>
             <h1 id="page-title">
               <span>ロードバイクに乗ると、</span>
-              <span>玄関の外がゲレンデになる</span>
+              <span>玄関の外が<br class="mobile-break"><wbr>ゲレンデになる</span>
             </h1>
             <p class="lead">
               地図は変わらない。でも、ロードバイクに乗ると、自分の中の地図の縮尺が変わる。
@@ -1266,7 +1305,12 @@
       <section class="screen-section split-screen">
         <div>
           <p class="screen-label">Distance</p>
-          <h2 class="screen-title">100キロが、「今日はそこそこ走ったな」になる世界。</h2>
+          <h2 class="screen-title">
+            <span class="title-line">100キロが、</span>
+            <span class="title-line">「今日はそこそこ</span>
+            <span class="title-line">走ったな」</span>
+            <span class="title-line">になる世界</span>
+          </h2>
           <div class="screen-prose">
             <p>本格的にロードバイクを楽しんでいる人たちは、距離感が少し変わっています。最初は、10キロ走っただけでも、かなり遠くまで来たように感じます。</p>
             <p>やがて、30キロ、50キロと走れるようになる。そして慣れてくると、100キロ走って、今日はそこそこ走ったな。150キロ走ると、今日はしっかり走ったな。200キロ走ると、今日はかなり走ったな、という世界です。</p>
@@ -1282,7 +1326,11 @@
       <section class="screen-section split-screen">
         <div>
           <p class="screen-label">Daily Use</p>
-          <h2 class="screen-title">移動、運動、気分転換を、一つの行動に重ねる。</h2>
+          <h2 class="screen-title">
+            <span class="title-line">移動、運動、</span>
+            <span class="title-line">気分転換を</span>
+            <span class="title-line">一つの行動に重ねる</span>
+          </h2>
           <div class="screen-prose">
             <p>ロードバイクの良いところは、運動のためだけに特別な時間をつくらなくてもよいことです。電車や車で移動していた時間を、ときどきロードバイクに置き換える。それだけで、移動がエクササイズになります。</p>
             <p>風を感じる。季節の変化に気づく。頭の中が整理される。目的地に着くころには、少し身体も温まっている。</p>
@@ -1298,7 +1346,12 @@
       <section class="screen-section split-screen">
         <div>
           <p class="screen-label">First Bike</p>
-          <h2 class="screen-title">最初から、高価なロードバイクを買う必要はない。</h2>
+          <h2 class="screen-title">
+            <span class="title-line">最初から、</span>
+            <span class="title-line">高価な</span>
+            <span class="title-line">ロードバイクを</span>
+            <span class="title-line">買う必要はない</span>
+          </h2>
           <div class="screen-prose">
             <p>ロードバイクというと、高価な自転車を想像する人もいるかもしれません。確かに、上を見ればきりがありません。フレームの素材。ホイール。変速機。ウェアやシューズ。こだわり始めると、奥の深い世界です。</p>
             <p>でも、最初から高価なモデルを買う必要はありません。私自身も、最初から高価なロードバイクに乗っていたわけではありません。エントリーモデルでも、普通の自転車との違いは十分に感じられます。</p>
@@ -1314,7 +1367,10 @@
       <section class="screen-section split-screen">
         <div>
           <p class="screen-label">Mechanic</p>
-          <h2 class="screen-title">自転車だけではなく、「主治医」と出会う。</h2>
+          <h2 class="screen-title">
+            <span class="title-line">自転車だけではなく、</span>
+            <span class="title-line">「主治医」と出会う</span>
+          </h2>
           <div class="screen-prose">
             <p>ロードバイクは、買って終わりの道具ではありません。日常的な手入れは、自分でも少しずつ覚えていきます。タイヤに空気を入れる。チェーンをきれいにする。乗る前にブレーキを確認する。</p>
             <p>一方で、乗り続けていると、自分だけでは対応しにくい調整や消耗品の交換も出てきます。変速機の微妙な違和感。ブレーキの調整。身体に合わせたポジション。ホイールやチェーンの状態。</p>
@@ -1332,7 +1388,10 @@
       <section class="screen-section split-screen is-wide">
         <div>
           <p class="screen-label">Professional</p>
-          <h2 class="screen-title">専門職だからこそ、専門職に頼る。</h2>
+          <h2 class="screen-title">
+            <span class="title-line">専門職だからこそ、</span>
+            <span class="title-line">専門職に頼る</span>
+          </h2>
           <div class="screen-prose">
             <p>私は、お金に関わる仕事をしています。保険、資産形成、不動産、相続。どれも、インターネットで検索すれば、たくさんの情報が出てきます。</p>
             <p>それでも、情報だけでは解決できないことがあります。その人の状況を知っていること。少しの違和感に気づくこと。長く付き合いながら、必要なタイミングで調整すること。</p>
@@ -1354,7 +1413,11 @@
 
       <section class="screen-section commute-layout" id="commute">
         <p class="screen-label">Commute</p>
-        <h2 class="screen-title">通勤時間を、楽しい時間に置き換える。</h2>
+        <h2 class="screen-title">
+          <span class="title-line">通勤時間を、</span>
+          <span class="title-line">楽しい時間に</span>
+          <span class="title-line">置き換える</span>
+        </h2>
         <div class="screen-prose">
           <p>以前、お客様にロードバイクをおすすめしたことがあります。その方は、電車で通勤していました。毎月の通勤費を払い、電車に乗り、会社まで移動する。それは、ごく普通の日常です。</p>
           <p>そこで、会社のルールを確認したうえで、自転車通勤に切り替えました。これまで通勤のために使っていたお金や時間の一部を、ロードバイクや必要な装備に置き換える。特別に大きな支出を増やすのではありません。</p>
@@ -1370,7 +1433,7 @@
       <section class="score-section" id="scores">
         <div class="section-head">
           <p class="section-label">Three Axes</p>
-          <h2>この体験を、三つの視点で見てみる。</h2>
+          <h2>この体験を、<br class="mobile-break"><wbr>三つの視点で見てみる。</h2>
         </div>
         <div class="score-grid">
           <article class="score-card">
@@ -1397,7 +1460,7 @@
       <section class="score-section">
         <div class="section-head">
           <p class="section-label">Support Axes</p>
-          <h2>経済性・身体性・時間効率から見ても、続けやすい。</h2>
+          <h2>経済性・身体性・<br class="mobile-break"><wbr>時間効率から見ても、<br class="mobile-break"><wbr>続けやすい。</h2>
         </div>
         <div class="support-grid">
           <article class="support-card">
@@ -1420,7 +1483,7 @@
 
       <section class="screen-section scenes-section" id="gallery">
         <p class="section-label">Scenes</p>
-        <h2>日常のすぐ隣に、小さな冒険がある。</h2>
+        <h2>日常のすぐ隣に、<br class="mobile-break"><wbr>小さな冒険がある。</h2>
         <div class="gallery">
           <figure>
             <img src="assets/road-bike-hero.jpeg" alt="桜の木の下に置かれたロードバイク">
@@ -1447,7 +1510,7 @@
 
       <section class="cta">
         <p class="eyebrow">Closing</p>
-        <h2>玄関の外に、小さな冒険がある。</h2>
+        <h2>玄関の外に、<br class="mobile-break"><wbr>小さな冒険がある。</h2>
         <p>スキー場に行くには、準備が必要です。でも、ロードバイクなら、玄関を出たところから始められます。特別な旅行に出かけなくてもよい。高価な一台を買わなくてもよい。まとまった休みを取らなくてもよい。</p>
         <p>信号待ちをしながら、季節の空気を感じる。知らなかった店を見つける。川沿いの道で、少しだけスピードを上げる。ロードバイクは、日常のすぐ隣に小さな冒険があることを思い出させてくれる乗り物です。</p>
         <a class="cta-link" href="/experience/">体験メニュー一覧へ戻る</a>
@@ -1455,7 +1518,7 @@
     
       <section class="section" id="faq" aria-labelledby="faq-title">
         <p class="section-label">Questions</p>
-        <h2 id="faq-title" style="margin: 0; color: #fff8e6; font-size: clamp(31px, 4.5vw, 58px); font-weight: 500; line-height: 1.32;">この体験について、よくある質問</h2>
+        <h2 id="faq-title" style="margin: 0; color: #fff8e6; font-size: clamp(31px, 4.5vw, 58px); font-weight: 500; line-height: 1.32;">この体験について、<br class="mobile-break"><wbr>よくある質問</h2>
         <div class="faq">
           <div class="faq-item"><h3>ロードバイクは初心者でも始められますか？</h3><p>始められます。最初から高価な機材や長距離走行は必要なく、無理のない距離と装備から始めれば、移動・運動・気分転換を兼ねた日常の習慣として続けられます。</p></div>
           <div class="faq-item"><h3>ロードバイクの何が「体験資産」になるのですか？</h3><p>同じ道でも速度と視点が変わり、移動そのものが運動と気分転換になります。一度の出費が、日々くり返し使える時間と健康の体験へと変わっていきます。</p></div>
