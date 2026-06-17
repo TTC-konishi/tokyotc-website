@@ -417,17 +417,21 @@ export default function App() {
           </div>
         </section>
 
-        <section id="flow" className="bg-[#0B1F3A] py-20 text-white">
+        <section id="flow" className="luxury-flow-section bg-[#0B1F3A] py-20 text-white">
           <div className="mx-auto max-w-7xl px-5 md:px-8">
             <div className="mb-12">
               <p className="mb-3 text-sm font-semibold tracking-[0.26em] text-[#D8B46A]">CONSULTING FLOW</p>
               <h3 className="text-3xl font-semibold md:text-5xl">ご相談の流れ</h3>
             </div>
-            <div className="grid gap-5 md:grid-cols-4">
+            <div className="luxury-flow-grid grid gap-5 md:grid-cols-4">
               {flow.map(([num, title, text]) => (
-                <div key={num} className="luxury-dark-card rounded-[1.5rem] border border-white/15 bg-white/10 p-6 backdrop-blur">
-                  <p className="mb-6 text-4xl font-semibold text-[#D8B46A]">{num}</p>
-                  <h4 className="mb-3 text-xl font-semibold">{title}</h4>
+                <div key={num} className="luxury-flow-card luxury-dark-card rounded-[1.5rem] border border-white/15 bg-white/10 p-6 backdrop-blur">
+                  <div className="luxury-flow-card-head">
+                    <p className="luxury-flow-num">{num}</p>
+                    <span>STEP {num}</span>
+                  </div>
+                  <div className="luxury-flow-dot" aria-hidden="true" />
+                  <h4 className="mb-3 mt-10 text-xl font-semibold">{title}</h4>
                   <p className="leading-7 text-white/75">{text}</p>
                 </div>
               ))}
