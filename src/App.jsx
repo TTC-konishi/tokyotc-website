@@ -489,8 +489,8 @@ export default function App() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-5 py-20 md:px-8">
-          <div className="mb-12 text-center">
+        <section className="luxury-values-section mx-auto max-w-7xl px-5 py-20 md:px-8">
+          <div className="luxury-values-heading mb-12 text-center">
             <p className="mb-3 text-sm font-semibold tracking-[0.26em] text-[#B28A36]">OUR VALUES</p>
             <h3 className="text-3xl font-semibold text-[#0B1F3A] md:text-5xl">私たちが大切にしていること</h3>
             <p className="mx-auto mt-5 max-w-3xl leading-8 text-slate-600">
@@ -499,8 +499,8 @@ export default function App() {
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {values.map((value, index) => (
-              <div key={value.title} className="luxury-card rounded-[2rem] bg-white p-8 shadow-sm">
-                <p className="mb-6 text-4xl font-semibold text-[#D8B46A]">0{index + 1}</p>
+              <div key={value.title} className="luxury-value-card luxury-card rounded-[2rem] bg-white p-8 shadow-sm">
+                <p className="luxury-value-number mb-6 text-4xl font-semibold text-[#D8B46A]">0{index + 1}</p>
                 <h4 className="mb-4 text-2xl font-semibold text-[#0B1F3A]">{value.title}</h4>
                 <p className="leading-8 text-slate-600">{value.text}</p>
               </div>

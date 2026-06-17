@@ -677,6 +677,80 @@ a {
   box-shadow: 0 0 0 0.45rem rgba(216, 180, 106, 0.12), 0 0 34px rgba(216, 180, 106, 0.48);
 }
 
+.luxury-values-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.luxury-values-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  content: "";
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.82), rgba(247, 243, 234, 0.9) 42%, rgba(230, 222, 207, 0.88)),
+    radial-gradient(circle at 16% 12%, rgba(216, 180, 106, 0.18), transparent 26%),
+    radial-gradient(circle at 86% 20%, rgba(255, 255, 255, 0.78), transparent 28%);
+}
+
+.luxury-values-section::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(128deg, transparent 0 24%, rgba(100, 116, 139, 0.11) 24.2%, transparent 24.8%),
+    linear-gradient(142deg, transparent 0 42%, rgba(178, 138, 54, 0.14) 42.2%, transparent 42.8%),
+    linear-gradient(118deg, transparent 0 66%, rgba(100, 116, 139, 0.09) 66.1%, transparent 66.7%),
+    repeating-linear-gradient(118deg, rgba(255, 255, 255, 0.18) 0 1px, transparent 1px 96px);
+  opacity: 0.74;
+}
+
+.luxury-values-heading {
+  position: relative;
+}
+
+.luxury-values-heading::after {
+  display: block;
+  width: min(18rem, 70vw);
+  height: 1px;
+  margin: 2rem auto 0;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(178, 138, 54, 0.62), transparent);
+}
+
+.luxury-value-card {
+  position: relative;
+  border: 1px solid rgba(178, 138, 54, 0.18);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(250, 248, 242, 0.84)),
+    radial-gradient(circle at 18% 8%, rgba(255, 255, 255, 0.94), transparent 34%);
+  box-shadow: 0 24px 90px rgba(11, 31, 58, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.luxury-value-card::before {
+  background:
+    linear-gradient(118deg, transparent 0 36%, rgba(148, 163, 184, 0.12) 36.2%, transparent 37%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.88), transparent 44%, rgba(216, 180, 106, 0.14));
+  opacity: 1;
+}
+
+.luxury-value-card::after {
+  border: 1px solid rgba(216, 180, 106, 0.2);
+  box-shadow: 0 26px 90px rgba(11, 31, 58, 0.13), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+}
+
+.luxury-value-number {
+  background: linear-gradient(115deg, #9e7424, #fff0b5, #d8b46a, #7c5415);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: luxury-text-gold 5.5s ease-in-out infinite;
+}
+
 .luxury-image img {
   transition: transform 900ms ease, filter 900ms ease;
 }
@@ -1026,6 +1100,14 @@ a {
 
   .luxury-flow-dot {
     display: none;
+  }
+
+  .luxury-values-section::after {
+    opacity: 0.48;
+  }
+
+  .luxury-value-card {
+    padding: 1.75rem;
   }
 }
 
