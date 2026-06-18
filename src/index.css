@@ -677,9 +677,10 @@ a {
   z-index: -2;
   content: "";
   background:
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.98), transparent 30%),
-    radial-gradient(circle at 88% 18%, rgba(232, 228, 218, 0.36), transparent 32%),
-    linear-gradient(115deg, #ffffff 0%, #f7f7f2 48%, #fbfaf5 100%);
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.98), transparent 32%),
+    radial-gradient(circle at 84% 16%, rgba(238, 238, 232, 0.3), transparent 34%),
+    radial-gradient(circle at 50% 84%, rgba(226, 224, 216, 0.22), transparent 30%),
+    linear-gradient(115deg, #ffffff 0%, #fbfbf8 50%, #f7f7f2 100%);
 }
 
 .luxury-values-section::after {
@@ -689,12 +690,14 @@ a {
   pointer-events: none;
   content: "";
   background:
-    linear-gradient(126deg, transparent 0 21%, rgba(171, 166, 154, 0.12) 21.1%, rgba(255, 255, 255, 0.5) 21.5%, transparent 22.2%),
-    linear-gradient(144deg, transparent 0 43%, rgba(171, 166, 154, 0.1) 43.1%, rgba(255, 255, 255, 0.46) 43.5%, transparent 44.2%),
-    repeating-linear-gradient(0deg, rgba(90, 82, 68, 0.035) 0 1px, transparent 1px 4px),
-    repeating-linear-gradient(90deg, rgba(90, 82, 68, 0.026) 0 1px, transparent 1px 6px),
-    radial-gradient(circle at 42% 38%, rgba(120, 113, 100, 0.08), transparent 18%);
-  opacity: 0.78;
+    linear-gradient(153deg, transparent 0 20%, rgba(188, 184, 174, 0.18) 20.15%, rgba(255, 255, 255, 0.68) 20.55%, transparent 21.1%),
+    linear-gradient(164deg, transparent 0 48%, rgba(182, 178, 168, 0.13) 48.15%, rgba(255, 255, 255, 0.62) 48.5%, transparent 49.1%),
+    linear-gradient(18deg, transparent 0 68%, rgba(196, 192, 181, 0.14) 68.15%, rgba(255, 255, 255, 0.58) 68.5%, transparent 69.1%),
+    radial-gradient(ellipse at 26% 32%, rgba(146, 140, 126, 0.1), transparent 18%),
+    radial-gradient(ellipse at 72% 60%, rgba(128, 122, 110, 0.08), transparent 22%),
+    repeating-radial-gradient(circle at 35% 28%, rgba(72, 68, 58, 0.035) 0 1px, transparent 1px 4px);
+  mix-blend-mode: multiply;
+  opacity: 0.86;
 }
 
 .luxury-values-heading {
