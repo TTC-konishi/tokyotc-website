@@ -304,11 +304,11 @@ export default function App() {
                 お客様のための総合相談パートナー
               </div>
               <p className="mb-4 text-sm font-semibold tracking-[0.34em] text-[#F1D58A]">TOTAL LIFE CONSULTING</p>
-              <h2 className="luxury-title max-w-3xl text-5xl font-semibold leading-tight md:text-6xl">
-                <span className="block">売る前に、</span>
-                <span className="block">整理する。</span>
-                <span className="block"><span className="luxury-title-gold text-[#D8B46A]">家族と事業の安心</span>を</span>
-                <span className="block">設計する。</span>
+              <h2 className="luxury-title luxury-title-final max-w-3xl text-[2.35rem] font-semibold leading-tight md:text-[2.85rem] lg:text-[3rem]">
+                <span className="block">保険・相続・不動産を、</span>
+                <span className="block"><span className="luxury-title-gold text-[#D8B46A]">ひとつの窓口</span>で。</span>
+                <span className="mt-5 block"><span className="block md:inline">家族と会社の</span><span className="luxury-title-gold text-[#D8B46A]">「あとで困る」</span>を、</span>
+                <span className="block">先に整える相談室です。</span>
               </h2>
               <p className="mt-7 max-w-2xl text-lg leading-9 text-white/86">
                 私たちは、保険を売るだけの会社ではありません。保険・相続・不動産を横断し、家族・会社・資産・相続にまたがる不安を、まず一緒に整理する総合相談パートナーです。
@@ -341,7 +341,7 @@ export default function App() {
             <div className="luxury-reveal luxury-reveal-delay relative">
               <div className="luxury-stage">
                 <div className="luxury-stage-ring" aria-hidden="true" />
-                <div className="luxury-frame luxury-hero-card rounded-[2rem] border border-[#D8B46A]/35 bg-white/12 p-4 shadow-2xl backdrop-blur-xl">
+                <div className="luxury-frame luxury-hero-card luxury-hero-card-muted rounded-[2rem] border border-[#D8B46A]/35 bg-white/12 p-4 shadow-2xl backdrop-blur-xl" aria-hidden="true">
                   <div className="rounded-[1.5rem] bg-[#F7F3EA]/95 p-6 text-slate-900">
                     <div className="luxury-gradient-panel mb-5 min-h-[22rem] rounded-[1.25rem] bg-gradient-to-br from-slate-900 via-[#0B1F3A] to-[#D8B46A] p-6 text-white">
                       <div className="flex min-h-[19rem] flex-col justify-between rounded-2xl border border-[#D8B46A]/50 bg-black/30 p-5 backdrop-blur-sm">
@@ -371,13 +371,16 @@ export default function App() {
                   </div>
                 </div>
               </div>
-              <div className="luxury-service-tickets" aria-label="相談できること">
-                <p className="luxury-service-ticket-heading">相談できること</p>
+              <div className="luxury-service-tickets" aria-labelledby="hero-consultation-menu-title">
+                <div className="luxury-service-ticket-heading">
+                  <p id="hero-consultation-menu-title">相談できること</p>
+                  <span>あなたの不安に近い入口を選んでください</span>
+                </div>
                 {heroServiceTickets.map(([title, label, href], index) => (
                   <a
                     key={title}
                     href={href}
-                    className="luxury-floating-ticket luxury-service-ticket"
+                    className={`luxury-floating-ticket luxury-service-ticket ${index < 4 ? "luxury-service-ticket-primary" : "luxury-service-ticket-secondary"}`}
                     style={{ "--ticket-index": index }}
                   >
                     <strong>{title}<span>→</span></strong>
