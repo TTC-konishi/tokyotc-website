@@ -104,13 +104,6 @@ const heroServiceTickets = [
   ["イベント", "Event", "/events/"],
 ];
 
-const strengths = [
-  "保険だけで終わらない総合相談",
-  "お客様一人ひとりに寄り添う実務感覚",
-  "相続・任意後見・不動産まで横断的に整理",
-  "公式LINE・オンライン相談にも対応",
-];
-
 const flow = [
   ["01", "初回相談", "現在のお悩みや将来への不安を丁寧に伺います。"],
   ["02", "見える化", "家計・会社・資産・相続の課題を整理します。"],
@@ -339,54 +332,41 @@ export default function App() {
             </div>
 
             <div className="luxury-reveal luxury-reveal-delay relative">
-              <div className="luxury-stage">
+              <div className="luxury-stage luxury-phone-stage">
                 <div className="luxury-stage-ring" aria-hidden="true" />
-                <div className="luxury-frame luxury-hero-card luxury-hero-card-muted rounded-[2rem] border border-[#D8B46A]/35 bg-white/12 p-4 shadow-2xl backdrop-blur-xl" aria-hidden="true">
-                  <div className="rounded-[1.5rem] bg-[#F7F3EA]/95 p-6 text-slate-900">
-                    <div className="luxury-gradient-panel mb-5 min-h-[22rem] rounded-[1.25rem] bg-gradient-to-br from-slate-900 via-[#0B1F3A] to-[#D8B46A] p-6 text-white">
-                      <div className="flex min-h-[19rem] flex-col justify-between rounded-2xl border border-[#D8B46A]/50 bg-black/30 p-5 backdrop-blur-sm">
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#D8B46A] text-[#0B1F3A] font-semibold shadow-lg shadow-[#D8B46A]/30">
-                            総
-                          </div>
-                          <div>
-                            <p className="text-xs tracking-[0.2em] text-[#F1D58A]">PRIVATE CONSULTING</p>
-                            <p className="font-semibold">お客様の未来を守る設計</p>
-                          </div>
-                        </div>
-                        <div>
-                          <p className="mb-2 text-4xl font-semibold text-white">Total Life Design</p>
-                          <p className="text-sm leading-7 text-white/78">保険・相続・不動産・老後資金をひとつの地図にして、次の一手を明確にします。</p>
-                        </div>
-                      </div>
+                <div className="luxury-phone-mock" aria-labelledby="hero-consultation-menu-title">
+                  <div className="luxury-phone-speaker" aria-hidden="true" />
+                  <div className="luxury-phone-screen">
+                    <div className="luxury-phone-status" aria-hidden="true">
+                      <span>9:41</span>
+                      <span>●●●</span>
                     </div>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {strengths.map((item) => (
-                        <div key={item} className="luxury-mini-card flex items-start gap-2 rounded-2xl bg-white p-4 text-sm shadow-sm">
-                          <span className="mt-0.5 shrink-0 text-[#B28A36]">✓</span>
-                          <span>{item}</span>
-                        </div>
+                    <div className="luxury-phone-brand">
+                      <p>Tokyo Total Consulting</p>
+                      <h3 id="hero-consultation-menu-title">相談できること</h3>
+                      <span>あなたの不安に近い入口を選んでください</span>
+                    </div>
+                    <div className="luxury-phone-menu" aria-label="相談メニュー">
+                      {heroServiceTickets.map(([title,, href], index) => (
+                        <a
+                          key={title}
+                          href={href}
+                          className={`luxury-phone-menu-item ${index < 4 ? "luxury-phone-menu-item-primary" : "luxury-phone-menu-item-secondary"}`}
+                        >
+                          <span>{title}</span>
+                          <span aria-hidden="true">→</span>
+                        </a>
                       ))}
+                    </div>
+                    <a href="#contact" className="luxury-phone-line-cta">
+                      公式LINEで相談する <span aria-hidden="true">→</span>
+                    </a>
+                    <div className="luxury-phone-brand-chip" aria-hidden="true">
+                      <span>ひとつの窓口</span>
+                      <span>保険・相続・不動産</span>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="luxury-service-tickets" aria-labelledby="hero-consultation-menu-title">
-                <div className="luxury-service-ticket-heading">
-                  <p id="hero-consultation-menu-title">相談できること</p>
-                  <span>あなたの不安に近い入口を選んでください</span>
-                </div>
-                {heroServiceTickets.map(([title, label, href], index) => (
-                  <a
-                    key={title}
-                    href={href}
-                    className={`luxury-floating-ticket luxury-service-ticket ${index < 4 ? "luxury-service-ticket-primary" : "luxury-service-ticket-secondary"}`}
-                    style={{ "--ticket-index": index }}
-                  >
-                    <strong>{title}<span>→</span></strong>
-                    <p>{label}</p>
-                  </a>
-                ))}
               </div>
             </div>
           </div>
