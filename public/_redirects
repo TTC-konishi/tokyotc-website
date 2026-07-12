@@ -1,1 +1,35 @@
 https://konkatsu.tokyotc.com/* /konkatsu/:splat 200!
+
+# ============================================================
+# 旧コンカツトーキョーTTC（あきばれ）→ 新 /konkatsu/ 301転送
+# 追加日: 2026-07-12 / 前提: 旧2ドメインをNetlifyにエイリアス追加済み
+# 評価順: 上から最初の一致が優先。個別ページ→catch-all の順を崩さない。
+# ============================================================
+
+# --- 個別ページ: www ---
+https://www.konkatsutokyo-ttc.jp/readme     https://tokyotc.com/konkatsu/readme/     301!
+https://www.konkatsutokyo-ttc.jp/feature    https://tokyotc.com/konkatsu/feature/    301!
+https://www.konkatsutokyo-ttc.jp/plan       https://tokyotc.com/konkatsu/plan/       301!
+https://www.konkatsutokyo-ttc.jp/greeting   https://tokyotc.com/konkatsu/greeting/   301!
+https://www.konkatsutokyo-ttc.jp/flow       https://tokyotc.com/konkatsu/flow/       301!
+https://www.konkatsutokyo-ttc.jp/data       https://tokyotc.com/konkatsu/data/       301!
+https://www.konkatsutokyo-ttc.jp/faq        https://tokyotc.com/konkatsu/faq/        301!
+https://www.konkatsutokyo-ttc.jp/m-contact  https://tokyotc.com/konkatsu/#contact    301!
+https://www.konkatsutokyo-ttc.jp/w-contact  https://tokyotc.com/konkatsu/#contact    301!
+https://www.konkatsutokyo-ttc.jp/privacy    https://tokyotc.com/privacy/             301!
+
+# --- 個別ページ: apex（非www）---
+https://konkatsutokyo-ttc.jp/readme     https://tokyotc.com/konkatsu/readme/     301!
+https://konkatsutokyo-ttc.jp/feature    https://tokyotc.com/konkatsu/feature/    301!
+https://konkatsutokyo-ttc.jp/plan       https://tokyotc.com/konkatsu/plan/       301!
+https://konkatsutokyo-ttc.jp/greeting   https://tokyotc.com/konkatsu/greeting/   301!
+https://konkatsutokyo-ttc.jp/flow       https://tokyotc.com/konkatsu/flow/       301!
+https://konkatsutokyo-ttc.jp/data       https://tokyotc.com/konkatsu/data/       301!
+https://konkatsutokyo-ttc.jp/faq        https://tokyotc.com/konkatsu/faq/        301!
+https://konkatsutokyo-ttc.jp/m-contact  https://tokyotc.com/konkatsu/#contact    301!
+https://konkatsutokyo-ttc.jp/w-contact  https://tokyotc.com/konkatsu/#contact    301!
+https://konkatsutokyo-ttc.jp/privacy    https://tokyotc.com/privacy/             301!
+
+# --- catch-all（上記以外の旧URLは新トップへ）---
+https://www.konkatsutokyo-ttc.jp/*  https://tokyotc.com/konkatsu/  301!
+https://konkatsutokyo-ttc.jp/*      https://tokyotc.com/konkatsu/  301!
