@@ -1,0 +1,104 @@
+[
+  {
+    "id": "home",
+    "title": "メインホームページ",
+    "url": "https://tokyotc.com/",
+    "aliases": ["ホーム", "トップ", "最初のページ", "メインページ", "会社のホームページ"]
+  },
+  {
+    "id": "insurance",
+    "title": "保険相談",
+    "url": "/insurance/index.html",
+    "aliases": ["保険", "生命保険", "保険相談", "保障"]
+  },
+  {
+    "id": "asset",
+    "title": "資産形成・老後資金",
+    "url": "/asset/index.html",
+    "aliases": ["資産形成", "老後資金", "積立", "資産運用"]
+  },
+  {
+    "id": "inheritance",
+    "title": "遺言・相続・任意後見",
+    "url": "/inheritance/index.html",
+    "aliases": ["相続", "遺言", "任意後見", "民事信託"]
+  },
+  {
+    "id": "property",
+    "title": "不動産・資産承継",
+    "url": "/property/index.html",
+    "aliases": ["不動産", "資産承継", "実家", "売却", "賃貸"]
+  },
+  {
+    "id": "salon",
+    "title": "相談サロンの様子・お客様の声",
+    "url": "/salon/index.html",
+    "aliases": ["相談サロン", "サロン", "お客様の声", "前田さん", "店内写真"]
+  },
+  {
+    "id": "konkatsu-home",
+    "title": "婚活サイト トップページ",
+    "url": "/konkatsu/index.html",
+    "aliases": ["婚活トップ", "結婚相談所トップ", "コンカツトーキョー"]
+  },
+  {
+    "id": "konkatsu-readme",
+    "title": "婚活サイト 初めての方へ",
+    "url": "/konkatsu/readme/index.html",
+    "aliases": ["初めての方", "初めて利用", "婚活の悩み", "当相談所について"]
+  },
+  {
+    "id": "konkatsu-feature",
+    "title": "婚活サイト 選ばれる理由",
+    "url": "/konkatsu/feature/index.html",
+    "aliases": ["選ばれる理由", "婚活の特徴", "3つの理由", "三つの理由"]
+  },
+  {
+    "id": "konkatsu-plan",
+    "title": "婚活サイト プラン・料金",
+    "url": "/konkatsu/plan/index.html",
+    "aliases": ["料金", "料金表", "プラン", "月会費", "入会金", "登録料", "成婚料", "婚活料金"]
+  },
+  {
+    "id": "konkatsu-greeting",
+    "title": "婚活サイト カウンセラー紹介",
+    "url": "/konkatsu/greeting/index.html",
+    "aliases": ["カウンセラー", "スタッフ紹介", "小西詠子", "YUU", "ごあいさつ"]
+  },
+  {
+    "id": "konkatsu-flow",
+    "title": "婚活サイト ご結婚までの流れ",
+    "url": "/konkatsu/flow/index.html",
+    "aliases": ["結婚までの流れ", "婚活の流れ", "入会手続き", "お見合い", "プロポーズ"]
+  },
+  {
+    "id": "konkatsu-data",
+    "title": "婚活サイト 会員データ",
+    "url": "/konkatsu/data/index.html",
+    "aliases": ["会員データ", "年齢層", "会員数", "年収データ"]
+  },
+  {
+    "id": "konkatsu-faq",
+    "title": "婚活サイト よくあるご質問",
+    "url": "/konkatsu/faq/index.html",
+    "aliases": ["よくある質問", "質問", "Q&A", "FAQ"]
+  },
+  {
+    "id": "konkatsu-access",
+    "title": "婚活サイト 概要・アクセス",
+    "url": "/konkatsu/access/index.html",
+    "aliases": ["アクセス", "住所", "概要", "森下駅", "営業時間"]
+  },
+  {
+    "id": "events",
+    "title": "イベント情報",
+    "url": "/events/index.html",
+    "aliases": ["イベント", "日本酒の会", "催し", "セミナー"]
+  },
+  {
+    "id": "experience",
+    "title": "体験メニュー",
+    "url": "/experience/index.html",
+    "aliases": ["体験", "体験メニュー", "旅行", "日本酒", "古民家"]
+  }
+]

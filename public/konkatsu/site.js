@@ -277,6 +277,212 @@ const pages = {
   }
 };
 
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function isLocalPreviewHost() {
+  const hostname = window.location.hostname;
+  return (
+    ["localhost", "127.0.0.1"].includes(hostname) ||
+    /^10\./.test(hostname) ||
+    /^192\.168\./.test(hostname) ||
+    /^172\.(1[6-9]|2\d|3[01])\./.test(hostname)
+  );
+}
+
+function isAssistantPreview() {
+  const params = new URLSearchParams(window.location.search);
+  return params.has("assistant") || params.has("proposal");
+}
+
+function managedImagePath(value, fallback) {
+  const isLocalPreview = isLocalPreviewHost();
+
+  if (
+    isLocalPreview &&
+    typeof value === "string" &&
+    /^data:image\/(jpeg|png|webp);base64,/.test(value) &&
+    value.length <= 1600000
+  ) {
+    return value;
+  }
+
+  if (
+    typeof value === "string" &&
+    value.startsWith("/konkatsu/assets/konkatsu/") &&
+    !value.includes("..")
+  ) {
+    return value;
+  }
+
+  return fallback;
+}
+
+function renderManagedFeature(content) {
+  const reasons = Array.isArray(content.reasons) ? content.reasons : [];
+
+  if (reasons.length !== 3) {
+    throw new Error("The managed feature page must contain exactly three reasons.");
+  }
+
+  return {
+    title: content.title || pages.feature.title,
+    lead: content.lead || pages.feature.lead,
+    html: `
+      <section class="section">
+        ${reasons.map((reason, index) => {
+          const fallbackImage = `/konkatsu/assets/konkatsu/reason-0${index + 1}.png`;
+          const image = managedImagePath(reason.image, fallbackImage);
+          const paragraphs = Array.isArray(reason.paragraphs) ? reason.paragraphs : [];
+
+          return `
+            <div class="reason-block" id="0${index + 1}">
+              <img src="${escapeHtml(image)}" alt="${escapeHtml(reason.imageAlt || "")}">
+              <div>
+                <h2>${escapeHtml(reason.heading || "")}</h2>
+                ${paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join("")}
+              </div>
+            </div>
+          `;
+        }).join("")}
+      </section>
+    `
+  };
+}
+
+async function loadPage(key) {
+  if (key !== "feature") {
+    return pages[key];
+  }
+
+  try {
+    if (isLocalPreviewHost()) {
+      const localDraft = window.localStorage.getItem("ttc-konkatsu-feature-draft");
+      if (localDraft) {
+        return renderManagedFeature(JSON.parse(localDraft));
+      }
+    }
+
+    const response = await fetch("/content/konkatsu/feature.json", { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error(`Content request failed with status ${response.status}.`);
+    }
+
+    return renderManagedFeature(await response.json());
+  } catch (error) {
+    console.warn("Managed feature content could not be loaded; using bundled content.", error);
+    return pages.feature;
+  }
+}
+
+function applyAssistantDraft(key) {
+  if (!isAssistantPreview()) return;
+
+  const pageIds = {
+    readme: "konkatsu-readme",
+    feature: "konkatsu-feature",
+    plan: "konkatsu-plan",
+    greeting: "konkatsu-greeting",
+    flow: "konkatsu-flow",
+    data: "konkatsu-data",
+    faq: "konkatsu-faq",
+    access: "konkatsu-access"
+  };
+
+  try {
+    const drafts = JSON.parse(window.localStorage.getItem("ttc-assistant-page-drafts")) || {};
+    const draft = drafts[pageIds[key]];
+    if (!draft) return;
+
+    if (key === "plan" && draft.prices && typeof draft.prices === "object") {
+      document.querySelectorAll(".price-table tr").forEach(row => {
+        const label = row.querySelector("th")?.textContent.trim();
+        const value = draft.prices[label];
+        if (value && /^\d{1,3}(,\d{3})*円$/.test(value)) {
+          row.querySelector("td").textContent = value;
+        }
+      });
+    }
+
+    if (key === "data" && draft.dataUpdate && typeof draft.dataUpdate === "object") {
+      const update = draft.dataUpdate;
+      const numericFields = ["member", "partners", "omiaiMonth", "marriagesYear", "omiaiYear"];
+      const validNumbers = numericFields.every(field => /^\d{1,3}(,\d{3})*$/.test(update[field]));
+      if (validNumbers && /^20\d{2}年\d{1,2}月$/.test(update.sourceAsOf)) {
+        const leadBoxes = document.querySelectorAll(".content .lead-box");
+        const memberLeadBox = leadBoxes[1];
+        const sections = document.querySelectorAll(".section");
+        const summaryParagraphs = sections[0]?.querySelectorAll("p");
+        const marriageParagraphs = sections[1]?.querySelectorAll("p");
+        const cards = sections[1]?.querySelectorAll(".data-card");
+
+        if (memberLeadBox) {
+          const strong = document.createElement("strong");
+          strong.textContent = update.member;
+          memberLeadBox.replaceChildren(
+            document.createTextNode("会員数 "),
+            strong,
+            document.createTextNode(" 名"),
+            document.createElement("br"),
+            document.createTextNode(`（${update.sourceAsOf}現在）`)
+          );
+        }
+
+        if (summaryParagraphs?.length >= 2) {
+          summaryParagraphs[0].textContent = `コンカツトーキョーTTCは、日本全国にある${update.partners}社の結婚相談所が加盟する、日本最大級の結婚相談所ネットワーク「IBJ」の正規加盟店です。`;
+          summaryParagraphs[1].textContent = `IBJでは、2025年に年間${update.omiaiYear}件、${update.sourceAsOf}には月間${update.omiaiMonth}件のお見合いが行われています。`;
+        }
+
+        if (marriageParagraphs?.length >= 2) {
+          marriageParagraphs[0].textContent = `IBJに登録する会員の内、2025年は${update.marriagesYear}名がご成婚退会されています。`;
+          marriageParagraphs[1].textContent = "※ IBJ連盟内・システム内での成婚者数。IBJ公式公表値。";
+        }
+
+        if (cards?.length === 3) {
+          const cardValues = [
+            ["2023年", "13,516名"],
+            ["2024年", "15,374名"],
+            ["2025年", `${update.marriagesYear}名`]
+          ];
+          cards.forEach((card, index) => {
+            card.querySelector("span").textContent = cardValues[index][0];
+            card.querySelector("strong").textContent = cardValues[index][1];
+          });
+        }
+      }
+    }
+
+    if (Array.isArray(draft.replacements)) {
+      const textNodes = [];
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+      draft.replacements.slice(-20).forEach(replacement => {
+        if (
+          typeof replacement.from !== "string" ||
+          typeof replacement.to !== "string" ||
+          replacement.from.length === 0 ||
+          replacement.from.length > 200 ||
+          replacement.to.length > 200
+        ) return;
+
+        textNodes.forEach(node => {
+          if (node.parentElement?.closest("script, style")) return;
+          node.nodeValue = node.nodeValue.split(replacement.from).join(replacement.to);
+        });
+      });
+    }
+  } catch (error) {
+    console.warn("The local assistant draft could not be applied.", error);
+  }
+}
+
 const nav = [
   ["../", "トップページ", "home"],
   ["../readme/", "初めての方へ", "readme"],
@@ -288,9 +494,10 @@ const nav = [
   ["../faq/", "Q & A", "faq"]
 ];
 
-function renderPage() {
+async function renderPage() {
   const key = document.body.dataset.page;
-  const page = pages[key];
+  const page = await loadPage(key);
+  const safeTitle = escapeHtml(page.title);
   document.title = `${page.title} - コンカツトーキョーTTC`;
   document.body.innerHTML = `
     <header class="site-header">
@@ -324,8 +531,8 @@ function renderPage() {
     <main>
       <section class="page-hero">
         <div class="page-hero-inner">
-          <h1>${page.title}</h1>
-          <div class="breadcrumbs"><a href="../">トップページ</a> &gt; ${page.title}</div>
+          <h1>${safeTitle}</h1>
+          <div class="breadcrumbs"><a href="../">トップページ</a> &gt; ${safeTitle}</div>
         </div>
       </section>
       <div class="page-shell">
@@ -350,7 +557,7 @@ function renderPage() {
           </div>
         </aside>
         <article class="content">
-          <div class="lead-box">${page.lead}</div>
+          <div class="lead-box">${escapeHtml(page.lead)}</div>
           ${page.html}
           <section class="cta-panel">
             <h2>どうぞお気軽にお問合せください</h2>
@@ -378,6 +585,8 @@ function renderPage() {
       </div>
     </footer>
   `;
+
+  applyAssistantDraft(key);
 }
 
 renderPage();
