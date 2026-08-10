@@ -1,0 +1,67 @@
+backend:
+  name: git-gateway
+  branch: main
+  squash_merges: true
+
+publish_mode: editorial_workflow
+site_url: https://tokyotc.com
+display_url: https://tokyotc.com
+logo_url: https://tokyotc.com/logo-horizontal.png
+locale: ja
+show_preview_links: true
+
+media_folder: public/konkatsu/assets/konkatsu
+public_folder: /konkatsu/assets/konkatsu
+
+editor:
+  preview: false
+
+collections:
+  - name: konkatsu_pages
+    label: 婚活サイト
+    label_singular: 婚活ページ
+    files:
+      - name: feature
+        label: 選ばれる理由
+        file: public/content/konkatsu/feature.json
+        preview_path: konkatsu/feature/
+        fields:
+          - label: ページの見出し
+            name: title
+            widget: string
+            hint: ページ上部に大きく表示されます。
+          - label: はじめの説明文
+            name: lead
+            widget: text
+            hint: 見出しの下に表示される短い説明です。
+          - label: 3つの選ばれる理由
+            name: reasons
+            widget: list
+            allow_add: false
+            min: 3
+            max: 3
+            collapsed: false
+            summary: "{{fields.heading}}"
+            fields:
+              - label: 理由の見出し
+                name: heading
+                widget: string
+              - label: 説明文
+                name: paragraphs
+                widget: list
+                min: 1
+                max: 4
+                field:
+                  label: 段落
+                  name: paragraph
+                  widget: text
+              - label: 写真
+                name: image
+                widget: image
+                choose_url: false
+                hint: パソコンやスマートフォンから写真を選べます。
+              - label: 写真の説明
+                name: imageAlt
+                widget: string
+                required: false
+                hint: 写真を見られない方にも内容が伝わる短い説明です。
