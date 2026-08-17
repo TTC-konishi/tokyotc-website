@@ -181,45 +181,46 @@ const pages = {
     title: "会員データ",
     lead: "IBJでは、どのような方々が婚活をしているのか、入会者数・成婚者数・年齢層・エリアなどのデータをまとめました。",
     html: `
-      <div class="lead-box">会員数 <strong>104,673</strong> 名<br>（2025年11月現在）</div>
+      <div class="lead-box">会員数 <strong>110,420</strong> 名<br>（2026年7月現在）</div>
       <section class="section">
-        <p>コンカツトーキョーTTCは、日本全国にある4,500社以上の結婚相談所が加盟する、日本最大級の結婚相談所ネットワーク「IBJ」の正規加盟店です。</p>
-        <p>安心安全のお見合いを毎月79,600件以上ご提供する「IBJ」では、入会者数・成婚者数・年齢層などのデータを公開しています。</p>
+        <p>コンカツトーキョーTTCは、日本全国にある4,800社以上の結婚相談所が加盟する、日本最大級の結婚相談所ネットワーク「IBJ」の正規加盟店です。</p>
+        <p>安心安全のお見合いを毎月90,000件以上ご提供する「IBJ」では、入会者数・成婚者数・年齢層などのデータを公開しています。</p>
       </section>
       <section class="section">
         <h2>業界No.1* 成婚者数</h2>
-        <p>IBJに登録する会員の内、2024年は15,374名がご成婚退会されています。</p>
+        <p>IBJに登録する会員の内、2025年は19,112名がご成婚退会されています。</p>
         <div class="data-cards">
           <div class="data-card"><span>2022年</span><strong>12,437名</strong></div>
           <div class="data-card"><span>2023年</span><strong>13,516名</strong></div>
           <div class="data-card"><span>2024年</span><strong>15,374名</strong></div>
+          <div class="data-card"><span>2025年</span><strong>19,112名</strong></div>
         </div>
         <p>※ IBJのシステム内での成婚者のみ。日本マーケティングリサーチ機構調べ。</p>
       </section>
       <section class="section">
         <h2>新規入会者数</h2>
-        <p>毎月平均で約6,200名の会員が入会しています。</p>
-        <div class="lead-box">2025年6月の新規入会者数 <strong>6,026</strong> 名</div>
+        <p>毎月平均で約6,400名の会員が入会しています。</p>
+        <div class="lead-box">2026年7月の新規入会者数 <strong>6,428</strong> 名</div>
       </section>
       <section class="section">
         <h2>男性会員の年齢層</h2>
         <p>男性会員の年齢は、30代後半がボリュームゾーン。生活が安定しており、信頼してお相手を紹介しあえる方々が多いのが特徴です。</p>
         <table class="data-table">
-          <tr><th>～29才</th><td>6.6％</td></tr><tr><th>30才～34才</th><td>17.8％</td></tr><tr><th>35才～39才</th><td>23.1％</td></tr><tr><th>40才～44才</th><td>18.4％</td></tr><tr><th>45才～49才</th><td>13.9％</td></tr><tr><th>50代以上</th><td>20.2％</td></tr>
+          <tr><th>～29才</th><td>8.3％</td></tr><tr><th>30才～34才</th><td>20.5％</td></tr><tr><th>35才～39才</th><td>23.8％</td></tr><tr><th>40才～44才</th><td>17.9％</td></tr><tr><th>45才～49才</th><td>12.0％</td></tr><tr><th>50代以上</th><td>17.4％</td></tr>
         </table>
       </section>
       <section class="section">
         <h2>女性会員の年齢層</h2>
         <p>女性会員の年齢も、30代後半がボリュームゾーン。真剣に結婚を考える年齢層が多いのが特徴です。</p>
         <table class="data-table">
-          <tr><th>～29才</th><td>13.4％</td></tr><tr><th>30才～34才</th><td>26.1％</td></tr><tr><th>35才～39才</th><td>27.1％</td></tr><tr><th>40才～44才</th><td>15.5％</td></tr><tr><th>45才～49才</th><td>7.8％</td></tr><tr><th>50代以上</th><td>10.1％</td></tr>
+          <tr><th>～29才</th><td>16.4％</td></tr><tr><th>30才～34才</th><td>27.5％</td></tr><tr><th>35才～39才</th><td>25.9％</td></tr><tr><th>40才～44才</th><td>14.7％</td></tr><tr><th>45才～49才</th><td>6.7％</td></tr><tr><th>50代以上</th><td>8.7％</td></tr>
         </table>
       </section>
       <section class="section">
         <h2>男性会員の年収</h2>
         <p>男性の公開年収は、400～799万円がボリュームゾーン。結婚相手を探すためのデータベースとして良質です。</p>
         <table class="data-table">
-          <tr><th>～399万</th><td>14.1％</td></tr><tr><th>400～599万</th><td>39.2％</td></tr><tr><th>600～799万</th><td>25.3％</td></tr><tr><th>800～999万</th><td>10.0％</td></tr><tr><th>1000万～</th><td>11.4％</td></tr>
+          <tr><th>～399万</th><td>11.6％</td></tr><tr><th>400～599万</th><td>36.4％</td></tr><tr><th>600～799万</th><td>27.7％</td></tr><tr><th>800～999万</th><td>11.6％</td></tr><tr><th>1000万～</th><td>12.7％</td></tr>
         </table>
       </section>
     `
