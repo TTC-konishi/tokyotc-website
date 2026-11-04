@@ -181,46 +181,45 @@ const pages = {
     title: "会員データ",
     lead: "IBJでは、どのような方々が婚活をしているのか、入会者数・成婚者数・年齢層・エリアなどのデータをまとめました。",
     html: `
-      <div class="lead-box">会員数 <strong>110,420</strong> 名<br>（2026年7月現在）</div>
+      <div class="lead-box">会員数 <strong>104,673</strong> 名<br>（2025年11月現在）</div>
       <section class="section">
-        <p>コンカツトーキョーTTCは、日本全国にある4,800社以上の結婚相談所が加盟する、日本最大級の結婚相談所ネットワーク「IBJ」の正規加盟店です。</p>
-        <p>安心安全のお見合いを毎月90,000件以上ご提供する「IBJ」では、入会者数・成婚者数・年齢層などのデータを公開しています。</p>
+        <p>コンカツトーキョーTTCは、日本全国にある4,500社以上の結婚相談所が加盟する、日本最大級の結婚相談所ネットワーク「IBJ」の正規加盟店です。</p>
+        <p>安心安全のお見合いを毎月79,600件以上ご提供する「IBJ」では、入会者数・成婚者数・年齢層などのデータを公開しています。</p>
       </section>
       <section class="section">
         <h2>業界No.1* 成婚者数</h2>
-        <p>IBJに登録する会員の内、2025年は19,112名がご成婚退会されています。</p>
+        <p>IBJに登録する会員の内、2024年は15,374名がご成婚退会されています。</p>
         <div class="data-cards">
           <div class="data-card"><span>2022年</span><strong>12,437名</strong></div>
           <div class="data-card"><span>2023年</span><strong>13,516名</strong></div>
           <div class="data-card"><span>2024年</span><strong>15,374名</strong></div>
-          <div class="data-card"><span>2025年</span><strong>19,112名</strong></div>
         </div>
         <p>※ IBJのシステム内での成婚者のみ。日本マーケティングリサーチ機構調べ。</p>
       </section>
       <section class="section">
         <h2>新規入会者数</h2>
-        <p>毎月平均で約6,400名の会員が入会しています。</p>
-        <div class="lead-box">2026年7月の新規入会者数 <strong>6,428</strong> 名</div>
+        <p>毎月平均で約6,200名の会員が入会しています。</p>
+        <div class="lead-box">2025年6月の新規入会者数 <strong>6,026</strong> 名</div>
       </section>
       <section class="section">
         <h2>男性会員の年齢層</h2>
         <p>男性会員の年齢は、30代後半がボリュームゾーン。生活が安定しており、信頼してお相手を紹介しあえる方々が多いのが特徴です。</p>
         <table class="data-table">
-          <tr><th>～29才</th><td>8.3％</td></tr><tr><th>30才～34才</th><td>20.5％</td></tr><tr><th>35才～39才</th><td>23.8％</td></tr><tr><th>40才～44才</th><td>17.9％</td></tr><tr><th>45才～49才</th><td>12.0％</td></tr><tr><th>50代以上</th><td>17.4％</td></tr>
+          <tr><th>～29才</th><td>6.6％</td></tr><tr><th>30才～34才</th><td>17.8％</td></tr><tr><th>35才～39才</th><td>23.1％</td></tr><tr><th>40才～44才</th><td>18.4％</td></tr><tr><th>45才～49才</th><td>13.9％</td></tr><tr><th>50代以上</th><td>20.2％</td></tr>
         </table>
       </section>
       <section class="section">
         <h2>女性会員の年齢層</h2>
         <p>女性会員の年齢も、30代後半がボリュームゾーン。真剣に結婚を考える年齢層が多いのが特徴です。</p>
         <table class="data-table">
-          <tr><th>～29才</th><td>16.4％</td></tr><tr><th>30才～34才</th><td>27.5％</td></tr><tr><th>35才～39才</th><td>25.9％</td></tr><tr><th>40才～44才</th><td>14.7％</td></tr><tr><th>45才～49才</th><td>6.7％</td></tr><tr><th>50代以上</th><td>8.7％</td></tr>
+          <tr><th>～29才</th><td>13.4％</td></tr><tr><th>30才～34才</th><td>26.1％</td></tr><tr><th>35才～39才</th><td>27.1％</td></tr><tr><th>40才～44才</th><td>15.5％</td></tr><tr><th>45才～49才</th><td>7.8％</td></tr><tr><th>50代以上</th><td>10.1％</td></tr>
         </table>
       </section>
       <section class="section">
         <h2>男性会員の年収</h2>
         <p>男性の公開年収は、400～799万円がボリュームゾーン。結婚相手を探すためのデータベースとして良質です。</p>
         <table class="data-table">
-          <tr><th>～399万</th><td>11.6％</td></tr><tr><th>400～599万</th><td>36.4％</td></tr><tr><th>600～799万</th><td>27.7％</td></tr><tr><th>800～999万</th><td>11.6％</td></tr><tr><th>1000万～</th><td>12.7％</td></tr>
+          <tr><th>～399万</th><td>14.1％</td></tr><tr><th>400～599万</th><td>39.2％</td></tr><tr><th>600～799万</th><td>25.3％</td></tr><tr><th>800～999万</th><td>10.0％</td></tr><tr><th>1000万～</th><td>11.4％</td></tr>
         </table>
       </section>
     `
@@ -357,28 +356,403 @@ function renderManagedFeature(content) {
   };
 }
 
+function renderManagedPlan(content) {
+  const prices = Array.isArray(content.prices) ? content.prices : [];
+  const supportItems = Array.isArray(content.supportItems) ? content.supportItems : [];
+  const image = managedImagePath(content.planImage, "/konkatsu/assets/konkatsu/plan.jpg");
+
+  return {
+    title: content.title || pages.plan.title,
+    lead: content.lead || pages.plan.lead,
+    html: `
+      <section class="section">
+        <div class="plan-block">
+          <img src="${escapeHtml(image)}" alt="${escapeHtml(content.planImageAlt || "")}">
+          <div>
+            <h2>${escapeHtml(content.planName || "")}</h2>
+            <p>${escapeHtml(content.planDescription || "")}</p>
+            <h3>${escapeHtml(content.supportTitle || "サポート詳細")}</h3>
+            <ul class="check-list">
+              ${supportItems.map(item => `<li>${escapeHtml(item)}</li>`).join("")}
+            </ul>
+          </div>
+        </div>
+        <table class="price-table">
+          ${prices.map(price => `<tr><th>${escapeHtml(price.label || "")}</th><td>${escapeHtml(price.amount || "")}</td></tr>`).join("")}
+        </table>
+      </section>
+    `
+  };
+}
+
+function paragraphsHtml(list) {
+  return (Array.isArray(list) ? list : []).map(text => `<p>${escapeHtml(text)}</p>`).join("");
+}
+
+function renderManagedReadme(content) {
+  const worriesLeft = Array.isArray(content.worriesLeft) ? content.worriesLeft : [];
+  const worriesRight = Array.isArray(content.worriesRight) ? content.worriesRight : [];
+  const intro = content.intro || {};
+  const message = content.message || {};
+  const introImage = managedImagePath(intro.image, "/konkatsu/assets/konkatsu/hero-02.png");
+
+  return {
+    title: content.title || pages.readme.title,
+    lead: content.lead || pages.readme.lead,
+    html: `
+      <div class="two-list">
+        <ul class="worry-list">
+          ${worriesLeft.map(item => `<li>${escapeHtml(item)}</li>`).join("")}
+        </ul>
+        <ul class="worry-list">
+          ${worriesRight.map(item => `<li>${escapeHtml(item)}</li>`).join("")}
+        </ul>
+      </div>
+      <section class="section">
+        <h2>${escapeHtml(intro.heading || "")}</h2>
+        <div class="media-block">
+          <img src="${escapeHtml(introImage)}" alt="${escapeHtml(intro.imageAlt || "")}">
+          <div>
+            <h3>${escapeHtml(intro.subHeading || "")}</h3>
+            ${paragraphsHtml(intro.paragraphs)}
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <h2>${escapeHtml(message.heading || "")}</h2>
+        ${paragraphsHtml(message.paragraphs)}
+        <h3>${escapeHtml(message.subHeading || "")}</h3>
+        ${paragraphsHtml(message.subParagraphs)}
+      </section>
+    `
+  };
+}
+
+function renderManagedFlow(content) {
+  const steps = Array.isArray(content.steps) ? content.steps : [];
+
+  return {
+    title: content.title || pages.flow.title,
+    lead: content.lead || pages.flow.lead,
+    html: `
+      <section class="section">
+        ${steps.map((step, index) => {
+          const image = managedImagePath(step.image, "/konkatsu/assets/konkatsu/contact.jpg");
+          return `
+          <div class="flow-step">
+            <img src="${escapeHtml(image)}" alt="">
+            <div>
+              <h2>${index + 1}. ${escapeHtml(step.title || "")}</h2>
+              <p>${escapeHtml(step.body || "")}</p>
+            </div>
+          </div>
+        `;
+        }).join("")}
+      </section>
+    `
+  };
+}
+
+function renderManagedFaq(content) {
+  const items = Array.isArray(content.items) ? content.items : [];
+
+  return {
+    title: content.title || pages.faq.title,
+    lead: content.lead || pages.faq.lead,
+    html: `
+      <section class="section">
+        ${items.map(item => `
+          <article class="faq-item">
+            <h3>${escapeHtml(item.question || "")}</h3>
+            <div><p>${escapeHtml(item.answer || "")}</p></div>
+          </article>
+        `).join("")}
+      </section>
+    `
+  };
+}
+
+function renderManagedAccess(content) {
+  const profile = Array.isArray(content.profile) ? content.profile : [];
+  const mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.4738584104934!2d139.79660487629823!3d35.68995512949388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018893a086c7257%3A0x60ecaee2addd4674!2z44CSMTMwLTAwMjMg5p2x5Lqs6YO95aKo55Sw5Yy656uL5bed77yR5LiB55uu77yS4oiS77yYIOi1pOa0peODk-ODqyAx6ZqO!5e0!3m2!1sja!2sjp!4v1694062312740!5m2!1sja!2sjp";
+
+  return {
+    title: content.title || pages.access.title,
+    lead: content.lead || pages.access.lead,
+    html: `
+      <section class="section">
+        <h2>概要</h2>
+        <table class="profile-table">
+          ${profile.map(row => `<tr><th>${escapeHtml(row.label || "")}</th><td>${escapeHtml(row.value || "")}</td></tr>`).join("")}
+        </table>
+      </section>
+      <section class="section">
+        <h2>沿革</h2>
+        ${paragraphsHtml(content.historyParagraphs)}
+      </section>
+      <section class="section">
+        <h2>アクセス</h2>
+        ${paragraphsHtml(content.accessParagraphs)}
+        <iframe class="map" title="コンカツトーキョーTTC アクセスマップ" src="${mapSrc}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </section>
+    `
+  };
+}
+
+function renderManagedGreeting(content) {
+  const counselors = Array.isArray(content.counselors) ? content.counselors : [];
+  const greeting = content.greeting || {};
+  const groups = Array.isArray(greeting.groups) ? greeting.groups : [];
+
+  const counselorHtml = counselors.map((counselor, index) => {
+    const fallback = `/konkatsu/assets/konkatsu/counselor-0${index + 1}.jpg`;
+    const image = managedImagePath(counselor.image, fallback);
+    const blocks = Array.isArray(counselor.blocks) ? counselor.blocks : [];
+    const blocksHtml = blocks.map(block => {
+      const lines = Array.isArray(block.lines) ? block.lines : [];
+      const body = block.style === "list"
+        ? `<ul>${lines.map(line => `<li>${escapeHtml(line)}</li>`).join("")}</ul>`
+        : paragraphsHtml(lines);
+      return `<h3>${escapeHtml(block.heading || "")}</h3>${body}`;
+    }).join("");
+
+    return `
+        <div class="counselor-grid">
+          <img src="${escapeHtml(image)}" alt="${escapeHtml(counselor.imageAlt || "")}">
+          <div>
+            <h2>${escapeHtml(counselor.name || "")}</h2>
+            ${counselor.lead ? `<p>${escapeHtml(counselor.lead)}</p>` : ""}
+            ${blocksHtml}
+          </div>
+        </div>`;
+  }).join("");
+
+  const groupsHtml = groups.map(group => `<h3>${escapeHtml(group.heading || "")}</h3>${paragraphsHtml(group.paragraphs)}`).join("");
+
+  return {
+    title: content.title || pages.greeting.title,
+    lead: content.lead || pages.greeting.lead,
+    html: `
+      <section class="section">
+        ${counselorHtml}
+      </section>
+      <section class="section">
+        <h2>${escapeHtml(greeting.heading || "")}</h2>
+        ${groupsHtml}
+      </section>
+    `
+  };
+}
+
+function renderManagedData(content) {
+  const summaryParagraphs = content.summaryParagraphs;
+  const marriage = content.marriage || {};
+  const cards = Array.isArray(marriage.cards) ? marriage.cards : [];
+  const newMembers = content.newMembers || {};
+  const tables = Array.isArray(content.tables) ? content.tables : [];
+
+  const tablesHtml = tables.map(table => {
+    const rows = Array.isArray(table.rows) ? table.rows : [];
+    return `
+      <section class="section">
+        <h2>${escapeHtml(table.heading || "")}</h2>
+        <p>${escapeHtml(table.paragraph || "")}</p>
+        <table class="data-table">
+          ${rows.map(row => `<tr><th>${escapeHtml(row.label || "")}</th><td>${escapeHtml(row.value || "")}</td></tr>`).join("")}
+        </table>
+      </section>
+    `;
+  }).join("");
+
+  return {
+    title: content.title || pages.data.title,
+    lead: content.lead || pages.data.lead,
+    html: `
+      <div class="lead-box">会員数 <strong>${escapeHtml(content.memberCount || "")}</strong> 名<br>（${escapeHtml(content.memberAsOf || "")}現在）</div>
+      <section class="section">
+        ${paragraphsHtml(summaryParagraphs)}
+      </section>
+      <section class="section">
+        <h2>${escapeHtml(marriage.heading || "")}</h2>
+        <p>${escapeHtml(marriage.paragraph || "")}</p>
+        <div class="data-cards">
+          ${cards.map(card => `<div class="data-card"><span>${escapeHtml(card.year || "")}</span><strong>${escapeHtml(card.value || "")}</strong></div>`).join("")}
+        </div>
+        <p>${escapeHtml(marriage.note || "")}</p>
+      </section>
+      <section class="section">
+        <h2>${escapeHtml(newMembers.heading || "")}</h2>
+        <p>${escapeHtml(newMembers.paragraph || "")}</p>
+        <div class="lead-box">${escapeHtml(newMembers.label || "")} <strong>${escapeHtml(newMembers.count || "")}</strong> 名</div>
+      </section>
+      ${tablesHtml}
+    `
+  };
+}
+
+const blogStyles = `<style>
+      .blog-list { display: grid; gap: 20px; }
+      .blog-card { display: grid; grid-template-columns: 220px 1fr; gap: 20px; text-decoration: none; color: inherit; border: 1px solid #e2e3dc; border-radius: 16px; overflow: hidden; background: #fff; }
+      .blog-card:hover { border-color: #245e50; }
+      .blog-thumb { width: 220px; height: 148px; object-fit: cover; background: #e8ecea; }
+      .blog-card-body { padding: 16px 18px; }
+      .blog-card-body time { color: #9a6b20; font-size: 13px; font-weight: 700; }
+      .blog-card-body h2 { margin: 6px 0 8px; font-size: 20px; }
+      .blog-card-body p { margin: 0; color: #5a6762; line-height: 1.7; }
+      .blog-empty { color: #5a6762; }
+      .blog-article .blog-hero { width: 100%; border-radius: 16px; margin: 0 0 8px; }
+      .blog-meta { color: #9a6b20; font-size: 14px; font-weight: 700; margin: 4px 0 18px; }
+      .blog-article figure { margin: 22px 0; }
+      .blog-article figure img { width: 100%; border-radius: 12px; }
+      .blog-article figcaption { margin-top: 8px; color: #69746f; font-size: 13px; }
+      .blog-back { margin-top: 36px; }
+      .blog-back a { color: #245e50; font-weight: 700; text-decoration: none; }
+      @media (max-width: 640px) { .blog-card { grid-template-columns: 1fr; } .blog-thumb { width: 100%; height: 190px; } }
+    </style>`;
+
+function renderBlogBlock(block) {
+  if (block.type === "heading") {
+    return `<h2>${escapeHtml(block.text || "")}</h2>`;
+  }
+  if (block.type === "image") {
+    const image = managedImagePath(block.image, "/konkatsu/assets/konkatsu/hero-01.png");
+    const caption = block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : "";
+    return `<figure><img src="${escapeHtml(image)}" alt="${escapeHtml(block.caption || "")}">${caption}</figure>`;
+  }
+  return `<p>${escapeHtml(block.text || "")}</p>`;
+}
+
+function renderBlogArticle(content, post) {
+  const body = Array.isArray(post.body) ? post.body : [];
+  const thumbnail = managedImagePath(post.thumbnail, "/konkatsu/assets/konkatsu/hero-01.png");
+  const hero = post.thumbnail ? `<img class="blog-hero" src="${escapeHtml(thumbnail)}" alt="${escapeHtml(post.thumbAlt || "")}">` : "";
+
+  return {
+    title: post.title || content.title,
+    lead: post.excerpt || content.lead,
+    html: `
+      ${blogStyles}
+      <article class="blog-article">
+        ${hero}
+        <p class="blog-meta">${escapeHtml(post.date || "")}</p>
+        ${body.map(renderBlogBlock).join("")}
+        <p class="blog-back"><a href="./">← ブログ一覧へ戻る</a></p>
+      </article>
+    `
+  };
+}
+
+function renderBlogList(content, posts) {
+  const cards = posts.map(post => {
+    const thumbnail = managedImagePath(post.thumbnail, "/konkatsu/assets/konkatsu/hero-01.png");
+    const href = `?post=${encodeURIComponent(post.id || "")}`;
+    return `
+        <a class="blog-card" href="${href}">
+          <img class="blog-thumb" src="${escapeHtml(thumbnail)}" alt="${escapeHtml(post.thumbAlt || "")}">
+          <div class="blog-card-body">
+            <time>${escapeHtml(post.date || "")}</time>
+            <h2>${escapeHtml(post.title || "")}</h2>
+            <p>${escapeHtml(post.excerpt || "")}</p>
+          </div>
+        </a>`;
+  }).join("");
+
+  const listHtml = posts.length
+    ? `<div class="blog-list">${cards}</div>`
+    : `<p class="blog-empty">まだ記事がありません。</p>`;
+
+  return {
+    title: content.title,
+    lead: content.lead,
+    html: `${blogStyles}${listHtml}`
+  };
+}
+
+function renderManagedBlog(content) {
+  const posts = Array.isArray(content.posts) ? content.posts : [];
+  const requestedId = new URLSearchParams(window.location.search).get("post");
+
+  if (requestedId) {
+    const post = posts.find(item => item.id === requestedId);
+    if (post) {
+      return renderBlogArticle(content, post);
+    }
+  }
+
+  return renderBlogList(content, posts);
+}
+
+const managedPages = {
+  readme: {
+    file: "/content/konkatsu/readme.json",
+    draftKey: "ttc-konkatsu-readme-draft",
+    render: renderManagedReadme
+  },
+  blog: {
+    file: "/content/konkatsu/blog.json",
+    draftKey: "ttc-konkatsu-blog-draft",
+    render: renderManagedBlog
+  },
+  greeting: {
+    file: "/content/konkatsu/greeting.json",
+    draftKey: "ttc-konkatsu-greeting-draft",
+    render: renderManagedGreeting
+  },
+  data: {
+    file: "/content/konkatsu/data.json",
+    draftKey: "ttc-konkatsu-data-draft",
+    render: renderManagedData
+  },
+  feature: {
+    file: "/content/konkatsu/feature.json",
+    draftKey: "ttc-konkatsu-feature-draft",
+    render: renderManagedFeature
+  },
+  plan: {
+    file: "/content/konkatsu/plan.json",
+    draftKey: "ttc-konkatsu-plan-draft",
+    render: renderManagedPlan
+  },
+  flow: {
+    file: "/content/konkatsu/flow.json",
+    draftKey: "ttc-konkatsu-flow-draft",
+    render: renderManagedFlow
+  },
+  faq: {
+    file: "/content/konkatsu/faq.json",
+    draftKey: "ttc-konkatsu-faq-draft",
+    render: renderManagedFaq
+  },
+  access: {
+    file: "/content/konkatsu/access.json",
+    draftKey: "ttc-konkatsu-access-draft",
+    render: renderManagedAccess
+  }
+};
+
 async function loadPage(key) {
-  if (key !== "feature") {
+  const managed = managedPages[key];
+  if (!managed) {
     return pages[key];
   }
 
   try {
     if (isLocalPreviewHost()) {
-      const localDraft = window.localStorage.getItem("ttc-konkatsu-feature-draft");
+      const localDraft = window.localStorage.getItem(managed.draftKey);
       if (localDraft) {
-        return renderManagedFeature(JSON.parse(localDraft));
+        return managed.render(JSON.parse(localDraft));
       }
     }
 
-    const response = await fetch("/content/konkatsu/feature.json", { cache: "no-store" });
+    const response = await fetch(managed.file, { cache: "no-store" });
     if (!response.ok) {
       throw new Error(`Content request failed with status ${response.status}.`);
     }
 
-    return renderManagedFeature(await response.json());
+    return managed.render(await response.json());
   } catch (error) {
-    console.warn("Managed feature content could not be loaded; using bundled content.", error);
-    return pages.feature;
+    console.warn(`Managed content for "${key}" could not be loaded; using bundled content.`, error);
+    return pages[key];
   }
 }
 
@@ -492,7 +866,8 @@ const nav = [
   ["../greeting/", "カウンセラー紹介", "greeting"],
   ["../flow/", "ご結婚までの流れ", "flow"],
   ["../data/", "会員データ", "data"],
-  ["../faq/", "Q & A", "faq"]
+  ["../faq/", "Q & A", "faq"],
+  ["../blog/", "ブログ", "blog"]
 ];
 
 async function renderPage() {
