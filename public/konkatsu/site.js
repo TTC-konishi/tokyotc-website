@@ -610,6 +610,50 @@ const blogStyles = `<style>
       @media (max-width: 640px) { .blog-card { grid-template-columns: 1fr; } .blog-thumb { width: 100%; height: 190px; } }
     </style>`;
 
+function parseBlogBody(bodyInput) {
+  if (Array.isArray(bodyInput)) { return bodyInput; }
+  if (typeof bodyInput !== "string") { return []; }
+  const lines = bodyInput.split(/\r?\n/);
+  const blocks = [];
+  let curParagraph = [];
+
+  function flushParagraph() {
+    if (curParagraph.length > 0) {
+      blocks.push({ type: "paragraph", text: curParagraph.join("\n") });
+      curParagraph = [];
+    }
+  }
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) {
+      flushParagraph();
+      continue;
+    }
+    let isHeading = false;
+    let headingText = "";
+    if (/^[■●◆▼]\s*(.*)$/.test(line)) {
+      isHeading = true;
+      headingText = line.replace(/^[■●◆▼]\s*/, "");
+    } else if (/^##+\s*(.*)$/.test(line)) {
+      isHeading = true;
+      headingText = line.replace(/^##+\s*/, "");
+    } else if (/^【(.*)】$/.test(line)) {
+      isHeading = true;
+      headingText = line.slice(1, -1);
+    }
+
+    if (isHeading) {
+      flushParagraph();
+      blocks.push({ type: "heading", text: headingText || line });
+    } else {
+      curParagraph.push(line);
+    }
+  }
+  flushParagraph();
+  return blocks;
+}
+
 function renderBlogBlock(block) {
   if (block.type === "heading") {
     return `<h2>${escapeHtml(block.text || "")}</h2>`;
@@ -619,11 +663,12 @@ function renderBlogBlock(block) {
     const caption = block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : "";
     return `<figure><img src="${escapeHtml(image)}" alt="${escapeHtml(block.caption || "")}">${caption}</figure>`;
   }
-  return `<p>${escapeHtml(block.text || "")}</p>`;
+  const textHtml = escapeHtml(block.text || "").replace(/\n/g, "<br>");
+  return `<p>${textHtml}</p>`;
 }
 
 function renderBlogArticle(content, post) {
-  const body = Array.isArray(post.body) ? post.body : [];
+  const body = parseBlogBody(post.body);
   const thumbnail = managedImagePath(post.thumbnail, "/konkatsu/assets/konkatsu/hero-01.png");
   const hero = post.thumbnail ? `<img class="blog-hero" src="${escapeHtml(thumbnail)}" alt="${escapeHtml(post.thumbAlt || "")}">` : "";
 
