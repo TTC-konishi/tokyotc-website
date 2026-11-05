@@ -938,6 +938,12 @@ function contentUrlFor(key) {
   }
   return "https://tokyotc.com/content/konkatsu/" + key + ".json";
 }
+function draftContentUrlFor(key) {
+  if (typeof window !== "undefined" && window.location && window.location.protocol.startsWith("http")) {
+    return "/content/konkatsu/drafts/" + key + ".json";
+  }
+  return "https://tokyotc.com/content/konkatsu/drafts/" + key + ".json";
+}
 function previewUrlFor(key) { return "/konkatsu/" + key + "/"; }
 
 function clone(v) { return JSON.parse(JSON.stringify(v)); }
@@ -1446,11 +1452,19 @@ function updateUndoButtons() {
 async function loadBase(key) {
   var bundled = (window.BUNDLED_CONTENT && window.BUNDLED_CONTENT[key]) || null;
   try {
-    var res = await fetch(contentUrlFor(key), { cache: "no-store" });
+    var res = await fetch(contentUrlFor(key) + "?t=" + Date.now(), { cache: "no-store" });
     if (res.ok) { return await res.json(); }
   } catch (e) { /* fall back to bundled */ }
   if (bundled) { return clone(bundled); }
   return {};
+}
+
+async function loadSharedDraft(key) {
+  try {
+    var res = await fetch(draftContentUrlFor(key) + "?t=" + Date.now(), { cache: "no-store" });
+    if (res.ok) { return await res.json(); }
+  } catch (e) { /* no shared draft */ }
+  return null;
 }
 
 function normalizeWorkingContent(key, content) {
@@ -1469,19 +1483,33 @@ function normalizeWorkingContent(key, content) {
 async function openPage(key) {
   STATE.key = key;
   window.__PV_BLOG = { mode: "list" };
+  setStatus("最新データを読み込み中…", null);
+
   STATE.base = await loadBase(key);
-  var draft = null;
-  try { draft = window.localStorage.getItem(draftKeyFor(key)); } catch (e) {}
-  var raw = draft ? JSON.parse(draft) : clone(STATE.base);
-  STATE.working = normalizeWorkingContent(key, raw);
+  var sharedDraft = await loadSharedDraft(key);
+
+  var localDraft = null;
+  try { localDraft = window.localStorage.getItem(draftKeyFor(key)); } catch (e) {}
+  var localData = localDraft ? JSON.parse(localDraft) : null;
+
+  // 優先順位：共有下書き（全員で共有された最新下書き） > ローカル下書き > 本番データ
+  var targetData = sharedDraft || localData || clone(STATE.base);
+
+  STATE.working = normalizeWorkingContent(key, targetData);
   STATE.dirty = false;
   STATE.history = [];
   STATE.pendingSnapshot = null;
   renderForm();
   highlightNav();
   updateUndoButtons();
-  if (draft) { setStatus("保存された下書きを開いています", "ok"); }
-  else { setStatus("この内容を編集できます", null); }
+
+  if (sharedDraft) {
+    setStatus("全員で共有されている最新の下書きを表示中（未公開）", "ok");
+  } else if (localData) {
+    setStatus("このPC内に保存された下書きを表示中", "ok");
+  } else {
+    setStatus("本番サイトの最新データを表示中（編集できます）", null);
+  }
 }
 
 function renderForm() {
@@ -1541,9 +1569,58 @@ function saveDraft() {
         p.excerpt = extractBlogExcerpt(p);
       });
     }
+    // 1. ローカルにバックアップ保存
     window.localStorage.setItem(draftKeyFor(STATE.key), JSON.stringify(STATE.working));
     STATE.dirty = false;
-    setStatus("下書きを保存しました", "ok");
+
+    // 2. サーバーに全員共有の下書きとして保存
+    var key = getPublishKey();
+    if (!key) {
+      setStatus("下書きをこのPC内に保存しました", "ok");
+      return;
+    }
+
+    var saveBtn = document.getElementById("btn-save");
+    var origText = saveBtn ? saveBtn.textContent : "";
+    if (saveBtn) {
+      saveBtn.disabled = true;
+      saveBtn.textContent = " 保存中…";
+    }
+    setStatus("全員で共有する下書きを保存しています…", "warn");
+
+    var payloadContent = clone(STATE.working);
+
+    fetch(PUBLISH_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + key
+      },
+      body: JSON.stringify({
+        pageKey: STATE.key,
+        content: payloadContent,
+        author: "担当スタッフ",
+        isDraft: true
+      })
+    })
+    .then(function (res) {
+      if (saveBtn) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = origText;
+      }
+      if (res.ok) {
+        setStatus("共有下書きを保存しました！全員の画面に反映されます。", "ok");
+      } else {
+        setStatus("下書きをこのPC内に保存しました（サーバー保存は失敗）", "warn");
+      }
+    })
+    .catch(function () {
+      if (saveBtn) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = origText;
+      }
+      setStatus("下書きをこのPC内に保存しました（オフライン）", "warn");
+    });
   } catch (e) {
     setStatus("保存できませんでした：" + e.message, "err");
   }
