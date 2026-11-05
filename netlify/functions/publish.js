@@ -58,7 +58,7 @@ export const handler = async function (event, context) {
     return {
       statusCode: 401,
       headers: CORS_HEADERS,
-      body: JSON.stringify({ error: "認証に失敗しました。公開キーが正しくありません。" })
+      body: JSON.stringify({ error: "認証に失敗しました。合言葉が正しくありません。" })
     };
   }
 
@@ -82,10 +82,8 @@ export const handler = async function (event, context) {
     };
   }
 
-  const { pageKey, content, author } = payload;
-  const filePath = PAGE_PATHS[pageKey];
-
-  if (!filePath) {
+  const { pageKey, content, author, isDraft } = payload;
+  if (!PAGE_PATHS[pageKey]) {
     return {
       statusCode: 400,
       headers: CORS_HEADERS,
@@ -100,6 +98,11 @@ export const handler = async function (event, context) {
       body: JSON.stringify({ error: "更新データ（content）が含まれていません。" })
     };
   }
+
+  // 下書き（isDraft: true）の場合は本番サイトに影響しない public/content/konkatsu/drafts/ に保存
+  const filePath = isDraft
+    ? `public/content/konkatsu/drafts/${pageKey}.json`
+    : PAGE_PATHS[pageKey];
 
   try {
     // 1. 現在のファイルの SHA を取得（GitHub Contents API）
@@ -131,7 +134,9 @@ export const handler = async function (event, context) {
     const base64Content = Buffer.from(formattedJson, "utf8").toString("base64");
 
     const commitAuthor = author || "スタッフ";
-    const commitMessage = `[Staff Editor] ${pageKey} を更新 (${commitAuthor})`;
+    const commitMessage = isDraft
+      ? `[Staff Editor Draft] ${pageKey} の下書きを更新 (${commitAuthor})`
+      : `[Staff Editor] ${pageKey} を本番公開 (${commitAuthor})`;
 
     // 3. GitHub Contents API に PUT してコミット作成
     const putUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}`;
@@ -167,12 +172,52 @@ export const handler = async function (event, context) {
 
     const putResult = await putRes.json();
 
+    // 本番公開（isDraft !== true）が成功した場合、下書き保管庫（drafts/）も本番データと同期して綺麗にしておく
+    if (!isDraft) {
+      try {
+        const draftPath = `public/content/konkatsu/drafts/${pageKey}.json`;
+        const draftGetUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${draftPath}?ref=${TARGET_BRANCH}`;
+        const draftGetRes = await fetch(draftGetUrl, {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "TTC-Staff-Editor"
+          }
+        });
+        if (draftGetRes.ok) {
+          const draftData = await draftGetRes.json();
+          await fetch(draftGetUrl.split("?")[0], {
+            method: "PUT",
+            headers: {
+              "Authorization": `Bearer ${token}`,
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28",
+              "Content-Type": "application/json",
+              "User-Agent": "TTC-Staff-Editor"
+            },
+            body: JSON.stringify({
+              message: `[Staff Editor Draft Sync] ${pageKey} の下書きを本番と同期`,
+              content: base64Content,
+              sha: draftData.sha,
+              branch: TARGET_BRANCH
+            })
+          });
+        }
+      } catch (e) {
+        // 下書き同期のエラーは本番公開自体の成否には影響させない
+      }
+    }
+
     return {
       statusCode: 200,
       headers: CORS_HEADERS,
       body: JSON.stringify({
         success: true,
-        message: "本番GitHubへの保存が完了しました。Netlifyの自動公開が始まります。",
+        isDraft: !!isDraft,
+        message: isDraft
+          ? "共有下書きの保存が完了しました。全員の画面に反映されます。"
+          : "本番サイトへの公開保存が完了しました！約1〜2分で自動反映されます。",
         commit: putResult.commit?.sha
       })
     };
