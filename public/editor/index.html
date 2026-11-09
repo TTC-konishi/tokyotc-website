@@ -1325,6 +1325,32 @@ function renderObjectList(def, parent) {
   if (!Array.isArray(parent[def.n])) { parent[def.n] = []; }
   var arr = parent[def.n];
   var box = el("div", "field block");
+
+  function onAdd() {
+    beginAtomicChange();
+    var newItem = def.defaultItem ? clone(def.defaultItem) : blankObject(def.fields);
+    if (def.n === "posts") {
+      arr.unshift(newItem);
+    } else {
+      arr.push(newItem);
+    }
+    markDirty();
+    draw();
+  }
+
+  if (def.n === "posts") {
+    var topAddWrap = el("div", "blog-top-add");
+    topAddWrap.style.cssText = "margin-bottom:12px;";
+    var topAdd = el("button", "add-btn", "");
+    topAdd.type = "button";
+    topAdd.style.cssText = "margin-top:0;font-size:14px;padding:9px 18px;font-weight:700;";
+    topAdd.appendChild(el("i", "ti ti-plus"));
+    topAdd.appendChild(document.createTextNode(" " + def.l + "を追加"));
+    topAdd.addEventListener("click", onAdd);
+    topAddWrap.appendChild(topAdd);
+    box.appendChild(topAddWrap);
+  }
+
   box.appendChild(fieldLabel(def));
   var items = el("div", "obj-items");
   box.appendChild(items);
@@ -1353,22 +1379,14 @@ function renderObjectList(def, parent) {
   }
   draw();
 
-  var add = el("button", "add-btn", "");
-  add.type = "button";
-  add.appendChild(el("i", "ti ti-plus"));
-  add.appendChild(document.createTextNode(" " + def.l + "を追加"));
-  add.addEventListener("click", function () {
-    beginAtomicChange();
-    var newItem = def.defaultItem ? clone(def.defaultItem) : blankObject(def.fields);
-    if (def.n === "posts") {
-      arr.unshift(newItem);
-    } else {
-      arr.push(newItem);
-    }
-    markDirty();
-    draw();
-  });
-  box.appendChild(add);
+  if (def.n !== "posts") {
+    var add = el("button", "add-btn", "");
+    add.type = "button";
+    add.appendChild(el("i", "ti ti-plus"));
+    add.appendChild(document.createTextNode(" " + def.l + "を追加"));
+    add.addEventListener("click", onAdd);
+    box.appendChild(add);
+  }
   return box;
 }
 
