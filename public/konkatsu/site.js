@@ -302,13 +302,10 @@ function isAssistantPreview() {
 }
 
 function managedImagePath(value, fallback) {
-  const isLocalPreview = isLocalPreviewHost();
-
   if (
-    isLocalPreview &&
     typeof value === "string" &&
     /^data:image\/(jpeg|png|webp);base64,/.test(value) &&
-    value.length <= 1600000
+    value.length <= 2000000
   ) {
     return value;
   }
