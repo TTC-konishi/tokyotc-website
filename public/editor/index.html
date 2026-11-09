@@ -276,7 +276,7 @@
             <li>まん中の入力欄で、文章を書き換えます。</li>
             <li>料金表・質問と回答・ブログ記事などは、「◯◯を追加」で行を増やせます。各行の右のアイコンで、上下の並べ替えや削除ができます。</li>
             <li>ブログ記事は「タイトル」「日付」「写真」「本文」を入力するだけで作成できます（記事IDや一覧用の紹介文は自動生成されます）。ページ全体の見出しなどは下部の折りたたみから変更できます。</li>
-            <li>写真は、いまのところ「写真の場所」を入力する方式です（本番公開後の画面では、写真を直接アップロードできます）。</li>
+            <li>写真は「📷 写真を選択」ボタンからパソコンやスマートフォンの写真を直接選べます（自動で最適なサイズに縮小されます）。</li>
           </ol>
 
           <h3>3. 右のプレビューで確かめる</h3>
@@ -370,7 +370,7 @@ function managedImagePath(value, fallback) {
   if (
     typeof value === "string" &&
     /^data:image\/(jpeg|png|webp);base64,/.test(value) &&
-    value.length <= 1600000
+    value.length <= 2000000
   ) {
     return value;
   }
@@ -1199,8 +1199,87 @@ function renderLeaf(def, parent) {
   });
   field.appendChild(control);
   if (def.t === "image") {
-    var note = el("small", "field-hint", "写真は、いまのファイルの場所を入力できます（本番の写真アップロードは公開後の編集画面で行えます）。");
-    field.appendChild(note);
+    var fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/jpeg,image/png,image/webp,image/gif";
+    fileInput.style.display = "none";
+
+    var btnRow = el("div", "field-btn-row");
+    btnRow.style.cssText = "margin-top:6px;display:flex;gap:8px;align-items:center;";
+
+    var selectBtn = el("button", "mini-btn", "📷 写真を選択");
+    selectBtn.type = "button";
+    selectBtn.style.cssText = "cursor:pointer;padding:6px 12px;font-size:13px;border-radius:6px;border:1px solid var(--border,#ccc);background:var(--card,#fff);color:inherit;";
+
+    var clearBtn = el("button", "mini-btn", "消去");
+    clearBtn.type = "button";
+    clearBtn.style.cssText = "cursor:pointer;padding:6px 10px;font-size:12px;border-radius:6px;border:1px solid var(--border,#ccc);background:transparent;color:var(--sub,#888);display:" + (control.value ? "inline-block" : "none");
+
+    var previewImg = document.createElement("img");
+    previewImg.style.cssText = "max-width:100%;max-height:180px;border-radius:8px;margin-top:8px;object-fit:cover;display:" + (control.value ? "block" : "none");
+    if (control.value) {
+      previewImg.src = control.value;
+    }
+
+    selectBtn.addEventListener("click", function () { fileInput.click(); });
+
+    clearBtn.addEventListener("click", function () {
+      control.value = "";
+      parent[def.n] = "";
+      previewImg.src = "";
+      previewImg.style.display = "none";
+      clearBtn.style.display = "none";
+      markDirty();
+      updatePreview(true);
+    });
+
+    fileInput.addEventListener("change", function () {
+      var file = fileInput.files && fileInput.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        var img = new Image();
+        img.onload = function () {
+          var canvas = document.createElement("canvas");
+          var maxW = 1200, maxH = 900;
+          var w = img.width, h = img.height;
+          if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
+          if (h > maxH) { h = Math.round(h * maxH / h); h = maxH; }
+          canvas.width = w;
+          canvas.height = h;
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, w, h);
+          var dataUrl = canvas.toDataURL("image/jpeg", 0.85);
+          control.value = dataUrl;
+          parent[def.n] = dataUrl;
+          previewImg.src = dataUrl;
+          previewImg.style.display = "block";
+          clearBtn.style.display = "inline-block";
+          markDirty();
+          updatePreview(true);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    control.addEventListener("input", function () {
+      if (control.value) {
+        previewImg.src = control.value;
+        previewImg.style.display = "block";
+        clearBtn.style.display = "inline-block";
+      } else {
+        previewImg.src = "";
+        previewImg.style.display = "none";
+        clearBtn.style.display = "none";
+      }
+    });
+
+    btnRow.appendChild(selectBtn);
+    btnRow.appendChild(clearBtn);
+    field.appendChild(fileInput);
+    field.appendChild(btnRow);
+    field.appendChild(previewImg);
   }
   return field;
 }
