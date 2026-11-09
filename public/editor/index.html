@@ -1336,7 +1336,8 @@ function renderObjectList(def, parent) {
       card.setAttribute("data-list-name", def.n);
       card.setAttribute("data-index", idx);
       var bar = el("div", "obj-card-bar");
-      bar.appendChild(el("span", "obj-card-idx", "#" + (idx + 1)));
+      var numLabel = (def.n === "posts") ? ("#" + (arr.length - idx)) : ("#" + (idx + 1));
+      bar.appendChild(el("span", "obj-card-idx", numLabel));
       var tools = el("div", "obj-card-tools");
       var up = mkTool("", "上へ", function () { if (idx > 0) { beginAtomicChange(); swap(arr, idx, idx - 1); markDirty(); draw(); } });
       var down = mkTool("", "下へ", function () { if (idx < arr.length - 1) { beginAtomicChange(); swap(arr, idx, idx + 1); markDirty(); draw(); } });
@@ -1358,7 +1359,12 @@ function renderObjectList(def, parent) {
   add.appendChild(document.createTextNode(" " + def.l + "を追加"));
   add.addEventListener("click", function () {
     beginAtomicChange();
-    arr.push(def.defaultItem ? clone(def.defaultItem) : blankObject(def.fields));
+    var newItem = def.defaultItem ? clone(def.defaultItem) : blankObject(def.fields);
+    if (def.n === "posts") {
+      arr.unshift(newItem);
+    } else {
+      arr.push(newItem);
+    }
     markDirty();
     draw();
   });
